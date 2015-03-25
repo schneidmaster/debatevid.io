@@ -1,0 +1,22 @@
+{
+  "name": "debatevid.io",
+  "version": "1.0.0",
+  "authors": [
+    "Zach Schneider <schneidmaster@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.1",
+    "jquery": "~2.1.3",
+    "jquery-ujs": "~1.0.3",
+    "turbolinks": "~2.4.1"
+  }
+}
