@@ -1,0 +1,9 @@
+AllCops:
+  Exclude:
+    - bin/**
+    - vendor/assets/bower_components/**
+
+Documentation:
+  Enabled: false
+LineLength:
+  Enabled: false
