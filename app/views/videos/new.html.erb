@@ -1,0 +1,5 @@
+<h2>Submit Video</h2>
+<%= simple_form_for @video do |f| %>
+  <%= f.input :link, label: "Link (YouTube or Vimeo only)" %>
+  <%= f.button :submit, "Go", { id: "video-link-go" } %>
+<% end %>
