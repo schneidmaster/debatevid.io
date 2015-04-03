@@ -22,4 +22,7 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: debatevidio
+  adapter: postgresql
+  username: debatevidio
+  password: IDqbZicCybCsX47E5ww6Vpq2S3zQchKY
