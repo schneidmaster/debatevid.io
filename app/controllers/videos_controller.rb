@@ -19,6 +19,10 @@ class VideosController < ApplicationController
   
   def destroy
   end
+
+  def info
+    render json: VideoInformationService.link_info(params[:link])
+  end
   
   private
   

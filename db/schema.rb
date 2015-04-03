@@ -11,7 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150327154808) do
+ActiveRecord::Schema.define(version: 20150403182022) do
+
+  create_table "debaters", force: :cascade do |t|
+    t.integer  "team_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "judges", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "judges_videos", force: :cascade do |t|
+    t.integer  "judge_id"
+    t.integer  "video_id"
+    t.integer  "winning_team_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "judges_videos", ["judge_id"], name: "index_judges_videos_on_judge_id"
+  add_index "judges_videos", ["video_id"], name: "index_judges_videos_on_video_id"
+
+  create_table "schools", force: :cascade do |t|
+    t.string   "name"
+    t.string   "short_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tags", force: :cascade do |t|
     t.string   "title"
@@ -23,6 +56,22 @@ ActiveRecord::Schema.define(version: 20150327154808) do
     t.integer "tag_id"
     t.integer "video_id"
   end
+
+  create_table "teams", force: :cascade do |t|
+    t.integer  "school_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams_videos", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "teams_videos", ["team_id"], name: "index_teams_videos_on_team_id"
+  add_index "teams_videos", ["video_id"], name: "index_teams_videos_on_video_id"
 
   create_table "tournaments", force: :cascade do |t|
     t.integer  "year"
@@ -46,8 +95,10 @@ ActiveRecord::Schema.define(version: 20150327154808) do
     t.string   "image"
     t.string   "description"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "debate_type"
+    t.integer  "debate_level"
   end
 
 end
