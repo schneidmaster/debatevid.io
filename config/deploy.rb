@@ -35,10 +35,16 @@ set :linked_files, fetch(:linked_files, []).push('.env')
 # set :keep_releases, 5
 
 namespace :deploy do
-  after :deploy, :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
+  before :deploy, :set_env do
+    on roles(:app, :web) do
+      execute 'RAILS_ENV=production'
+    end
+  end
+
+  after :deploy, :migrate_and_restart do
+    on roles(:web) do
       within release_path do
-        execute :rake, 'db:migrate'
+        execute :rake, 'db:migrate RAILS_ENV=production'
         execute :touch, 'tmp/restart.txt'
       end
     end
