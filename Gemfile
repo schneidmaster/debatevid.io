@@ -26,7 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
   gem 'capistrano-rails', '1.1.2'
-  gem 'capistrano-rvm', '0.1.2', require: false
+  gem 'capistrano-rvm', '0.1.2'
+  gem 'capistrano-passenger', '0.0.4'
 end
 
 group :development, :test do

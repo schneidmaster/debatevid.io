@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'debatevid.io'
-set :repo_url, 'schneidmaster@dbvidserver:/srv/www/debatevid.io/public/debatevid.io.git'
+set :repo_url, 'git@code.schneidmaster.com:schneidmaster/debatevid-io.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -35,17 +35,11 @@ set :log_level, :debug
 # set :keep_releases, 5
 
 namespace :deploy do
-
-  after :restart, :clear_cache do
+  after :deploy, :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
       within release_path do
-        execute :rake, 'cache:clear'
         execute :rake, 'db:migrate'
-        execute :bundle
-        execute 'touch tmp/restart.txt'
       end
     end
   end
-
 end
