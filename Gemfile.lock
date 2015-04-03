@@ -59,6 +59,7 @@ GEM
     dotenv-rails (2.0.0)
       dotenv (= 2.0.0)
     erubis (2.7.0)
+    excon (0.45.1)
     execjs (2.4.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -66,6 +67,10 @@ GEM
       activesupport (>= 4.1.0)
     hashie (3.4.0)
     hike (1.2.3)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    httpclient (2.6.0.1)
     i18n (0.7.0)
     jbuilder (2.2.12)
       activesupport (>= 3.0.0, < 5)
@@ -163,6 +168,7 @@ GEM
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    simple_oauth (0.3.1)
     spring (1.3.3)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -182,11 +188,26 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    vimeo (1.5.4)
+      httparty (>= 0.4.5)
+      httpclient (>= 2.1.5.2)
+      json (>= 1.1.9)
+      multipart-post (>= 1.0.1)
+      oauth (>= 0.4.3)
     web-console (2.1.2)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    youtube_it (2.4.2)
+      builder
+      excon
+      faraday (>= 0.8, < 0.10)
+      json (~> 1.8)
+      nokogiri (~> 1.6.0)
+      oauth (~> 0.4.4)
+      oauth2 (~> 1.0.0)
+      simple_oauth (>= 0.1.5)
 
 PLATFORMS
   ruby
@@ -209,4 +230,6 @@ DEPENDENCIES
   spring
   sqlite3
   uglifier (>= 1.3.0)
+  vimeo (= 1.5.4)
   web-console (~> 2.0)
+  youtube_it (= 2.4.2)
