@@ -1,6 +1,7 @@
 #= require jquery/dist/jquery
 #= require jquery-ujs/src/rails
 #= require turbolinks/lib/assets/javascripts/turbolinks
+#= require modernizr/modernizr
 #= require foundation/js/foundation
 #= require_tree .
 

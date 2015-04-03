@@ -5,8 +5,6 @@
     <title><%= content_for?(:title) ? yield(:title) : "DebateVid.io" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Debatevid Io" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%# Modernizr is required for Zurb Foundation %>
-    <%= javascript_include_tag 'vendor/modernizr' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>

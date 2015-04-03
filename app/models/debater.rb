@@ -1,4 +1,5 @@
 class Debater < ActiveRecord::Base
+  belongs_to :team
   belongs_to :school
 
   def code_letter

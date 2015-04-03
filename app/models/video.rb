@@ -1,10 +1,10 @@
 class Video < ActiveRecord::Base
-  enum debate_type: [ :policy, :parli, :ld ]
-  enum debate_level: [ :hs, :college ]
+  enum debate_type: [:policy, :parli, :ld]
+  enum debate_level: [:hs, :college]
 
   belongs_to :user
   belongs_to :tournament
-  
+
   has_many :teams
   has_many :judges_videos
   has_many :judges, through: :judges_videos

@@ -9,4 +9,5 @@ class Team < ActiveRecord::Base
     else
       "#{school.name_for_code} #{debaters.first.code_letter}"
     end
+  end
 end
