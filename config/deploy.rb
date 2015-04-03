@@ -39,6 +39,7 @@ namespace :deploy do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       within release_path do
         execute :rake, 'db:migrate'
+        execute :touch, 'tmp/restart.txt'
       end
     end
   end

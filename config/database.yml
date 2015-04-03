@@ -23,6 +23,6 @@ test:
 production:
   <<: *default
   database: debatevidio
-  adapter: postgresql
+  adapter: mysql2
   username: debatevidio
-  password: IDqbZicCybCsX47E5ww6Vpq2S3zQchKY
+  password: <%= ENV["DB_PASSWORD"] %>

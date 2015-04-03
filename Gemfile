@@ -27,7 +27,6 @@ group :development do
   # Use Capistrano for deployment
   gem 'capistrano-rails', '1.1.2'
   gem 'capistrano-rvm', '0.1.2'
-  gem 'capistrano-passenger', '0.0.4'
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
@@ -45,7 +44,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg', '0.18.1'
+  gem 'mysql2', '0.3.18'
 end
 
 gem 'bower-rails', '0.9.2'
