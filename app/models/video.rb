@@ -20,20 +20,24 @@ class Video < ActiveRecord::Base
     teams.last
   end
 
-  def team_ballots(num)
+  def team_one_ballots
     team_ballots = 0
     for judge in judges_videos
-      if num = 1
-        team_ballots++ if judge.winner == team_one
-      else
-        team_ballots++ if judge.winner == team_two
-      end
+      team_ballots += 1 if judge.winner == team_one
+    end
+    team_ballots
+  end
+
+  def team_two_ballots
+    team_ballots = 0
+    for judge in judges_videos
+      team_ballots += 1 if judge.winner == team_two
     end
     team_ballots
   end
 
   def winner
-    if team_ballots(1) > team_ballots(2)
+    if team_one_ballots > team_two_ballots
       team_one
     else
       team_two
