@@ -87,7 +87,10 @@ ready = ->
       params['tag'] = $("#search_tag").val()
       
     $.get "/videos/search", data: params, (data) ->
-      $("#search-results").html data
+      if data == '<div class="row"></div>'
+        $("#search-results").html "No search results; try broadening your terms."
+      else
+        $("#search-results").html data
 
   $("#search-clear").on "click", (event) ->
     event.preventDefault()
