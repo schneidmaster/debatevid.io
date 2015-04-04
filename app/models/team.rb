@@ -6,7 +6,7 @@ class Team < ActiveRecord::Base
 
   scope :with_debaters, ->(one, two) { where('(debater_one_id = ? and debater_two_id = ?) or (debater_one_id = ? and debater_two_id = ?)', one, two, two, one) }
   
-  scope :like, ->(q) { joins(:debater_one, :debater_two).where('debaters.first_name like ? or debaters.last_name like ?', "%#{q}%", "%#{q}%") }
+  scope :like, ->(q) { joins(:debater_one, :debater_two).where('debaters.first_name like ? or debaters.last_name like ? or debater_twos_teams.first_name like ? or debater_twos_teams.last_name like ?', "%#{q}%", "%#{q}%", "%#{q}%", "%#{q}%") }
 
   def debater_one
     Debater.find(debater_one_id) if Debater.exists?(debater_one_id)
