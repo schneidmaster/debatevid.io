@@ -66,7 +66,7 @@ class VideosController < ApplicationController
     
     videos = videos.send(search_param(:debate_level)) if search_param(:debate_level)
     videos = videos.send(search_param(:debate_type)) if search_param(:debate_type)
-    videos = videos.joins(:tournament).where('videos.year = ?', search_param(:year)) if search_param(:year)
+    videos = videos.joins(:tournament).where('tournaments.year = ?', search_param(:year)) if search_param(:year)
     videos = videos.where(tournament: search_param(:tournament)) if search_param(:tournament)
     videos = videos.joins(aff_team: :school).joins(neg_team: :school).where('schools.id = ?', search_param(:school)) if search_param(:school)
     videos = videos.where('aff_team_id = ? or neg_team_id = ?', search_param(:team), search_param(:team)) if search_param(:team)
