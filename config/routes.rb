@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # Page routes
   get '/faq', to: 'pages#faq'
+  get '/search', to: 'pages#search'
 
   get '/login', to: 'session#login', as: 'login'
   get '/auth/:provider/callback', to: 'session#create'
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
 
   namespace :videos do
     get :info
+    get :search
   end
   resources :videos, only: [:show, :new, :create]
 

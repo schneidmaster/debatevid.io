@@ -60,6 +60,10 @@ class VideosController < ApplicationController
     info = { exists: true } if Video.where('videos.provider = ? and videos.key like ?', provider, "%#{info[:key]}%").count > 0
     render json: info
   end
+  
+  def search
+    
+  end
 
   private
 

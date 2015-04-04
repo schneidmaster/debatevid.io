@@ -4,4 +4,6 @@ class PagesController < ApplicationController
   end
 
   def faq; end
+  
+  def search; end
 end

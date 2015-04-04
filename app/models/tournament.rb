@@ -6,4 +6,8 @@ class Tournament < ActiveRecord::Base
   def year_and_name
     "#{year} #{name}"
   end
+  
+  def self.years
+    order(year: 'desc').pluck(:year).uniq
+  end
 end
