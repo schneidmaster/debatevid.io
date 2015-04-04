@@ -5,6 +5,10 @@ class TournamentsController < ApplicationController
 
   def autocomplete
     render json: [] && return unless params[:q]
-    render json: Tournament.year_and_like(params[:year], params[:q]).map { |tournament| { id: tournament.id, text: tournament.name } }
+    if params[:year]
+      render json: Tournament.year_and_like(params[:year], params[:q]).map { |tournament| { id: tournament.id, text: tournament.name } }
+    else
+      render json: Tournament.like(params[:q]).map { |tournament| { id: tournament.id, text: tournament.year_and_name } }
+    end
   end
 end

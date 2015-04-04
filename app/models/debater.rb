@@ -1,6 +1,7 @@
 class Debater < ActiveRecord::Base
   belongs_to :school
 
+  scope :like, ->(q) { where('first_name LIKE ? or last_name LIKE ?', "%#{q}%", "%#{q}%") }
   scope :school_and_like, ->(s, q) { where('school_id = ? and (first_name LIKE ? or last_name LIKE ?)', s, "%#{q}%", "%#{q}%") }
 
   def videos

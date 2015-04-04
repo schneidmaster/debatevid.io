@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   end
   resources :schools, only: [:show]
 
+  namespace :teams do
+    get :autocomplete
+  end
   resources :teams, only: [:show]
 
   namespace :videos do
