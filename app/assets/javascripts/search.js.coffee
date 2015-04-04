@@ -100,6 +100,8 @@ ready = ->
     $("#search_team").select2('data', null)
     $("#search_debater").select2('data', null)
     $("#search_tag").select2('data', null)
+
+    $("#search-results").html ""
   
 $(document).ready ready
 $(document).on 'page:load', ready
