@@ -84,7 +84,7 @@ class VideosController < ApplicationController
   end
   
   def search_param(key)
-    params[:data][:key]
+    params[:data][key]
   end
 
   def param(key)

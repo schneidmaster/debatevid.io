@@ -11,16 +11,6 @@ ActiveAdmin.register Video do
   end
 
   controller do
-    def create
-      params[:video][:key] = params[:video][:key].split(',').reject!(&:empty?)
-      super
-    end
-
-    def update
-      params[:video][:key] = params[:video][:key].split(',').reject!(&:empty?)
-      super
-    end
-
     def permitted_params
       params.permit! # allow all parameters
     end
