@@ -32,6 +32,10 @@ class Team < ActiveRecord::Base
     "#{debater_one.name} & #{debater_two.name}"
   end
 
+  def code_with_names
+    "#{school.name_for_code} #{debater_names}"
+  end
+
   def to_s
     code
   end

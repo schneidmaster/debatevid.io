@@ -4,6 +4,6 @@ class TeamsController < ApplicationController
   end
   
   def autocomplete
-    render json: Team.like(params[:q]).map { |team| { id: team.id, text: team.code } }
+    render json: Team.like(params[:q]).map { |team| { id: team.id, text: team.code_with_names } }
   end
 end
