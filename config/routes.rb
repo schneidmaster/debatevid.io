@@ -27,4 +27,8 @@ Rails.application.routes.draw do
   namespace :tags do
     get :autocomplete
   end
+
+  namespace :tournaments do
+    get :autocomplete
+  end
 end

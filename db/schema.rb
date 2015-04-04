@@ -11,10 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404022717) do
+ActiveRecord::Schema.define(version: 20150404153235) do
 
   create_table "debaters", force: :cascade do |t|
-    t.integer  "team_id"
     t.integer  "school_id"
     t.string   "first_name"
     t.string   "last_name"
@@ -83,16 +82,17 @@ ActiveRecord::Schema.define(version: 20150404022717) do
   end
 
   create_table "videos", force: :cascade do |t|
-    t.string   "provider"
+    t.integer  "provider"
     t.string   "key"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "debate_type"
     t.integer  "debate_level"
     t.integer  "aff_team_id"
     t.integer  "neg_team_id"
     t.string   "thumbnail"
+    t.integer  "tournament_id"
   end
 
 end

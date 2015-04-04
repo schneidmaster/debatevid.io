@@ -1,8 +1,12 @@
 ready = ->
   return unless $("#new_video").length > 0
 
+  # Ensure segments are cleared.
+  $("#video_key").val("")
+
   # Hide form until link is confirmed.
   $("#new_video").hide()
+  $("#tournament-select").hide()
   $(".video-aff-debaters").hide()
   $(".video-neg-debaters").hide()
   
@@ -73,6 +77,23 @@ ready = ->
     minimumInputLength: 1
     multiple: true
 
+  $('.tournament-select').select2
+    ajax:
+      url: '/tournaments/autocomplete'
+      delay: 250
+      data: (term) ->
+        year = $("#video_year").val()
+        if isNaN(year)
+          { q: false }
+        else
+          { year: year, q: term }
+      results: (data, page) ->
+        { results: data }
+      cache: true
+    createSearchChoice: createSearchChoice
+    minimumInputLength: 1
+    multiple: true
+
   # Continue when go button clicked
   $("#video-link-go").on "click", (event) ->
     event.preventDefault()
@@ -102,13 +123,26 @@ ready = ->
                     </div>
                     """
         $("#video-preview").append new_html
-        $("#video-link-go").val("Add Segment")
 
-        # Clear the input.
-        $("#video_link_link").val("")
+        if info.provider == "youtube"
+          # Alter button text.
+          $("#video-link-go").val("Add Segment")
+
+          # Clear the input.
+          $("#video_link_link").val("")
+
+          $("#vimeo-text").hide()
+        else
+          # Else hide
+          $(".video_link").hide()
+          $("#youtube-text").hide()
 
         # Show the metadata.
         $("#new_video").show() unless $("#new_video").is(":visible")
+
+  # Show tournament dropdown when year entered.
+  $("#video_year").on "keydown", ->
+    $("#tournament-select").show()
 
   # Show debater dropdowns when schools selected.
   $("#video_aff_school").on "change", ->
@@ -116,6 +150,20 @@ ready = ->
 
   $("#video_neg_school").on "change", ->
     $(".video-neg-debaters").show()
+
+  $("#new_video").on "submit", (event) ->
+    if $("#video_aff_debater_one").val() == "" || 
+    $("#video_aff_debater_two").val() == "" || 
+    $("#video_neg_debater_one").val() == "" || 
+    $("#video_neg_debater_two").val() == "" || 
+    $("#video_aff_school").val() == "" || 
+    $("#video_neg_school").val() == "" || 
+    $("#video_year").val() == "" || 
+    $("#video_tournament").val() == "" || 
+    $("#video_debate_level").val() == "" || 
+    $("#video_debate_type").val() == ""
+      alert "Please complete all required fields."
+      event.preventDefault()
 
 $(document).ready ready
 $(document).on 'page:load', ready

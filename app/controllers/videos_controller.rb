@@ -5,7 +5,7 @@ class VideosController < ApplicationController
   end
 
   def show
-    @video = Video.find(params[:id])
+    @video = Video.find(params[:id]).decorate
   end
 
   def new
@@ -13,6 +13,18 @@ class VideosController < ApplicationController
   end
 
   def create
+    # Ensure all fields are present.
+    if param(:tournament).blank? || param(:aff_school).blank? || param(:neg_school).blank? ||
+      param(:aff_debater_one).blank? || param(:aff_debater_two).blank? || param(:neg_debater_one).blank? ||
+      param(:neg_debater_two).blank? || param(:year).blank? || param(:tournament).blank? || 
+      param(:debate_level).blank? || param(:debate_type).blank?
+      redirect_to new_video_path, alert: 'You must complete all required fields.'
+      return
+    end
+
+    # Find or create tournament.
+    tournament = find_or_create_tournament(param(:tournament))
+
     # Find or create schools.
     aff_school = find_or_create_school(param(:aff_school))
     neg_school = find_or_create_school(param(:neg_school))
@@ -28,6 +40,7 @@ class VideosController < ApplicationController
     neg_team = find_or_create_team(neg_debater_one, neg_debater_two, neg_school)
 
     tags = param(:tags_ids).split(",").map do |tag|
+      next if tag.blank?
       if Tag.exists?(tag)
         tag
       else
@@ -37,7 +50,7 @@ class VideosController < ApplicationController
 
     keys = param(:key).split(",").reject!(&:empty?)
 
-    video = Video.create(provider: param(:provider), key: keys, user: current_user, debate_level: param(:debate_level), debate_type: param(:debate_type), aff_team: aff_team, neg_team: neg_team)
+    video = Video.create(provider: param(:provider), key: keys, user: current_user, debate_level: param(:debate_level), debate_type: param(:debate_type), tournament: tournament, aff_team: aff_team, neg_team: neg_team)
       
     redirect_to video_path(video)
   end
@@ -65,6 +78,14 @@ class VideosController < ApplicationController
     params[:video][key]
   end
 
+  def find_or_create_tournament(id_or_key)
+    if Tournament.exists?(id_or_key)
+      Tournament.find(id_or_key)
+    else
+      Tournament.create(year: param(:year), name: id_or_key)
+    end
+  end
+
   def find_or_create_school(id_or_key)
     if School.exists?(id_or_key)
       School.find(id_or_key)
@@ -88,7 +109,13 @@ class VideosController < ApplicationController
     if Team.with_debaters(debater_one, debater_two).count > 0
       Team.with_debaters(debater_one, debater_two).first
     else
-      Team.create(debater_one_id: debater_one, debater_two_id: debater_two, school: school)
+      # Ensure debaters are alphabetically ordered.
+      if debater_two.last_name < debater_one.last_name
+        tmp = debater_one
+        debater_one = debater_two
+        debater_two = tmp
+      end
+      Team.create(debater_one_id: debater_one.id, debater_two_id: debater_two.id, school: school)
     end
   end
 end

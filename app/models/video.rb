@@ -1,6 +1,7 @@
 class Video < ActiveRecord::Base
   enum debate_type: [:policy, :parli, :lincoln_douglass]
   enum debate_level: [:hs, :college]
+  enum provider: [:youtube, :vimeo]
 
   def self.debate_levels_select
     { "HS" => "hs", "College" => "college" }
@@ -8,10 +9,6 @@ class Video < ActiveRecord::Base
 
   def self.debate_types_select
     { "Policy" => "policy", "Parli" => "parli", "LD" => "ld" }
-  end
-
-  def title
-    "#{aff_team.code} vs. #{neg_team.code}"
   end
 
   belongs_to :user
@@ -26,7 +23,11 @@ class Video < ActiveRecord::Base
 
   serialize :key, Array
 
-  attr_accessor :aff_school, :neg_school, :aff_debater_one, :aff_debater_two, :neg_debater_one, :neg_debater_two, :tags_ids
+  attr_accessor :year, :aff_school, :neg_school, :aff_debater_one, :aff_debater_two, :neg_debater_one, :neg_debater_two, :tags_ids
+
+  def title
+    "#{tournament.year_and_name}: #{aff_team.code} vs. #{neg_team.code}"
+  end
 
   def team_one
     teams.first
