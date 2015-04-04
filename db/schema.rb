@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404153235) do
+ActiveRecord::Schema.define(version: 20150404162135) do
 
   create_table "debaters", force: :cascade do |t|
     t.integer  "school_id"
@@ -20,24 +20,6 @@ ActiveRecord::Schema.define(version: 20150404153235) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "judges", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "judges_videos", force: :cascade do |t|
-    t.integer  "judge_id"
-    t.integer  "video_id"
-    t.integer  "winning_team_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "judges_videos", ["judge_id"], name: "index_judges_videos_on_judge_id"
-  add_index "judges_videos", ["video_id"], name: "index_judges_videos_on_video_id"
 
   create_table "schools", force: :cascade do |t|
     t.string   "name"
