@@ -47,7 +47,7 @@ class VideosController < ApplicationController
 
     keys = param(:key).split(",").reject!(&:empty?)
 
-    video = Video.create(provider: param(:provider), key: keys, user: current_user, debate_level: param(:debate_level), debate_type: param(:debate_type), tournament: tournament, aff_team: aff_team, neg_team: neg_team)
+    video = Video.create(provider: param(:provider), key: keys, thumbnail: param(:thumbnail), user: current_user, debate_level: param(:debate_level), debate_type: param(:debate_type), tournament: tournament, aff_team: aff_team, neg_team: neg_team)
       
     redirect_to video_path(video)
   end

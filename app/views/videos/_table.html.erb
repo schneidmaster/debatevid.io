@@ -1,0 +1,12 @@
+<div class="row">
+  <% videos.each do |video| %>
+    <div class="large-4 small-6 columns video-preview <%= 'end' if video == videos.last %>">
+      <p>
+        <%= link_to video_path(video) do %>
+          <%= image_tag video.thumbnail, alt: video.title %><br />
+          <%= video.title %>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+</div>
