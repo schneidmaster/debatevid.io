@@ -37,7 +37,7 @@
       <div class="video-aff-debaters">
         <h4>Affirmative Debaters</h4>
         <%= f.input :aff_debater_one, label: "First Debater", input_html: { class: "aff-debater-select" }, required: true %>
-        <%= f.input :aff_debater_two, label: "Second Debater", input_html: { class: "aff-debater-select" }, required: true %>
+        <%= f.input :aff_debater_two, label: "Second Debater", input_html: { class: "aff-debater-select" } %>
       </div>
     </div>
     <div class="large-6 columns">
@@ -46,7 +46,7 @@
       <div class="video-neg-debaters">
         <h4>Negative Debaters</h4>
         <%= f.input :neg_debater_one, label: "First Debater", input_html: { class: "neg-debater-select" }, required: true %>
-        <%= f.input :neg_debater_two, label: "Second Debater", input_html: { class: "neg-debater-select" }, required: true %>
+        <%= f.input :neg_debater_two, label: "Second Debater", input_html: { class: "neg-debater-select" } %>
       </div>
     </div>
   </div>

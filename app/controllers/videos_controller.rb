@@ -15,8 +15,8 @@ class VideosController < ApplicationController
   def create
     # Ensure all fields are present.
     if param(:tournament).blank? || param(:aff_school).blank? || param(:neg_school).blank? ||
-      param(:aff_debater_one).blank? || param(:aff_debater_two).blank? || param(:neg_debater_one).blank? ||
-      param(:neg_debater_two).blank? || param(:year).blank? || param(:tournament).blank? || 
+      param(:aff_debater_one).blank? || param(:neg_debater_one).blank? ||
+      param(:year).blank? || param(:tournament).blank? || 
       param(:debate_level).blank? || param(:debate_type).blank?
       redirect_to new_video_path, alert: 'You must complete all required fields.'
       return

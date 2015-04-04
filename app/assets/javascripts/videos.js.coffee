@@ -151,11 +151,19 @@ ready = ->
   $("#video_neg_school").on "change", ->
     $(".video-neg-debaters").show()
 
+  # Hide debater two if it's an LD round
+  $("#video_debate_type").on "change", ->
+    if $("#video_debate_type").val() == "ld"
+      $(".video_aff_debater_two").hide()
+      $(".video_neg_debater_two").hide()
+    else
+      $(".video_aff_debater_two").show()
+      $(".video_neg_debater_two").show()
+
+  # Validate
   $("#new_video").on "submit", (event) ->
     if $("#video_aff_debater_one").val() == "" || 
-    $("#video_aff_debater_two").val() == "" || 
     $("#video_neg_debater_one").val() == "" || 
-    $("#video_neg_debater_two").val() == "" || 
     $("#video_aff_school").val() == "" || 
     $("#video_neg_school").val() == "" || 
     $("#video_year").val() == "" || 
