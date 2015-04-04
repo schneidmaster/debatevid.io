@@ -102,6 +102,8 @@ ready = ->
     $.getJSON "/videos/info/?link=#{link}", (info) ->
       if info.invalid
         alert "Video link invalid; double-check it and try again."
+      else if info.exists
+        alert "Video has already been submitted!"
       else
         # Add key to the list.
         keys = $("#video_key").val().split(",")

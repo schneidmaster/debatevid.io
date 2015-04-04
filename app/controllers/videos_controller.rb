@@ -55,7 +55,9 @@ class VideosController < ApplicationController
   end
 
   def info
-    render json: VideoInformationService.link_info(params[:link])
+    info = VideoInformationService.link_info(params[:link])
+    info = { exists: true } if Video.where(key: [info.key]).count > 0
+    render json: info
   end
 
   private
