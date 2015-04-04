@@ -57,7 +57,7 @@ class VideosController < ApplicationController
   def info
     info = VideoInformationService.link_info(params[:link])
     provider = Video.providers[info[:provider]]
-    info = { exists: true } if Video.where('provider = ? and key like ?', provider, "%#{info[:key]}%").count > 0
+    info = { exists: true } if Video.where('videos.provider = ? and videos.key like ?', provider, "%#{info[:key]}%").count > 0
     render json: info
   end
 
