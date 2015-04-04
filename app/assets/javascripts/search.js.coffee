@@ -87,7 +87,7 @@ ready = ->
       params['tag'] = $("#search_tag").val()
       
     $.get "/videos/search", data: params, (data) ->
-      if data == '<div class="row"></div>'
+      if data == '<div class="row">\n</div>'
         $("#search-results").html "No search results; try broadening your terms."
       else
         $("#search-results").html data
