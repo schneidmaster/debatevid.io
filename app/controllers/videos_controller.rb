@@ -72,8 +72,6 @@ class VideosController < ApplicationController
     videos = videos.where('aff_team_id = ? or neg_team_id = ?', search_param(:team), search_param(:team)) if search_param(:team)
     videos = videos.joins(aff_team: [:debater_one, :debater_two]).joins(neg_team:  [:debater_one, :debater_two]).where('debaters.id = ? or debater_ones_teams.id = ? or debater_twos_teams.id = ? or debater_twos_teams_2.id = ?', search_param(:debater), search_param(:debater), search_param(:debater), search_param(:debater)) if search_param(:debater)
     videos = videos.joins(:tags).where('tags.id = ?', search_param(:tag)) if search_param(:tag)
-
-    byebug
     
     render partial: "videos/table", locals: { videos: videos }
     return
