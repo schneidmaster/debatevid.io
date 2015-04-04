@@ -10,6 +10,10 @@ class Video < ActiveRecord::Base
     { "Policy" => "policy", "Parli" => "parli", "LD" => "ld" }
   end
 
+  def title
+    "#{aff_team.code} vs. #{neg_team.code}"
+  end
+
   belongs_to :user
   belongs_to :tournament
 
