@@ -12,12 +12,14 @@ Rails.application.routes.draw do
   namespace :debaters do
     get :autocomplete
   end
-  resources :debaters
+  resources :debaters, only: [:show]
 
   namespace :schools do
     get :autocomplete
   end
-  resources :schools
+  resources :schools, only: [:show]
+
+  resources :teams, only: [:show]
 
   namespace :videos do
     get :info
@@ -27,8 +29,10 @@ Rails.application.routes.draw do
   namespace :tags do
     get :autocomplete
   end
+  resources :tags, only: [:show]
 
   namespace :tournaments do
     get :autocomplete
   end
+  resources :tournaments, only: [:show]
 end

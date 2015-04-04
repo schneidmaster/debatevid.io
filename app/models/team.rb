@@ -27,10 +27,14 @@ class Team < ActiveRecord::Base
   end
 
   def code
-    if debater_one && debater_two
+    if debater_two
       "#{school.name_for_code} #{debater_one.code_letter}#{debater_two.code_letter}"
     else
       "#{school.name_for_code} #{debater_one.code_letter}"
     end
+  end
+
+  def debater_names
+    "#{debater_one.name} & #{debater_two.name}"
   end
 end

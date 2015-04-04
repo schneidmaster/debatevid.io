@@ -8,7 +8,7 @@ class VideoDecorator < Draper::Decorator
       if key.length > 1
         frame += "&playlist=#{key.join(",")}"
       end
-      frame += "' frameborder='0' />"
+      frame += "' frameborder='0'></iframe>"
       frame.html_safe
     else
       "<iframe src='https://player.vimeo.com/video/#{key.first}' width='900' height='600' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>".html_safe

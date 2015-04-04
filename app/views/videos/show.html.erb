@@ -1,2 +1,37 @@
 <h3><%= @video.title %></h3>
 <%= @video.video_frame %>
+<div class="row">
+  <div class="large-6 columns">
+    <h4>Affirmative</h4>
+    <p>
+      School: <%= link_to @video.aff_team.school.name, school_path(@video.aff_team.school) %>
+    </p>
+    <p>
+      Team: <%= link_to @video.aff_team.code, team_path(@video.aff_team) %>
+    </p>
+    <p>
+      Debaters: <%= link_to @video.aff_team.debater_one.name, debater_path(@video.aff_team.debater_one) %> 
+      <% if @video.aff_team.debater_two %>
+        &amp;
+        <%= link_to @video.aff_team.debater_two.name, debater_path(@video.aff_team.debater_two) %>
+      <% end %>
+    </p>
+  </div>
+
+  <div class="large-6 columns">
+    <h4>Negative</h4>
+    <p>
+      School: <%= link_to @video.neg_team.school.name, school_path(@video.neg_team.school) %>
+    </p>
+    <p>
+      Team: <%= link_to @video.neg_team.code, team_path(@video.neg_team) %>
+    </p>
+    <p>
+      Debaters: <%= link_to @video.neg_team.debater_one.name, debater_path(@video.neg_team.debater_one) %> 
+      <% if @video.neg_team.debater_two %>
+        &amp;
+        <%= link_to @video.neg_team.debater_two.name, debater_path(@video.neg_team.debater_two) %>
+      <% end %>
+    </p>
+  </div>
+</div>
