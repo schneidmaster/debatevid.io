@@ -31,11 +31,11 @@ Fill in one or more of the search fields below, then click Search!
       </div>
     </div>
     <div class="row">
-      <div class="large-3 small-6 columns end">
+      <div class="large-3 small-6 columns">
         <%= f.button :submit, "Search", { id: "search-go" } %>
       </div>
-      <div class="large-3 small-6 columns end">
-        <%= f.button :clear, "Clear", { id: "search-clear" } %>
+      <div class="large-3 small-6 columns">
+        <%= f.button :submit, "Clear", { id: "search-clear", class: "right" } %>
       </div>
     </div>
   <% end %>
