@@ -4,6 +4,6 @@ class SchoolsController < ApplicationController
   end
 
   def autocomplete
-    render json: School.like(params[:q]).map { |school| {id: school.id, text: school.name} }
+    render json: School.like(params[:q]).map { |school| { id: school.id, text: school.name } }
   end
 end

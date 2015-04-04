@@ -4,11 +4,11 @@ class Video < ActiveRecord::Base
   enum provider: [:youtube, :vimeo]
 
   def self.debate_levels_select
-    { "HS" => "hs", "College" => "college" }
+    { 'HS' => 'hs', 'College' => 'college' }
   end
 
   def self.debate_types_select
-    { "Policy" => "policy", "Parli" => "parli", "LD" => "ld" }
+    { 'Policy' => 'policy', 'Parli' => 'parli', 'LD' => 'ld' }
   end
 
   belongs_to :user

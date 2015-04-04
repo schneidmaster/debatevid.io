@@ -5,6 +5,6 @@ class DebatersController < ApplicationController
 
   def autocomplete
     render json: [] && return unless params[:q]
-    render json: Debater.school_and_like(params[:school], params[:q]).map { |debater| {id: debater.id, text: debater.name} }
+    render json: Debater.school_and_like(params[:school], params[:q]).map { |debater| { id: debater.id, text: debater.name } }
   end
 end

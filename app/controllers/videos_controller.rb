@@ -12,9 +12,9 @@ class VideosController < ApplicationController
   def create
     # Ensure all fields are present.
     if param(:tournament).blank? || param(:aff_school).blank? || param(:neg_school).blank? ||
-      param(:aff_debater_one).blank? || param(:neg_debater_one).blank? ||
-      param(:year).blank? || param(:tournament).blank? || 
-      param(:debate_level).blank? || param(:debate_type).blank?
+       param(:aff_debater_one).blank? || param(:neg_debater_one).blank? ||
+       param(:year).blank? || param(:tournament).blank? ||
+       param(:debate_level).blank? || param(:debate_type).blank?
       redirect_to new_video_path, alert: 'You must complete all required fields.'
       return
     end
@@ -36,7 +36,7 @@ class VideosController < ApplicationController
     aff_team = find_or_create_team(aff_debater_one, aff_debater_two, aff_school)
     neg_team = find_or_create_team(neg_debater_one, neg_debater_two, neg_school)
 
-    tags = param(:tags_ids).split(",").map do |tag|
+    tags = param(:tags_ids).split(',').map do |tag|
       next if tag.blank?
       if Tag.exists?(tag)
         Tag.find(tag)
@@ -47,10 +47,10 @@ class VideosController < ApplicationController
       end
     end
 
-    keys = param(:key).split(",").reject!(&:empty?)
+    keys = param(:key).split(',').reject!(&:empty?)
 
     video = Video.create(provider: param(:provider), key: keys, thumbnail: param(:thumbnail), user: current_user, debate_level: param(:debate_level), debate_type: param(:debate_type), tournament: tournament, tags: tags, aff_team: aff_team, neg_team: neg_team)
-      
+
     redirect_to video_path(video)
   end
 
@@ -60,9 +60,8 @@ class VideosController < ApplicationController
     info = { exists: true } if Video.where('videos.provider = ? and videos.key like ?', provider, "%#{info[:key]}%").count > 0
     render json: info
   end
-  
+
   def search
-    
   end
 
   private
@@ -95,9 +94,9 @@ class VideosController < ApplicationController
     if Debater.exists?(id_or_key)
       Debater.find(id_or_key)
     else
-      name = id_or_key.split(" ")
+      name = id_or_key.split(' ')
       first_name = name.shift
-      last_name = name.join(" ")
+      last_name = name.join(' ')
       Debater.create(first_name: first_name, last_name: last_name, school: school)
     end
   end
