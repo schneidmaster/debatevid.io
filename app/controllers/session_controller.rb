@@ -8,7 +8,7 @@ class SessionController < ApplicationController
   end
 
   def failure
-    redirect_to root_path, alert: 'Login failed. Please try again.' + params[:message]
+    redirect_to root_path, alert: 'Login failed. Please try again.'
   end
 
   def logout
