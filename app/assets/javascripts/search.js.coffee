@@ -88,6 +88,18 @@ ready = ->
       
     $.get "/videos/search", data: params, (data) ->
       $("#search-results").html data
+
+  $("#search-clear").on "click", (event) ->
+    event.preventDefault()
+
+    $("#search_debate_level").val("")
+    $("#search_debate_type").val("")
+    $("#search_year").val("")
+    $("#search_tournament").val("")
+    $("#search_school").val("")
+    $("#search_team").val("")
+    $("#search_debater").val("")
+    $("#search_tag").val("")
   
 $(document).ready ready
 $(document).on 'page:load', ready
