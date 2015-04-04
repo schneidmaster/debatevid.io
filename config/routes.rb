@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   namespace :videos do
     get :info
   end
-  resources :videos
+  resources :videos, only: [:show, :new, :create]
 
   namespace :tags do
     get :autocomplete

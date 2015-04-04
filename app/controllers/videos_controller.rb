@@ -1,9 +1,6 @@
 class VideosController < ApplicationController
   before_filter :authorize, except: [:show]
 
-  def index
-  end
-
   def show
     @video = Video.find(params[:id]).decorate
   end
@@ -53,15 +50,6 @@ class VideosController < ApplicationController
     video = Video.create(provider: param(:provider), key: keys, user: current_user, debate_level: param(:debate_level), debate_type: param(:debate_type), tournament: tournament, aff_team: aff_team, neg_team: neg_team)
       
     redirect_to video_path(video)
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   def info

@@ -4,12 +4,6 @@
 <li><%= link_to 'Search', '#' %></li>
 <li class="divider"></li>
 <% if logged_in? %>
-  <li class="has-dropdown no-click">
-    <%= link_to "Videos", "#" %>
-    <ul class="dropdown">
-      <li><%= link_to 'My Videos', videos_path %></li>
-      <li><%= link_to 'Submit Video', new_video_path %></li>
-    </ul> 
-  </li>
+  <li><%= link_to 'Submit', new_video_path %></li>
   <li class="divider"></li>
 <% end %>
