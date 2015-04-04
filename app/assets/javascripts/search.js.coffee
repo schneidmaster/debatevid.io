@@ -95,11 +95,11 @@ ready = ->
     $("#search_debate_level").val("")
     $("#search_debate_type").val("")
     $("#search_year").val("")
-    $("#search_tournament").val("")
-    $("#search_school").val("")
-    $("#search_team").val("")
-    $("#search_debater").val("")
-    $("#search_tag").val("")
+    $("#search_tournament").select2('data', null)
+    $("#search_school").select2('data', null)
+    $("#search_team").select2('data', null)
+    $("#search_debater").select2('data', null)
+    $("#search_tag").select2('data', null)
   
 $(document).ready ready
 $(document).on 'page:load', ready
