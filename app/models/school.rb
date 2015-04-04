@@ -10,4 +10,8 @@ class School < ActiveRecord::Base
   def videos
     teams.map(&:videos).flatten
   end
+
+  def to_s
+    name
+  end
 end

@@ -11,4 +11,8 @@ class Tournament < ActiveRecord::Base
   def self.years
     order(year: 'desc').pluck(:year).uniq
   end
+
+  def to_s
+    year_and_name
+  end
 end

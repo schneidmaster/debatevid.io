@@ -34,4 +34,8 @@ class Video < ActiveRecord::Base
   def team_two
     teams.last
   end
+
+  def to_s
+    title
+  end
 end
