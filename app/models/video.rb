@@ -5,12 +5,16 @@ class Video < ActiveRecord::Base
   belongs_to :user
   belongs_to :tournament
 
-  has_many :teams
+  belongs_to :aff_team, class_name: 'Team', foreign_key: :aff_team_id
+  belongs_to :neg_team, class_name: 'Team', foreign_key: :neg_team_id
+
   has_many :judges_videos
   has_many :judges, through: :judges_videos
   has_and_belongs_to_many :tags
 
   serialize :key, Array
+
+  attr_accessor :aff_debater_one, :aff_debater_two, :neg_debater_one, :neg_debater_two
 
   def team_one
     teams.first

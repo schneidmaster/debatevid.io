@@ -1,4 +1,4 @@
-$(document).ready ->
+ready = ->
   return unless $("#new_video").length > 0
 
   # Hide form until link is confirmed.
@@ -39,3 +39,5 @@ $(document).ready ->
         # Show the metadata.
         $("#new_video").show() unless $("#new_video").is(":visible")
 
+$(document).ready ready
+$(document).on 'page:load', ready
