@@ -40,6 +40,8 @@ class VideosController < ApplicationController
       next if tag.blank?
       if Tag.exists?(tag)
         Tag.find(tag)
+      elsif Tag.where(title: tag.downcase).count > 0
+        Tag.find_by_title(tag.downcase)
       else
         Tag.create(title: tag.downcase)
       end

@@ -118,7 +118,7 @@ ready = ->
         $(".end").removeClass "end"
         new_html =  """
                     <div class="large-4 columns end">
-                      <strong>#{info.title}</strong>
+                      <strong>#{info.title}</strong><br />
                       <img src="#{info.thumbnail}" />
                     </div>
                     """
