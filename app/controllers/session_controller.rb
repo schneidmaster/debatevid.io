@@ -7,6 +7,10 @@ class SessionController < ApplicationController
     redirect_to root_path, notice: 'Logged in!'
   end
 
+  def failure
+    redirect_to root_path, alert: 'Login failed. Please try again.'
+  end
+
   def logout
     session[:current_user] = nil
     redirect_to root_path, notice: 'Logged out!'

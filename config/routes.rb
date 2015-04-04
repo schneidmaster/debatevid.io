@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get '/login', to: 'session#login', as: 'login'
   get '/auth/:provider/callback', to: 'session#create'
+  get '/auth/failure', to: 'session#failure'
   get '/logout', to: 'session#logout', as: 'logout'
 
   namespace :videos do
