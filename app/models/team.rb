@@ -1,7 +1,11 @@
 class Team < ActiveRecord::Base
   belongs_to :school
-  has_many :debaters, -> { order 'debaters.last_name' }
-  has_many :videos
+
+  scope :with_debaters, lambda { |one, two| where("(debater_one_id = ? and debater_two_id = ?) or (debater_one_id = ? and debater_two_id = ?)", one, two, two, one) }
+  
+  def videos
+    Video.where("aff_team_id = ? or neg_team_id = ?", id, id)
+  end
 
   def code
     if debaters.count == 2

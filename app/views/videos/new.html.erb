@@ -13,5 +13,39 @@
     Nice work! You can add more segments (if the video is in multiple parts) by pasting more links above. Or, fill in the metadata below and click Create Video.
   </p>
   <%= f.hidden_field :key %>
+  <%= f.hidden_field :provider %>
+  <%= f.hidden_field :thumbnail %>
+  <div class="row">
+    <div class="large-12 columns">
+      <h4>Level</h4>
+      <%= f.select :debate_level, options_for_select(Video.debate_levels_select) %>
+      <h4>Type</h4>
+      <%= f.select :debate_type, options_for_select(Video.debate_types_select) %>
+      <h4>Tags</h4>
+      <%= f.input :tags_ids, label: "Tags (Policy, Kritik, Nietzsche, etc.)", input_html: { class: "tag-select" } %>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <h4>Affirmative Team</h4>
+      <%= f.input :aff_school, label: "School", input_html: { class: "school-select" } %>
+      <div class="video-aff-debaters">
+        <h4>Affirmative Debaters</h4>
+        <%= f.input :aff_debater_one, label: "First Debater", input_html: { class: "aff-debater-select" } %>
+        <%= f.input :aff_debater_two, label: "Second Debater", input_html: { class: "aff-debater-select" } %>
+      </div>
+    </div>
+    <div class="large-6 columns">
+      <h4>Negative Team</h4>
+      <%= f.input :neg_school, label: "School", input_html: { class: "school-select" } %>
+      <div class="video-neg-debaters">
+        <h4>Negative Debaters</h4>
+        <%= f.input :neg_debater_one, label: "First Debater", input_html: { class: "neg-debater-select" } %>
+        <%= f.input :neg_debater_two, label: "Second Debater", input_html: { class: "neg-debater-select" } %>
+      </div>
+    </div>
+  </div>
+
   <%= f.button :submit %>
 <% end %>

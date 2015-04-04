@@ -3,6 +3,7 @@
 #= require turbolinks/lib/assets/javascripts/turbolinks
 #= require modernizr/modernizr
 #= require foundation/js/foundation
+#= require select2/select2
 #= require_tree .
 
 ready = ->

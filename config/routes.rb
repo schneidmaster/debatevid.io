@@ -9,8 +9,22 @@ Rails.application.routes.draw do
   get '/auth/failure', to: 'session#failure'
   get '/logout', to: 'session#logout', as: 'logout'
 
+  namespace :debaters do
+    get :autocomplete
+  end
+  resources :debaters
+
+  namespace :schools do
+    get :autocomplete
+  end
+  resources :schools
+
   namespace :videos do
     get :info
   end
   resources :videos
+
+  namespace :tags do
+    get :autocomplete
+  end
 end

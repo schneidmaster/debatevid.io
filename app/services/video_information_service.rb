@@ -20,6 +20,7 @@ class VideoInformationService
       return invalid_json if object.response.code == '404'
       raw_info = object.first
       {
+        provider: 'vimeo',
         key: id,
         title: raw_info['title'],
         thumbnail: raw_info['thumbnail_medium']
@@ -37,6 +38,7 @@ class VideoInformationService
         return invalid_json
       end
       {
+        provider: 'youtube',
         key: id,
         title: raw_info.title,
         thumbnail: raw_info.thumbnails.select { |t| t.name == 'default' }.first.url
