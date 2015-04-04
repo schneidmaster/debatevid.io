@@ -3,6 +3,10 @@ class Debater < ActiveRecord::Base
 
   scope :school_and_like, lambda { |s, q| where("school_id = ? and (first_name LIKE ? or last_name LIKE ?)", s, "%#{q}%", "%#{q}%") }
 
+  def videos
+    teams.map(&:videos).flatten
+  end
+
   def teams
     Team.where("debater_one_id = ? or debater_two_id = ?", id, id)
   end

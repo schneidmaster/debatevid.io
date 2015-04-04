@@ -6,4 +6,8 @@ class School < ActiveRecord::Base
   def name_for_code
     short_name || name
   end
+  
+  def videos
+    teams.map(&:videos).flatten
+  end
 end

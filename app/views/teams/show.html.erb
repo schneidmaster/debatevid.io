@@ -1,0 +1,10 @@
+<h2><%= @team.code %></h2>
+<h3><%= link_to @team.school.name, school_path(@team.school) %></h3>
+<h3>
+  <%= link_to @team.debater_one.name, debater_path(@team.debater_one) %> 
+  <% if @team.debater_two %>
+    &amp;
+    <%= link_to @team.debater_two.name, debater_path(@team.debater_two) %>
+  <% end %>
+</h3>
+<%= render partial: "videos/table", locals: { videos: @team.videos } %>

@@ -39,15 +39,15 @@ class VideosController < ApplicationController
     tags = param(:tags_ids).split(",").map do |tag|
       next if tag.blank?
       if Tag.exists?(tag)
-        tag
+        Tag.find(tag)
       else
-        Tag.create(title: tag)
+        Tag.create(title: tag.downcase)
       end
     end
 
     keys = param(:key).split(",").reject!(&:empty?)
 
-    video = Video.create(provider: param(:provider), key: keys, thumbnail: param(:thumbnail), user: current_user, debate_level: param(:debate_level), debate_type: param(:debate_type), tournament: tournament, aff_team: aff_team, neg_team: neg_team)
+    video = Video.create(provider: param(:provider), key: keys, thumbnail: param(:thumbnail), user: current_user, debate_level: param(:debate_level), debate_type: param(:debate_type), tournament: tournament, tags: tags, aff_team: aff_team, neg_team: neg_team)
       
     redirect_to video_path(video)
   end
