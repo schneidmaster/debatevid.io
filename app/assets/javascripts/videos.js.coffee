@@ -117,7 +117,7 @@ ready = ->
         # Add the video preview.
         $(".end").removeClass "end"
         new_html =  """
-                    <div class="large-2 columns end">
+                    <div class="large-4 columns end">
                       <strong>#{info.title}</strong>
                       <img src="#{info.thumbnail}" />
                     </div>
