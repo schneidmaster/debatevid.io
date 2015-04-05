@@ -27,6 +27,14 @@ class Video < ActiveRecord::Base
     "#{tournament.year_and_name}: #{aff_team.code} vs. #{neg_team.code}"
   end
 
+  def thumbnail
+    if youtube?
+      read_attribute(:thumbnail).sub('/default', '/hqdefault')
+    else
+      read_attribute(:thumbnail).sub('200x150', '600x450')
+    end
+  end
+
   def team_one
     teams.first
   end
