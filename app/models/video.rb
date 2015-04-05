@@ -28,6 +28,7 @@ class Video < ActiveRecord::Base
   end
 
   def thumbnail
+    return nil unless read_attribute(:thumbnail)
     if youtube?
       read_attribute(:thumbnail).sub('/default', '/hqdefault')
     else
