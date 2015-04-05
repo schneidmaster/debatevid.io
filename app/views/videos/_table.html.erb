@@ -14,4 +14,6 @@
     </div>
   <% end %>
 </div>
-<%= will_paginate videos, renderer: FoundationPagination::Rails %>
+<% unless no_paginate %>
+  <%= will_paginate videos, renderer: FoundationPagination::Rails %>
+<% end %>

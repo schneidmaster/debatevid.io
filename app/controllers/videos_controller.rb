@@ -91,7 +91,7 @@ class VideosController < ApplicationController
     videos = videos.joins(aff_team: [:debater_one, :debater_two]).joins(neg_team:  [:debater_one, :debater_two]).where('debaters.id = ? or debater_ones_teams.id = ? or debater_twos_teams.id = ? or debater_twos_teams_2.id = ?', search_param(:debater), search_param(:debater), search_param(:debater), search_param(:debater)) if search_param(:debater)
     videos = videos.joins(:tags).where('tags.id = ?', search_param(:tag)) if search_param(:tag)
     
-    render partial: "videos/table", locals: { videos: videos }
+    render partial: "videos/table", locals: { videos: videos, no_paginate: true }
     return
   end
 
