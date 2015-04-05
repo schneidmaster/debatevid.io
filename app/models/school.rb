@@ -7,10 +7,6 @@ class School < ActiveRecord::Base
     short_name || name
   end
 
-  def videos
-    teams.map(&:videos).flatten
-  end
-
   def to_s
     name
   end

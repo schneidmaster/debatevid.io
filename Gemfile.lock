@@ -275,6 +275,9 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    will_paginate (3.0.7)
+    will_paginate-foundation (5.3.4)
+      will_paginate (>= 3.0.3)
     youtube_it (2.4.2)
       builder
       excon
@@ -313,4 +316,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   vimeo (= 1.5.4)
   web-console (~> 2.0)
+  will_paginate (= 3.0.7)
+  will_paginate-foundation (= 5.3.4)
   youtube_it (= 2.4.2)

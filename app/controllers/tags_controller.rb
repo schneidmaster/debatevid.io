@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
   def show
     @tag = Tag.find_by_title(params[:id])
+    @videos = @tag.videos.paginate(page: params[:page])
   end
 
   def autocomplete

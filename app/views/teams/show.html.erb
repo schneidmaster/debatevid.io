@@ -7,4 +7,4 @@
     <%= link_to @team.debater_two.name, debater_path(@team.debater_two) %>
   <% end %>
 </h3>
-<%= render partial: "videos/table", locals: { videos: @team.videos } %>
+<%= render partial: "videos/table", locals: { videos: @videos } %>

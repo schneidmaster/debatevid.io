@@ -1,6 +1,7 @@
 class TournamentsController < ApplicationController
   def show
     @tournament = Tournament.find(params[:id])
+    @videos = @tournament.videos.paginate(page: params[:page])
   end
 
   def autocomplete

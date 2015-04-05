@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
+    @videos = Video.with_team(@team).paginate(page: params[:page])
   end
   
   def autocomplete

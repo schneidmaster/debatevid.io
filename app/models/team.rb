@@ -16,10 +16,6 @@ class Team < ActiveRecord::Base
     Debater.find(debater_two_id) if Debater.exists?(debater_two_id)
   end
 
-  def videos
-    Video.where('aff_team_id = ? or neg_team_id = ?', id, id)
-  end
-
   def code
     if debater_two
       "#{school.name_for_code} #{debater_one.code_letter}#{debater_two.code_letter}"
