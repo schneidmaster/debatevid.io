@@ -8,12 +8,19 @@
 </div>
 <div class="row">
   <div class="large-9 columns">
-    <% if @video.tags.count > 0 %>
-      <p>
-        Tags: 
+    <p>
+      Tags: 
+      <% if @video.tags.count > 0 %>
         <%= @video.tags.map { |tag| link_to tag.title, tag_path(tag.title) }.join(", ").html_safe %>
-      </p>
-    <% end %>
+      <% else %>
+        No tags yet. 
+        <% if logged_in? %>
+          Add some below!
+        <% else %>
+          Log in and add some!
+        <% end %>
+      <% end %>
+    </p>
   </div>
   <div class="large-3 columns align-right">
     <%= link_to user_path(@video.user) do %>
