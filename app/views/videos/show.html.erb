@@ -1,15 +1,28 @@
 <h3><%= @video.title %></h3>
 <%= @video.video_frame %>
-<% if @video.tags.count > 0 %>
-  <div class="row">
-    <div class="large-12 columns">
+<div class="row">
+  <div class="large-12 columns">
+    <% if @video.tags.count > 0 %>
       <p>
         Tags: 
         <%= @video.tags.map { |tag| link_to tag.title, tag_path(tag.title) }.join(", ").html_safe %>
       </p>
-    </div>
+    <% end %>
+    <% if logged_in? %>
+      <%= simple_form_for :add_tag, url: video_add_tags_path(@video) do |f| %>
+        <label for="tags_ids">Add Tags (Policy, Kritik, Nietzsche, etc.)</label>
+        <div class="row collapse">
+          <div class="small-10 columns">
+            <%= f.input :tags_ids, label: false, input_html: { class: "tag-select" } %>
+          </div>
+          <div class="small-2 columns">
+            <%= f.button :submit, "Add", { class: "button postfix" } %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-<% end %>
+</div>
 <div class="row">
   <div class="large-6 columns">
     <h4>Affirmative</h4>

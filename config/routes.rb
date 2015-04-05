@@ -30,7 +30,9 @@ Rails.application.routes.draw do
     get :info
     get :search
   end
-  resources :videos, only: [:show, :new, :create]
+  resources :videos, only: [:show, :new, :create] do
+    post :add_tags, as: 'add_tags'
+  end
 
   namespace :tags do
     get :autocomplete

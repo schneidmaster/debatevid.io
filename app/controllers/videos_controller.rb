@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_filter :authorize, except: [:show]
+  before_filter :authorize, except: [:show, :search]
 
   def show
     @video = Video.find(params[:id]).decorate
@@ -50,6 +50,24 @@ class VideosController < ApplicationController
     keys = param(:key).split(',').reject!(&:empty?)
 
     video = Video.create(provider: param(:provider), key: keys, thumbnail: param(:thumbnail), user: current_user, debate_level: param(:debate_level), debate_type: param(:debate_type), tournament: tournament, tags: tags, aff_team: aff_team, neg_team: neg_team)
+
+    redirect_to video_path(video)
+  end
+
+  def add_tags
+    video = Video.find(params[:video_id])
+
+    params[:add_tag][:tags_ids].split(',').each do |id_or_key|
+      next if id_or_key.blank?
+      if Tag.exists?(id_or_key)
+        tag = Tag.find(id_or_key)
+      elsif Tag.where(title: id_or_key.downcase).count > 0
+        tag = Tag.find_by_title(id_or_key.downcase)
+      else
+        tag = Tag.create(title: id_or_key.downcase)
+      end
+      video.tags << tag unless video.tags.include?(tag)
+    end
 
     redirect_to video_path(video)
   end
