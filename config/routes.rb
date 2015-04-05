@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get '/faq', to: 'pages#faq'
   get '/search', to: 'pages#search'
 
-  get '/login', to: 'session#login', as: 'login'
   get '/auth/:provider/callback', to: 'session#create'
   get '/auth/failure', to: 'session#failure'
   get '/logout', to: 'session#logout', as: 'logout'
