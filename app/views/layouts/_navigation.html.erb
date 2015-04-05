@@ -14,7 +14,7 @@
       <% if logged_in? %>
         <li class="has-dropdown">
           <a href="#">
-            <%= image_tag current_user.avatar, alt: current_user.name, class: 'nav-avatar' %>
+            <%= image_tag current_user.avatar, alt: current_user.name, class: 'avatar' %>
             <%= current_user.name %>
           </a>
           <ul class="dropdown">

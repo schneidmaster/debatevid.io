@@ -1,28 +1,28 @@
 <h3><%= @video.title %></h3>
-<%= @video.video_frame %>
 <div class="row">
   <div class="large-12 columns">
+    <div class="frame-wrapper">
+      <%= @video.video_frame %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="large-9 columns">
     <% if @video.tags.count > 0 %>
       <p>
         Tags: 
         <%= @video.tags.map { |tag| link_to tag.title, tag_path(tag.title) }.join(", ").html_safe %>
       </p>
     <% end %>
-    <% if logged_in? %>
-      <%= simple_form_for :add_tag, url: video_add_tags_path(@video) do |f| %>
-        <label for="tags_ids">Add Tags (Policy, Kritik, Nietzsche, etc.)</label>
-        <div class="row collapse">
-          <div class="small-10 columns">
-            <%= f.input :tags_ids, label: false, input_html: { class: "tag-select" } %>
-          </div>
-          <div class="small-2 columns">
-            <%= f.button :submit, "Add", { class: "button postfix" } %>
-          </div>
-        </div>
-      <% end %>
+  </div>
+  <div class="large-3 columns align-right">
+    <%= link_to user_path(@video.user) do %>
+      <%= image_tag @video.user.avatar, class: 'avatar' %>
+      <%= @video.user.name %>
     <% end %>
   </div>
 </div>
+<hr class="no-margin-top">
 <div class="row">
   <div class="large-6 columns">
     <h4>Affirmative</h4>
@@ -58,3 +58,17 @@
     </p>
   </div>
 </div>
+<% if logged_in? %>
+  <hr class="no-margin-top">
+  <%= simple_form_for :add_tag, url: video_add_tags_path(@video) do |f| %>
+    <label for="tags_ids">Add Tags (Policy, Kritik, Nietzsche, etc.)</label>
+    <div class="row collapse">
+      <div class="small-10 columns">
+        <%= f.input :tags_ids, label: false, input_html: { class: "tag-select" } %>
+      </div>
+      <div class="small-2 columns">
+        <%= f.button :submit, "Add", { class: "button postfix" } %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

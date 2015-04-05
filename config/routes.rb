@@ -42,4 +42,6 @@ Rails.application.routes.draw do
     get :autocomplete
   end
   resources :tournaments, only: [:show]
+
+  resources :users, only: [:show]
 end

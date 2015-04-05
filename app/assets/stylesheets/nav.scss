@@ -1,0 +1,51 @@
+#login-nav {
+  display: inline;
+}
+
+#login-btn {
+  img {
+    display: none;  
+  }
+   
+  a {
+    padding: 0px;
+    line-height: 1rem;
+  }
+}
+
+.login-hide-large {
+  .parent-link {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .login-hide-large {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .login-hide-small {
+    display: none;
+  }
+}
+
+.social-login {
+  height: 25px;
+  
+  &.fb {
+    padding-left: 10px;
+    height: 21px;
+  }
+  
+  &.twitter {
+    height: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  &.google {
+    padding-right: 10px;
+  }
+}
