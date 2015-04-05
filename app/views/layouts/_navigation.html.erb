@@ -13,10 +13,10 @@
     <ul>
       <% if logged_in? %>
         <li class="has-dropdown">
-          <a href="#">
+          <%= link_to user_path(current_user) do %>
             <%= image_tag current_user.avatar, alt: current_user.name, class: 'avatar' %>
             <%= current_user.name %>
-          </a>
+          <% end %>
           <ul class="dropdown">
             <li><%= link_to 'Logout', [:logout] %></li>
           </ul>
