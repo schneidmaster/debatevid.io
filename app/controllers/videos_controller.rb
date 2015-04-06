@@ -36,16 +36,7 @@ class VideosController < ApplicationController
     aff_team = find_or_create_team(aff_debater_one, aff_debater_two, aff_school)
     neg_team = find_or_create_team(neg_debater_one, neg_debater_two, neg_school)
 
-    tags = param(:tags_ids).split(',').map do |tag|
-      next if tag.blank?
-      if Tag.exists?(tag)
-        Tag.find(tag)
-      elsif Tag.where(title: tag.downcase).count > 0
-        Tag.find_by_title(tag.downcase)
-      else
-        Tag.create(title: tag.downcase)
-      end
-    end
+    tags = find_or_create_tags(param(:tags_ids))
 
     keys = param(:key).split(',').reject!(&:empty?)
 
@@ -57,15 +48,7 @@ class VideosController < ApplicationController
   def add_tags
     video = Video.find(params[:video_id])
 
-    params[:add_tag][:tags_ids].split(',').each do |id_or_key|
-      next if id_or_key.blank?
-      if Tag.exists?(id_or_key)
-        tag = Tag.find(id_or_key)
-      elsif Tag.where(title: id_or_key.downcase).count > 0
-        tag = Tag.find_by_title(id_or_key.downcase)
-      else
-        tag = Tag.create(title: id_or_key.downcase)
-      end
+    find_or_create_tags(params[:add_tag][:tags_ids]).each do |tag|
       video.tags << tag unless video.tags.include?(tag)
     end
 
@@ -109,30 +92,38 @@ class VideosController < ApplicationController
     params[:video][key]
   end
 
-  def find_or_create_tournament(id_or_key)
-    if Tournament.exists?(id_or_key)
-      Tournament.find(id_or_key)
+  def find_or_create_tournament(id_or_name)
+    if Tournament.exists?(id_or_name)
+      Tournament.find(id_or_name)
+    elsif Tournament.where(year: year, name: id_or_name).count > 0
+      Tournament.find_by(year: year, name: id_or_name)
     else
-      Tournament.create(year: param(:year), name: id_or_key)
+      Tournament.create(year: param(:year), name: id_or_name)
     end
   end
 
-  def find_or_create_school(id_or_key)
-    if School.exists?(id_or_key)
-      School.find(id_or_key)
+  def find_or_create_school(id_or_name)
+    if School.exists?(id_or_name)
+      School.find(id_or_name)
+    elsif School.where(name: id_or_name).count > 0
+      School.find_by(name: id_or_name)
     else
-      School.create(name: id_or_key)
+      School.create(name: id_or_name)
     end
   end
 
-  def find_or_create_debater(id_or_key, school)
-    if Debater.exists?(id_or_key)
-      Debater.find(id_or_key)
+  def find_or_create_debater(id_or_name, school)
+    if Debater.exists?(id_or_name)
+      Debater.find(id_or_name)
     else
-      name = id_or_key.split(' ')
+      name = id_or_name.split(' ')
       first_name = name.shift
       last_name = name.join(' ')
-      Debater.create(first_name: first_name, last_name: last_name, school: school)
+      if Debater.where(school: school, first_name: first_name, last_name: last_name).count > 0
+        Debater.find_by(school: school, first_name: first_name, last_name: last_name)
+      else
+        Debater.create(first_name: first_name, last_name: last_name, school: school)
+      end
     end
   end
 
@@ -147,6 +138,19 @@ class VideosController < ApplicationController
         debater_two = tmp
       end
       Team.create(debater_one_id: debater_one.id, debater_two_id: debater_two.id, school: school)
+    end
+  end
+
+  def find_or_create_tags(tags_ids)
+    tags_ids.split(',').map do |tag|
+      next if tag.blank?
+      if Tag.exists?(tag)
+        Tag.find(tag)
+      elsif Tag.where(title: tag.downcase).count > 0
+        Tag.find_by_title(tag.downcase)
+      else
+        Tag.create(title: tag.downcase)
+      end
     end
   end
 end
