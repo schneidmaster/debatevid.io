@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @recent_videos = Video.order(created_at: 'desc').paginate(page: params[:page])
+    @recent_videos = Video.paginate(page: params[:page])
   end
 
   def faq; end
