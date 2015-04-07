@@ -2,4 +2,10 @@
 <p>
   A repository of parliamentary, policy, and LD debate videos.
 </p>
+<% if @live_videos.any? %>
+  <h3>Live Now</h3>
+  <%= render partial: "videos/table", locals: { videos: @live_videos, no_paginate: true } %>
+  <hr>
+<% end %>
+<h3>Recent Videos</h3>
 <%= render partial: "videos/table", locals: { videos: @recent_videos } %>
