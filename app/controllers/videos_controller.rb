@@ -20,7 +20,7 @@ class VideosController < ApplicationController
     end
 
     # Find or create tournament.
-    tournament = find_or_create_tournament(param(:tournament))
+    tournament = find_or_create_tournament(param(:tournament), param(:year))
 
     # Find or create schools.
     aff_school = find_or_create_school(param(:aff_school))
@@ -92,13 +92,13 @@ class VideosController < ApplicationController
     params[:video][key]
   end
 
-  def find_or_create_tournament(id_or_name)
+  def find_or_create_tournament(id_or_name, year)
     if Tournament.exists?(id_or_name)
       Tournament.find(id_or_name)
     elsif Tournament.where(year: year, name: id_or_name).count > 0
       Tournament.find_by(year: year, name: id_or_name)
     else
-      Tournament.create(year: param(:year), name: id_or_name)
+      Tournament.create(year: year, name: id_or_name)
     end
   end
 
