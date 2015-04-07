@@ -11,84 +11,87 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_150_404_172_317) do
-  create_table 'active_admin_comments', force: :cascade do |t|
-    t.string 'namespace'
-    t.text 'body'
-    t.string 'resource_id',   null: false
-    t.string 'resource_type', null: false
-    t.integer 'author_id'
-    t.string 'author_type'
-    t.datetime 'created_at'
-    t.datetime 'updated_at'
+ActiveRecord::Schema.define(version: 20150407035204) do
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index 'active_admin_comments', %w(author_type author_id), name: 'index_active_admin_comments_on_author_type_and_author_id'
-  add_index 'active_admin_comments', ['namespace'], name: 'index_active_admin_comments_on_namespace'
-  add_index 'active_admin_comments', %w(resource_type resource_id), name: 'index_active_admin_comments_on_resource_type_and_resource_id'
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
-  create_table 'debaters', force: :cascade do |t|
-    t.integer 'school_id'
-    t.string 'first_name'
-    t.string 'last_name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "debaters", force: :cascade do |t|
+    t.integer  "school_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'schools', force: :cascade do |t|
-    t.string 'name'
-    t.string 'short_name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "schools", force: :cascade do |t|
+    t.string   "name"
+    t.string   "short_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'tags', force: :cascade do |t|
-    t.string 'title'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "tags", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'tags_videos', force: :cascade do |t|
-    t.integer 'tag_id'
-    t.integer 'video_id'
+  create_table "tags_videos", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "video_id"
   end
 
-  create_table 'teams', force: :cascade do |t|
-    t.integer 'school_id'
-    t.datetime 'created_at',     null: false
-    t.datetime 'updated_at',     null: false
-    t.integer 'debater_one_id'
-    t.integer 'debater_two_id'
+  create_table "teams", force: :cascade do |t|
+    t.integer  "school_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "debater_one_id"
+    t.integer  "debater_two_id"
   end
 
-  create_table 'tournaments', force: :cascade do |t|
-    t.integer 'year'
-    t.string 'name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "tournaments", force: :cascade do |t|
+    t.integer  "year"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'provider'
-    t.string 'uid'
-    t.string 'name'
-    t.string 'avatar'
-    t.datetime 'created_at',                 null: false
-    t.datetime 'updated_at',                 null: false
-    t.boolean 'is_admin',   default: false
+  create_table "users", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "avatar"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "is_admin",   default: false
   end
 
-  create_table 'videos', force: :cascade do |t|
-    t.integer 'provider'
-    t.string 'key'
-    t.integer 'user_id'
-    t.datetime 'created_at',    null: false
-    t.datetime 'updated_at',    null: false
-    t.integer 'debate_type'
-    t.integer 'debate_level'
-    t.integer 'aff_team_id'
-    t.integer 'neg_team_id'
-    t.string 'thumbnail'
-    t.integer 'tournament_id'
+  create_table "videos", force: :cascade do |t|
+    t.integer  "provider"
+    t.string   "key"
+    t.integer  "user_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "debate_type"
+    t.integer  "debate_level"
+    t.integer  "aff_team_id"
+    t.integer  "neg_team_id"
+    t.string   "thumbnail"
+    t.integer  "tournament_id"
+    t.boolean  "live_now",      default: false
   end
+
 end
