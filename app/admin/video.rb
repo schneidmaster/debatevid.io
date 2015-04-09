@@ -8,6 +8,7 @@ ActiveAdmin.register Video do
     input :debate_level, as: :select, collection: Video.debate_levels.keys.to_a
     input :thumbnail
     input :live_now
+    input :is_featured
     actions
   end
 

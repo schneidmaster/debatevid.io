@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407035204) do
+ActiveRecord::Schema.define(version: 20150409050810) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20150407035204) do
     t.string   "thumbnail"
     t.integer  "tournament_id"
     t.boolean  "live_now",      default: false
+    t.boolean  "is_featured",   default: false
   end
 
 end

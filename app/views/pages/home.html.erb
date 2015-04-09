@@ -7,5 +7,10 @@
   <%= render partial: "videos/table", locals: { videos: @live_videos, no_paginate: true } %>
   <hr>
 <% end %>
+<% if @featured_videos.any? %>
+  <h3>Featured Videos</h3>
+  <%= render partial: "videos/table", locals: { videos: @featured_videos, no_paginate: true } %>
+  <hr>
+<% end %>
 <h3>Recent Videos</h3>
 <%= render partial: "videos/table", locals: { videos: @recent_videos } %>
