@@ -5,7 +5,6 @@ class Video < ActiveRecord::Base
 
   default_scope { order(created_at: 'desc') }
   scope :live, -> { where(live_now: true) }
-  scope :not_live, -> { where('live_now = ? or live_now is null', false) }
   scope :featured, -> { where(is_featured: true) }
   scope :with_debater, -> (d) { joins(aff_team: [:debater_one, :debater_two], neg_team: [:debater_one, :debater_two]).where('debaters.id = ? or debater_ones_teams.id = ? or debater_twos_teams.id = ? or debater_twos_teams_2.id = ?', d.id, d.id, d.id, d.id) }
   scope :with_school, -> (s) { joins(aff_team: :school, neg_team: :school).where('schools.id = ? or schools_teams.id = ?', s.id, s.id) }
