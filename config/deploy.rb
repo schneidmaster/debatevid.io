@@ -34,6 +34,9 @@ set :linked_files, fetch(:linked_files, []).push('.env')
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+# Checkout, not copy.
+set :deploy_via, :checkout
+
 namespace :deploy do
   before :deploy, :set_env do
     on roles(:app, :web) do
