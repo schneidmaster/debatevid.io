@@ -40,11 +40,14 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '1.3.4'
 end
 
 group :production do
   gem 'mysql2', '0.3.18'
+
+  # Use newrelic for monitoring
+  gem 'newrelic_rpm'
 end
 
 gem 'bower-rails', '0.9.2'

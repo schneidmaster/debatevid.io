@@ -148,6 +148,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
+    newrelic_rpm (3.11.2.286)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     oauth (0.4.7)
@@ -241,7 +242,7 @@ GEM
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     simple_oauth (0.3.1)
-    spring (1.3.3)
+    spring (1.3.4)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -302,6 +303,7 @@ DEPENDENCIES
   draper (= 2.1.0)
   jbuilder (~> 2.0)
   mysql2 (= 0.3.18)
+  newrelic_rpm
   omniauth (= 1.2.2)
   omniauth-facebook (= 2.0.1)
   omniauth-google-oauth2 (= 0.2.6)
@@ -311,7 +313,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_form (= 3.1.0)
-  spring
+  spring (= 1.3.4)
   sqlite3
   uglifier (>= 1.3.0)
   vimeo (= 1.5.4)
