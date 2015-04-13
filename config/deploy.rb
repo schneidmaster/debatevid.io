@@ -5,7 +5,7 @@ set :application, 'debatevid.io'
 set :repo_url, 'git@github.com:schneidmaster/debatevid.io.git'
 
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :branch, "master"
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/srv/www/debatevid.io'
