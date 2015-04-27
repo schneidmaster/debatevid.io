@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'debatevid.io'
-set :repo_url, 'git@github.com:schneidmaster/debatevid.io.git'
+set :repo_url, 'git@github.com:DebateVidio/site.git'
 
 # Default branch is :master
 set :branch, "master"
