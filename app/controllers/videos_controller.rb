@@ -113,6 +113,7 @@ class VideosController < ApplicationController
   end
 
   def find_or_create_debater(id_or_name, school)
+    return nil if id_or_name.blank?
     if Debater.exists?(id_or_name)
       Debater.find(id_or_name)
     else
