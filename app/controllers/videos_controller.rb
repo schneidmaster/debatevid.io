@@ -41,6 +41,9 @@ class VideosController < ApplicationController
     keys = param(:key).split(',').reject!(&:empty?)
 
     video = Video.create(provider: param(:provider), key: keys, thumbnail: param(:thumbnail), user: current_user, debate_level: param(:debate_level), debate_type: param(:debate_type), tournament: tournament, tags: tags, aff_team: aff_team, neg_team: neg_team)
+    video.tags_videos.each do |tv|
+      tv.update(user: current_user)
+    end
 
     redirect_to video_path(video)
   end
