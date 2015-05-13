@@ -49,7 +49,7 @@ class VideosController < ApplicationController
     video = Video.find(params[:video_id])
 
     find_or_create_tags(params[:add_tag][:tags_ids]).each do |tag|
-      video.tags << tag unless video.tags.include?(tag)
+      TagsVideo.create(tag: tag, video: video, user: current_user) unless video.tags.include?(tag)
     end
 
     redirect_to video_path(video)
