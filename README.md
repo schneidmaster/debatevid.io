@@ -1,3 +1,7 @@
+[![Build Status](https://circleci.com/gh/schneidmaster/debatevid.io.svg?style=shield)](https://circleci.com/gh/schneidmaster/debatevid.io)
+[![Test Coverage](https://codeclimate.com/github/schneidmaster/debatevid.io/badges/coverage.svg)](https://codeclimate.com/github/schneidmaster/debatevid.io/coverage)
+[![Code Climate](https://codeclimate.com/github/schneidmaster/debatevid.io/badges/gpa.svg)](https://codeclimate.com/github/schneidmaster/debatevid.io)
+
 # DebateVid.io
 
 [DebateVid.io](https://debatevid.io) is a centralized repository for parliamentary, policy, and Lincoln-Douglas debate videos. 
