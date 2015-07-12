@@ -67,7 +67,7 @@ class VideosController < ApplicationController
 
   def search
     videos = Video.all
-    
+
     videos = videos.send(search_param(:debate_level)) if search_param(:debate_level)
     videos = videos.send(search_param(:debate_type)) if search_param(:debate_type)
     videos = videos.joins(:tournament).where('tournaments.year = ?', search_param(:year)) if search_param(:year)
@@ -76,9 +76,8 @@ class VideosController < ApplicationController
     videos = videos.where('aff_team_id = ? or neg_team_id = ?', search_param(:team), search_param(:team)) if search_param(:team)
     videos = videos.joins(aff_team: [:debater_one, :debater_two]).joins(neg_team:  [:debater_one, :debater_two]).where('debaters.id = ? or debater_ones_teams.id = ? or debater_twos_teams.id = ? or debater_twos_teams_2.id = ?', search_param(:debater), search_param(:debater), search_param(:debater), search_param(:debater)) if search_param(:debater)
     videos = videos.joins(:tags).where('tags.id = ?', search_param(:tag)) if search_param(:tag)
-    
-    render partial: "videos/table", locals: { videos: videos, no_paginate: true }
-    return
+
+    render partial: 'videos/table', locals: { videos: videos, no_paginate: true }
   end
 
   private
@@ -86,7 +85,7 @@ class VideosController < ApplicationController
   def authorize
     redirect_to [:login] unless logged_in?
   end
-  
+
   def search_param(key)
     params[:data][key]
   end

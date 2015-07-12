@@ -41,7 +41,7 @@ class VideoInformationService
         provider: 'youtube',
         key: id,
         title: raw_info.title,
-        thumbnail: raw_info.thumbnails.select{ |t| t.name == 'default' }.first.url.sub('http://', 'https://')
+        thumbnail: raw_info.thumbnails.select { |t| t.name == 'default' }.first.url.sub('http://', 'https://')
       }
     end
 

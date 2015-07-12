@@ -1,5 +1,5 @@
 ActiveAdmin.register Video do
-  form do |f|
+  form do |_f|
     input :user
     input :tournament
     input :aff_team

@@ -1,9 +1,20 @@
 AllCops:
   Exclude:
     - bin/**
-    - vendor/assets/bower_components/**
+    - db/**/*
+    - vendor/assets/bower_components/**/*
 
+AbcSize:
+  Enabled: false
+CyclomaticComplexity:
+  Enabled: false
 Documentation:
   Enabled: false
+ClassLength:
+  Enabled: false
 LineLength:
+  Enabled: false
+MethodLength:
+  Enabled: false
+PerceivedComplexity:
   Enabled: false

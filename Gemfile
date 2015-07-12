@@ -35,8 +35,21 @@ group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring', '1.3.4'
+  gem 'rubocop', '0.29.1'
+end
+
+group :test do
+  gem 'capybara', '~> 2.3.0'
+  gem 'capybara-screenshot', '~> 0.3.19'
+  gem 'codeclimate-test-reporter', require: false
+  gem 'database_cleaner', '~> 1.3.0'
+  gem 'factory_girl_rails', '~> 4.4.1'
+  gem 'faker', '~> 1.3.0'
+  gem 'poltergeist', '~> 1.5.0'
+  gem 'rack_session_access', '~> 0.1.1'
+  gem 'rspec-rails', '~> 3.1'
+  gem 'simplecov', '~> 0.10.0'
+  gem 'webmock', '~> 1.18.0'
 end
 
 group :production do
@@ -53,7 +66,6 @@ gem 'omniauth-facebook', '2.0.1'
 gem 'omniauth-twitter', '1.1.0'
 gem 'dotenv-rails', '2.0.0'
 gem 'omniauth-google-oauth2', '0.2.6'
-gem 'rubocop', '0.29.1'
 gem 'simple_form', '3.1.0'
 gem 'youtube_it', '2.4.2'
 gem 'vimeo', '1.5.4'
