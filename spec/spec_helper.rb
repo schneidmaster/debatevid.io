@@ -1,9 +1,10 @@
-if ENV['CIRCLE_ARTIFACTS']
-  require 'codeclimate-test-reporter'
-  CodeClimate::TestReporter.start
-else
-  require 'simplecov'
-  SimpleCov.start
+require 'codeclimate-test-reporter'
+require 'simplecov'
+
+SimpleCov.formatter = CodeClimate::TestReporter::Formatter if ENV['CIRCLE_ARTIFACTS']
+SimpleCov.start do
+  add_filter '/app/admin/'
+  add_filter '/config/'
 end
 
 ENV['RAILS_ENV'] = 'test'
