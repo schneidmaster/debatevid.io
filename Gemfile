@@ -45,7 +45,7 @@ group :test do
   gem 'database_cleaner', '~> 1.3.0'
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'faker', '~> 1.3.0'
-  gem 'poltergeist', '~> 1.5.0'
+  gem 'poltergeist', '~> 1.6.0'
   gem 'rack_session_access', '~> 0.1.1'
   gem 'rspec-rails', '~> 3.1'
   gem 'simplecov', '~> 0.10.0'

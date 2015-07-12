@@ -1,0 +1,8 @@
+{
+  "provider": "google_oauth2",
+  "uid": "123456789",
+  "info": {
+    "name": "John Doe",
+    "image": "https://lh3.googleusercontent.com/url/photo.jpg"
+  }
+}

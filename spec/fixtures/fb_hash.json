@@ -1,0 +1,8 @@
+{
+  "provider": "facebook",
+  "uid": "1234567",
+  "info": {
+    "name": "Joe Bloggs",
+    "image": "http://graph.facebook.com/1234567/picture?type=square"
+  }
+}

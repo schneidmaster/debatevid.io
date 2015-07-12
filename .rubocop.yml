@@ -2,7 +2,7 @@ AllCops:
   Exclude:
     - bin/**
     - db/**/*
-    - vendor**/*
+    - vendor/**/*
 
 AbcSize:
   Enabled: false
