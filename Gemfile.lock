@@ -144,7 +144,6 @@ GEM
     multi_json (1.11.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mysql2 (0.3.18)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
@@ -179,12 +178,16 @@ GEM
       omniauth-oauth (~> 1.0)
     parser (2.2.0.3)
       ast (>= 1.1, < 3.0)
+    pg (0.18.2)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
     powerpack (0.1.0)
+    puma (2.11.3)
+      rack (>= 1.1, < 2.0)
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack-timeout (0.2.4)
     rails (4.2.1)
       actionmailer (= 4.2.1)
       actionpack (= 4.2.1)
@@ -204,6 +207,11 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.3)
     railties (4.2.1)
       actionpack (= 4.2.1)
       activesupport (= 4.2.1)
@@ -302,13 +310,16 @@ DEPENDENCIES
   dotenv-rails (= 2.0.0)
   draper (= 2.1.0)
   jbuilder (~> 2.0)
-  mysql2 (= 0.3.18)
   newrelic_rpm
   omniauth (= 1.2.2)
   omniauth-facebook (= 2.0.1)
   omniauth-google-oauth2 (= 0.2.6)
   omniauth-twitter (= 1.1.0)
+  pg
+  puma
+  rack-timeout
   rails (= 4.2.1)
+  rails_12factor
   rubocop (= 0.29.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
