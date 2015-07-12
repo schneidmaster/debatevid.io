@@ -24,10 +24,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'
 
 group :development do
-  # Use Capistrano for deployment
-  gem 'capistrano-rails', '1.1.2'
-  gem 'capistrano-rvm', '0.1.2'
-
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 end
