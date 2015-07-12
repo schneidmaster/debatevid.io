@@ -24,10 +24,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'
 
 group :development do
-  # Use Capistrano for deployment
-  gem 'capistrano-rails', '1.1.2'
-  gem 'capistrano-rvm', '0.1.2'
-
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 end
@@ -44,13 +40,14 @@ group :development, :test do
 end
 
 group :production do
-  gem 'mysql2', '0.3.18'
+  gem 'pg'
+  gem 'puma'
+  gem 'rails_12factor'
 
   # Use newrelic for monitoring
   gem 'newrelic_rpm'
 end
 
-gem 'bower-rails', '0.9.2'
 gem 'omniauth', '1.2.2'
 gem 'omniauth-facebook', '2.0.1'
 gem 'omniauth-twitter', '1.1.0'
@@ -62,6 +59,7 @@ gem 'youtube_it', '2.4.2'
 gem 'vimeo', '1.5.4'
 gem 'draper', '2.1.0'
 gem 'activeadmin', '~> 1.0.0.pre1'
+gem 'rack-timeout'
 
 gem 'will_paginate', '3.0.7'
 gem 'will_paginate-foundation', '5.3.4'
