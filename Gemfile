@@ -52,7 +52,6 @@ group :production do
   gem 'newrelic_rpm'
 end
 
-gem 'bower-rails', '0.9.2'
 gem 'omniauth', '1.2.2'
 gem 'omniauth-facebook', '2.0.1'
 gem 'omniauth-twitter', '1.1.0'
