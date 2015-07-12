@@ -2,7 +2,7 @@ AllCops:
   Exclude:
     - bin/**
     - db/**/*
-    - vendor/assets/bower_components/**/*
+    - vendor**/*
 
 AbcSize:
   Enabled: false
