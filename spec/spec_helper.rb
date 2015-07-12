@@ -1,7 +1,3 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV['RAILS_ENV'] = 'test'
-require File.expand_path('../../config/environment', __FILE__)
-
 if ENV['CIRCLE_ARTIFACTS']
   require 'codeclimate-test-reporter'
   CodeClimate::TestReporter.start
@@ -9,6 +5,9 @@ else
   require 'simplecov'
   SimpleCov.start
 end
+
+ENV['RAILS_ENV'] = 'test'
+require File.expand_path('../../config/environment', __FILE__)
 
 require 'rspec/rails'
 require 'capybara/rspec'
@@ -56,7 +55,9 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 
+  # Include custom helpers
   config.include Features::MockHelpers, type: :feature
+  config.include Features::SessionHelpers, type: :feature
 
   # Set up Capybara
   Capybara.configure do |capy|
