@@ -40,7 +40,7 @@ class Video < ActiveRecord::Base
   def thumbnail
     return nil unless read_attribute(:thumbnail)
     if youtube?
-      read_attribute(:thumbnail).sub('/default', '/hqdefault')
+      read_attribute(:thumbnail)
     else
       read_attribute(:thumbnail).sub('200x150', '600x450')
     end
