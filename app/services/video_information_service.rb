@@ -31,17 +31,21 @@ class VideoInformationService
       params = URI.parse(link).request_uri.split('?').last
       params_array = CGI.parse(params)
       id = params_array['v'].first
-      client = YouTubeIt::Client.new(dev_key: ENV['YOUTUBE_DEV_KEY'])
+
       begin
-        raw_info = client.video_by(id)
+        raw_info = RestClient.get 'https://www.googleapis.com/youtube/v3/videos', key: ENV['YOUTUBE_DEV_KEY'], part: 'snippet', id: id
       rescue
         return invalid_json
       end
+
+      item = raw_info['items'].first
+      return invalid_json unless item
+
       {
         provider: 'youtube',
         key: id,
-        title: raw_info.title,
-        thumbnail: raw_info.thumbnails.select { |t| t.name == 'default' }.first.url.sub('http://', 'https://')
+        title: item['snippet']['title'],
+        thumbnail: item['snippet']['thumbnails']['high']['url']
       }
     end
 
