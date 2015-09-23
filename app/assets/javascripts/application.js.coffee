@@ -1,9 +1,8 @@
-#= require jquery/dist/jquery
-#= require jquery-ujs/src/rails
-#= require rails-turbolinks/lib/assets/javascripts/turbolinks
-#= require modernizr/modernizr
-#= require foundation/js/foundation
-#= require select2/select2
+#= require jquery
+#= require jquery_ujs
+#= require turbolinks
+#= require foundation
+#= require select2
 #= require_tree .
 
 ready = ->
@@ -16,3 +15,5 @@ ready = ->
 
 $(document).ready ready
 $(document).on 'page:load', ready
+() ->
+  $(document).foundation()
