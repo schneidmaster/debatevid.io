@@ -45,7 +45,7 @@ end
 
 group :production do
   gem 'pg'
-  gem 'puma'
+  gem 'passenger'
   gem 'rails_12factor'
 
   # Use newrelic for monitoring
