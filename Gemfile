@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # core gems
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.5.1'
 gem 'jquery-rails', '4.0.5'
 gem 'turbolinks', '2.5.3'
 gem 'sass-rails', '~> 5.0'
