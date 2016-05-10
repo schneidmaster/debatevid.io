@@ -33,7 +33,7 @@ class VideoInformationService
       id = params_array['v'].first
 
       begin
-        raw_info = RestClient.get 'https://www.googleapis.com/youtube/v3/videos', key: ENV['YOUTUBE_DEV_KEY'], part: 'snippet', id: id
+        raw_info = RestClient.get 'https://www.googleapis.com/youtube/v3/videos', params: { key: ENV['YOUTUBE_DEV_KEY'], part: 'snippet', id: id }
       rescue
         return invalid_json
       end
