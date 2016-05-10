@@ -38,6 +38,7 @@ class VideoInformationService
         return invalid_json
       end
 
+      raw_info = JSON.parse(raw_info)
       item = raw_info['items'].first
       return invalid_json unless item
 
