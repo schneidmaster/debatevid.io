@@ -5,7 +5,7 @@ class VideoDecorator < Draper::Decorator
     if youtube?
       frame = "<iframe id='vidframe' type='text/html'"
       frame += "src='https://www.youtube.com/embed/#{key.first}?origin=https://debatevid.io"
-      frame += "&playlist=#{key.join(',')}" if key.length > 1
+      frame += "&playlist=#{key.drop(1).join(',')}" if key.drop(1).length > 0
       frame += "' frameborder='0'></iframe>"
       frame.html_safe
     else
