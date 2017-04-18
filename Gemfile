@@ -61,7 +61,7 @@ gem 'simple_form', '3.1.0'
 gem 'rest-client', '1.8.0'
 gem 'vimeo', '1.5.4'
 gem 'draper', '2.1.0'
-gem 'activeadmin', '~> 1.0.0.pre1'
+gem 'activeadmin', '~> 1.0.0.pre5'
 
 gem 'will_paginate', '3.0.7'
 gem 'will_paginate-foundation', '5.3.4'
