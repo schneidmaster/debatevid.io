@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_action :authorize, except: [:show, :search]
+  before_action :authorize, except: %i[show search]
 
   def show
     @video = Video.find(params[:id]).decorate
@@ -61,7 +61,7 @@ class VideosController < ApplicationController
   def info
     info = VideoInformationService.link_info(params[:link])
     provider = Video.providers[info[:provider]]
-    info = { exists: true } if Video.where('videos.provider = ? and videos.key like ?', provider, "%#{info[:key]}%").count > 0
+    info = { exists: true } if Video.where('videos.provider = ? and videos.key like ?', provider, "%#{info[:key]}%").positive?
     render json: info
   end
 
@@ -74,7 +74,7 @@ class VideosController < ApplicationController
     videos = videos.where(tournament: search_param(:tournament)) if search_param(:tournament)
     videos = videos.joins(aff_team: :school).joins(neg_team: :school).where('schools.id = ? or schools_teams.id = ?', search_param(:school), search_param(:school)) if search_param(:school)
     videos = videos.where('aff_team_id = ? or neg_team_id = ?', search_param(:team), search_param(:team)) if search_param(:team)
-    videos = videos.joins(aff_team: [:debater_one, :debater_two]).joins(neg_team:  [:debater_one, :debater_two]).where('debaters.id = ? or debater_ones_teams.id = ? or debater_twos_teams.id = ? or debater_twos_teams_2.id = ?', search_param(:debater), search_param(:debater), search_param(:debater), search_param(:debater)) if search_param(:debater)
+    videos = videos.joins(aff_team: %i[debater_one debater_two]).joins(neg_team: %i[debater_one debater_two]).where('debaters.id = ? or debater_ones_teams.id = ? or debater_twos_teams.id = ? or debater_twos_teams_2.id = ?', search_param(:debater), search_param(:debater), search_param(:debater), search_param(:debater)) if search_param(:debater)
     videos = videos.joins(:tags).where('tags.id = ?', search_param(:tag)) if search_param(:tag)
 
     render partial: 'videos/table', locals: { videos: videos, no_paginate: true }
@@ -97,7 +97,7 @@ class VideosController < ApplicationController
   def find_or_create_tournament(id_or_name, year)
     if Tournament.exists?(id_or_name)
       Tournament.find(id_or_name)
-    elsif Tournament.where(year: year, name: id_or_name).count > 0
+    elsif Tournament.where(year: year, name: id_or_name).positive?
       Tournament.find_by(year: year, name: id_or_name)
     else
       Tournament.create(year: year, name: id_or_name)
@@ -107,7 +107,7 @@ class VideosController < ApplicationController
   def find_or_create_school(id_or_name)
     if School.exists?(id_or_name)
       School.find(id_or_name)
-    elsif School.where(name: id_or_name).count > 0
+    elsif School.where(name: id_or_name).positive?
       School.find_by(name: id_or_name)
     else
       School.create(name: id_or_name)
@@ -122,7 +122,7 @@ class VideosController < ApplicationController
       name = id_or_name.split(' ')
       first_name = name.shift
       last_name = name.join(' ')
-      if Debater.where(school: school, first_name: first_name, last_name: last_name).count > 0
+      if Debater.where(school: school, first_name: first_name, last_name: last_name).positive?
         Debater.find_by(school: school, first_name: first_name, last_name: last_name)
       else
         Debater.create(first_name: first_name, last_name: last_name, school: school)
@@ -131,7 +131,7 @@ class VideosController < ApplicationController
   end
 
   def find_or_create_team(debater_one, debater_two, school)
-    if Team.with_debaters(debater_one, debater_two).count > 0
+    if Team.with_debaters(debater_one, debater_two).positive?
       Team.with_debaters(debater_one, debater_two).first
     else
       # Ensure debaters are alphabetically ordered.
@@ -149,8 +149,8 @@ class VideosController < ApplicationController
       next if tag.blank?
       if Tag.exists?(tag)
         Tag.find(tag)
-      elsif Tag.where(title: tag.downcase).count > 0
-        Tag.find_by_title(tag.downcase)
+      elsif Tag.where(title: tag.downcase).positive?
+        Tag.find_by(title: tag.downcase)
       else
         Tag.create(title: tag.downcase)
       end

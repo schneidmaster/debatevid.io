@@ -2,19 +2,33 @@ AllCops:
   Exclude:
     - bin/**
     - db/**/*
+    - node_modules/**/*
     - vendor/**/*
+  TargetRubyVersion: 2.3
+  DisplayCopNames: true
 
-AbcSize:
+Rails:
+  Enabled: true
+
+Bundler/OrderedGems:
   Enabled: false
-CyclomaticComplexity:
+Metrics/AbcSize:
   Enabled: false
-Documentation:
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context', 'feature']
+  Exclude:
+    - config/routes.rb
+Metrics/CyclomaticComplexity:
   Enabled: false
-ClassLength:
+Metrics/ClassLength:
   Enabled: false
-LineLength:
+Metrics/LineLength:
   Enabled: false
-MethodLength:
+Metrics/MethodLength:
   Enabled: false
-PerceivedComplexity:
+Metrics/PerceivedComplexity:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
   Enabled: false

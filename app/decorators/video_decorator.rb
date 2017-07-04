@@ -3,13 +3,22 @@ class VideoDecorator < Draper::Decorator
 
   def video_frame
     if youtube?
-      frame = "<iframe id='vidframe' type='text/html'"
-      frame += "src='https://www.youtube.com/embed/#{key.first}?origin=https://debatevid.io"
-      frame += "&playlist=#{key.drop(1).join(',')}" if key.drop(1).length > 0
-      frame += "' frameborder='0'></iframe>"
-      frame.html_safe
+      src = "https://www.youtube.com/embed/#{key.first}?origin=https://debatevid.io"
+      src += "&playlist=#{key.drop(1).join(',')}" unless key.drop(1).empty?
+
+      content_tag(:iframe,
+                  id: 'vidframe',
+                  type: 'text/html',
+                  src: src,
+                  frameborder: '0')
     else
-      "<iframe id='vidframe' src='https://player.vimeo.com/video/#{key.first}' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>".html_safe
+      content_tag(:iframe,
+                  id: 'vidframe',
+                  src: "https://player.vimeo.com/video/#{key.first}",
+                  frameborder: '0',
+                  webkitallowfullscreen: 'true',
+                  mozallowfullscreen: 'true',
+                  allowfullscreen: 'true')
     end
   end
 end

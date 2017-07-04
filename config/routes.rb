@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get :info
     get :search
   end
-  resources :videos, only: [:show, :new, :create] do
+  resources :videos, only: %i[show new create] do
     post :add_tags, as: 'add_tags'
   end
 

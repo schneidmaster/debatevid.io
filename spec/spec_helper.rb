@@ -2,9 +2,6 @@ require 'codeclimate-test-reporter'
 require 'simplecov'
 
 SimpleCov.formatter = CodeClimate::TestReporter::Formatter if ENV['CIRCLE_ARTIFACTS']
-SimpleCov.start 'rails' do
-  add_filter '/app/admin/'
-end
 
 ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -17,11 +14,11 @@ require 'webmock/rspec'
 require 'rack_session_access/capybara'
 require 'byebug'
 
-WebMock.disable_net_connect!(allow_localhost: true, allow: %w(codeclimate.com))
+WebMock.disable_net_connect!(allow_localhost: true, allow: %w[codeclimate.com])
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -37,7 +34,7 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = Rails.root.join('spec', 'fixtures')
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

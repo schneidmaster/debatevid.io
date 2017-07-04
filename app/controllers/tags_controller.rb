@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   def show
-    @tag = Tag.find_by_title(params[:id])
+    @tag = Tag.find_by(title: params[:id])
     @videos = @tag.videos.paginate(page: params[:page])
   end
 
