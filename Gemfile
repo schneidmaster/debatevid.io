@@ -32,7 +32,7 @@ group :test do
   gem 'capybara', '~> 2.3.0'
   gem 'capybara-screenshot', '~> 0.3.19'
   gem 'codeclimate-test-reporter', require: false
-  gem 'database_cleaner', '~> 1.3.0'
+  gem 'database_cleaner', '~> 1.6.1'
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'faker', '~> 1.3.0'
   gem 'poltergeist', '~> 1.6.0'
