@@ -9,18 +9,16 @@
     <%= javascript_include_tag *webpack_asset_paths('application', extension: 'js') %>
   </head>
   <body>
-    <div class='flex flex-column page-wrapper'>
-      <header>
-        <%= render 'layouts/navigation' %>
-      </header>
+    <div class='flex-body'>
+      <%= render 'layouts/navigation' %>
 
-      <main class='flex-auto'>
+      <main>
         <div class='container'>
           <%= render 'layouts/messages' %>
           <%= yield %>
         </div>
       </main>
-      
+        
       <%= render 'layouts/footer' %>
     </div>
   </body>

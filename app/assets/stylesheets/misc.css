@@ -2,8 +2,23 @@
   display: none;
 }
 
-.page-wrapper {
+.nav-menu li a {
+  padding-left: 10px;
+}
+
+.nav-dropdown-img {
+  height: 24px;
+  width: 24px;
+}
+
+div.flex-body {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+
+  main {
+    flex: auto;
+  }
 }
 
 .select2-hidden-accessible {
