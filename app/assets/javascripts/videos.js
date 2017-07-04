@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-let ready = function() {
+$(document).ready(() => {
   if (!($("#new_video").length > 0)) {
     return;
   }
@@ -215,7 +215,4 @@ let ready = function() {
       return event.preventDefault();
     }
   });
-};
-
-$(document).ready(ready);
-$(document).on("page:load", ready);
+});

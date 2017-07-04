@@ -1,3 +1,14 @@
+.hidden {
+  display: none;
+}
+
+.dropdown-btn {
+  &:focus {
+    border: none;
+    box-shadow: none;
+  }
+}
+
 #main {
   padding-top: 25px;
 }

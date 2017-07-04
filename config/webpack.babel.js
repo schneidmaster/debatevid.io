@@ -35,7 +35,7 @@ let config = {
       path.join('app'),
       'node_modules'
     ],
-    extensions: ['.js', '.css', '.scss']
+    extensions: ['.js', '.css']
   },
 
   module: {

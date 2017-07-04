@@ -1,42 +1,29 @@
-<nav class="top-bar" data-topbar>
-  <ul class="title-area">
-    <li class="name"><%= link_to 'Home', root_path %></li>
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-  </ul>
-  <div class="top-bar-section">
-    <ul>
-      <%= render 'layouts/navigation_links' %>
-    </ul>
+<nav class='white bg-black flex justify-between'>
+  <div class='flex items-center'>
+    <%= link_to 'Home', root_path, class: 'btn py2' %>
+    <%= link_to 'FAQ', '/faq', class: 'btn py2' %>
+    <%= link_to 'Search', '/search', class: 'btn py2' %>
   </div>
-  <div class="top-bar-section right login-hide-small">
-    <ul>
+  <div class='flex px2'>
+    <div class='xs-hide flex items-center'>
       <% if logged_in? %>
-        <li class="has-dropdown">
-          <%= link_to user_path(current_user) do %>
-            <%= image_tag current_user.avatar, alt: current_user.name, class: 'avatar' %>
-            <%= current_user.name %>
-          <% end %>
-          <ul class="dropdown">
-            <li><%= link_to 'Logout', [:logout] %></li>
-          </ul>
-        </li>
+        <%= link_to 'Submit', new_video_path, class: 'btn py2' %>
+        <%= link_to 'Logout', logout_path, class: 'btn py2' %>
       <% else %>
-        <li class="divider"></li>
-        <li>
-          <%= link_to 'Login', '#', { id: 'login-nav' } %>
-          <span id="login-btn">
-            <%= link_to '/auth/facebook' do %>
-              <%= image_tag 'fb.png', alt: 'Facebook', class: 'social-login fb' %>
-            <% end %>
-            <%= link_to '/auth/twitter' do %>
-              <%= image_tag 'twitter.png', alt: 'Twitter', class: 'social-login twitter' %>
-            <% end %>
-            <%= link_to '/auth/google_oauth2' do %>
-              <%= image_tag 'google.png', alt: 'Google+', class: 'social-login google' %>
-            <% end %>
-          </span>
-        </li>
+        <div class='dropdown relative'>
+          <button class='btn py2 dropdown-btn'>
+            <div class='flex items-center nav-login-btn'>
+              Login
+              <i class='fa fa-angle-down ml1'></i>
+            </div>
+          </button>
+          <div class='nav-dropdown absolute bg-white border border-gray rounded hidden'>
+            <%= link_to 'Facebook', '/auth/facebook', class: 'block p1 text-decoration-none black' %>
+            <%= link_to 'Twitter', '/auth/twitter', class: 'block p1 text-decoration-none black' %>
+            <%= link_to 'Google', '/auth/google_oauth2', class: 'block p1 text-decoration-none black' %>
+          </div>
+        </div>
       <% end %>
-    </ul>
+    </div>
   </div>
 </nav>

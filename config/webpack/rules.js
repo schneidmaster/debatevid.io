@@ -1,5 +1,10 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
+// PostCSS plugins.
+import nested from 'postcss-nested';
+import precss from 'precss';
+import autoprefixer from 'autoprefixer';
+
 let commonRules = [
   {
     test: /\.(jpg|jpeg|png|gif|eps|sketch|eot|ttf|woff|woff2|svg|pdf)/,
@@ -31,7 +36,7 @@ let commonRules = [
 
 let prodRules = [
   {
-    test: /\.(css|scss)$/,
+    test: /\.css$/,
     use: ExtractTextPlugin.extract({
       fallback: 'style-loader',
       use: [
@@ -45,14 +50,14 @@ let prodRules = [
           loader: 'postcss-loader',
           options: {
             sourceMap: true,
-            plugins() { return [
-              require('precss'),
-              require('autoprefixer')
-            ]; }
+            plugins() {
+              return [
+                nested,
+                precss,
+                autoprefixer
+              ];
+            }
           }
-        },
-        {
-          loader: 'sass-loader'
         }
       ]
     })
@@ -61,7 +66,7 @@ let prodRules = [
 
 let devRules = [
   {
-    test: /\.(css|scss)$/,
+    test: /\.css$/,
     use: [
       {
         loader: 'style-loader',
@@ -79,16 +84,13 @@ let devRules = [
         loader: 'postcss-loader',
         options: {
           sourceMap: true,
-          plugins() { return [
-            require('precss'),
-            require('autoprefixer')
-          ]; }
-        }
-      },
-      {
-        loader: 'sass-loader',
-        options: {
-          sourceMap: true
+          plugins() {
+            return [
+              nested,
+              precss,
+              autoprefixer
+            ];
+          }
         }
       }
     ]

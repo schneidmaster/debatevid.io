@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-let ready = function() {
+$(document).ready(() => {
   if (!($("#search-terms").length > 0)) {
     return;
   }
@@ -143,7 +143,4 @@ let ready = function() {
 
     return $("#search-results").html("");
   });
-};
-
-$(document).ready(ready);
-$(document).on("page:load", ready);
+});

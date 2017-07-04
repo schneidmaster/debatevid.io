@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-let ready = function() {
+$(document).ready(() => {
   if (!($("#add_tag_tags_ids").length > 0)) {
     return;
   }
@@ -32,7 +32,4 @@ let ready = function() {
       }
     }
   });
-};
-
-$(document).ready(ready);
-$(document).on("page:load", ready);
+});
