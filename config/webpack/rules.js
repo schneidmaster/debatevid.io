@@ -4,6 +4,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import nested from 'postcss-nested';
 import precss from 'precss';
 import autoprefixer from 'autoprefixer';
+import vars from 'postcss-simple-vars';
 
 let commonRules = [
   {
@@ -53,6 +54,7 @@ let prodRules = [
             plugins() {
               return [
                 nested,
+                vars,
                 precss,
                 autoprefixer
               ];
@@ -87,6 +89,7 @@ let devRules = [
           plugins() {
             return [
               nested,
+              vars,
               precss,
               autoprefixer
             ];

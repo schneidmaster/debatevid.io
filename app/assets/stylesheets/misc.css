@@ -2,15 +2,6 @@
   display: none;
 }
 
-.nav-menu li a {
-  padding-left: 10px;
-}
-
-.nav-dropdown-img {
-  height: 24px;
-  width: 24px;
-}
-
 div.flex-body {
   display: flex;
   flex-direction: column;

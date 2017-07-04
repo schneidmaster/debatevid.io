@@ -1,0 +1,60 @@
+$base: #3AAED8;
+$hover: #1282A2;
+$font: white;
+$lightbase: #DBF0F7;
+
+nav.navbar-default {
+  background-color: $base;
+  border-radius: 0px;
+  border: none;
+
+  div.container-fluid {
+    padding-right: 0px;
+  }
+
+  .navbar-brand {
+    color: $font;
+
+    img {
+      height: 100%;
+      // width: 100%;
+    }
+  }
+
+  .navbar-brand, .navbar-nav li {
+    &:hover {
+      background-color: $hover;
+    }
+
+    a {
+      font-family: 'Oxygen', sans-serif;
+      color: $font;
+
+      &:hover {
+        color: $font;
+      }
+    }
+  }
+
+  .navbar-nav > .open {
+    &>a, &>a:hover, &>a:focus {
+      color: white;
+      background-color: $hover;
+    }
+  }
+
+  .nav-menu li a {
+    padding-left: 10px;
+    color: #326273;
+
+    &:hover {
+      background-color: $lightbase;
+      color: #326273;
+    }
+  }
+
+  .nav-dropdown-img {
+    height: 24px;
+    width: 24px;
+  }
+}

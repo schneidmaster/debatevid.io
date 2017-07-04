@@ -28,6 +28,7 @@
     "jquery": "^3.2.1",
     "postcss-loader": "^2.0.6",
     "postcss-nested": "^2.0.2",
+    "postcss-simple-vars": "^4.0.0",
     "precss": "^2.0.0",
     "stats-webpack-plugin": "^0.6.1",
     "style-loader": "^0.18.2",
