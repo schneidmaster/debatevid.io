@@ -2,8 +2,8 @@
   display: none;
 }
 
-#main {
-  padding-top: 25px;
+.page-wrapper {
+  min-height: 100vh;
 }
 
 .select2-hidden-accessible {

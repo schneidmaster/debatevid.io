@@ -6,3 +6,9 @@ nav {
     }
   }
 }
+
+footer {
+  a {
+    color: white;
+  }
+}

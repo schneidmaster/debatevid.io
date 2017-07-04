@@ -23,33 +23,19 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <div id="main" class="row">
-      <div class="small-12 columns">
-        <%= render 'layouts/messages' %>
-        <%= yield %>
-      </div>
-    </div>
-    <footer>
-      <div class="row">
-        <div class="small-12 columns">
-          <hr>
-          &copy; <%= Time.now.year %> <%= link_to "Zach Schneider", "http://schneid.io" %>
-        </div>
-      </div>
-      
-      <script>
-        /* Google Analytics */
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <div class='flex flex-column page-wrapper'>
+      <header>
+        <%= render 'layouts/navigation' %>
+      </header>
 
-        ga('create', 'UA-61183460-1', 'auto');
-        ga('send', 'pageview');
-      </script>
-    </footer>
+      <main class='flex-auto'>
+        <div class='container'>
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+        </div>
+      </main>
+      
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
