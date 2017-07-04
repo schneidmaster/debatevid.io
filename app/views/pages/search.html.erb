@@ -1,7 +1,7 @@
 <h3>Search</h3>
 Fill in one or more of the search fields below, then click Search!
 <div id="search-terms">
-  <%= simple_form_for :search do |f| %>
+  <%= form_for :search do |f| %>
     <div class="row">
       <div class="large-3 small-6 columns">
         <%= f.input :debate_level, label: "Level", collection: Video.debate_levels_select, required: false %>

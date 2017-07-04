@@ -1,4 +1,4 @@
-class Video < ActiveRecord::Base
+class Video < ApplicationRecord
   enum debate_type: [:policy, :parli, :lincoln_douglass]
   enum debate_level: [:hs, :college]
   enum provider: [:youtube, :vimeo]

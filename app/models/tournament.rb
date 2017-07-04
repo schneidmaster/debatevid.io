@@ -1,4 +1,4 @@
-class Tournament < ActiveRecord::Base
+class Tournament < ApplicationRecord
   has_many :videos
 
   scope :like, ->(q) { where('lower(name) LIKE ?', "%#{q.downcase}%") }

@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_filter :authorize, except: [:show, :search]
+  before_action :authorize, except: [:show, :search]
 
   def show
     @video = Video.find(params[:id]).decorate

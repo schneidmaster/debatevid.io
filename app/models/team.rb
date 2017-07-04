@@ -1,4 +1,4 @@
-class Team < ActiveRecord::Base
+class Team < ApplicationRecord
   belongs_to :school
 
   belongs_to :debater_one, class_name: 'Debater', foreign_key: :debater_one_id

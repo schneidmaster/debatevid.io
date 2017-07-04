@@ -11,9 +11,6 @@ Bundler.require(*Rails.groups)
 
 module DebatevidIo
   class Application < Rails::Application
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
-
     # Use public/assets rather than public/webpack
     config.webpack.output_dir = 'public/assets'
     config.webpack.public_path = 'assets'

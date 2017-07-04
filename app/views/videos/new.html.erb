@@ -1,5 +1,5 @@
 <h3>Submit Video</h3>
-<%= simple_form_for :video_link do |f| %>
+<%= form_for :video_link do |f| %>
   <%= f.input :link, label: "First, paste a link (YouTube or Vimeo only)" %>
   <%= f.button :submit, "Go", { id: "video-link-go" } %>
 <% end %>
@@ -7,7 +7,7 @@
 <div id="video-preview" class="row">
 </div>
 
-<%= simple_form_for @video, validate: true do |f| %>
+<%= form_for @video, validate: true do |f| %>
   <hr>
   <p id="youtube-text">
     Nice work! You can add more segments (if the video is in multiple parts) by pasting more links above. Or, fill in the metadata below and click Create Video.

@@ -1,21 +1,29 @@
 source 'https://rubygems.org'
 
 # core gems
-gem 'rails', '4.2.7.1'
+gem 'rails', '5.1'
 gem 'webpack-rails'
 
+# Authentication.
+gem 'omniauth', '~> 1.6'
+gem 'omniauth-facebook', '~> 4.0'
+gem 'omniauth-twitter', '~> 1.4'
+gem 'omniauth-google-oauth2', '~> 0.5'
+
+# Utility.
+gem 'draper', '~> 3.0'
+gem 'rest-client', '1.8.0'
+gem 'vimeo', '1.5.4'
+gem 'will_paginate', '~> 3.1'
+
 group :development do
-  # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'web-console', '~> 3.0'
 end
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.2.1'
-
+  gem 'dotenv-rails', '2.0.0'
   gem 'rubocop', '~> 0.49'
 end
 
@@ -41,15 +49,3 @@ group :production do
   # Use newrelic for monitoring
   gem 'newrelic_rpm'
 end
-
-gem 'omniauth', '1.2.2'
-gem 'omniauth-facebook', '2.0.1'
-gem 'omniauth-twitter', '1.1.0'
-gem 'dotenv-rails', '2.0.0'
-gem 'omniauth-google-oauth2', '0.2.6'
-gem 'simple_form', '3.1.0'
-gem 'rest-client', '1.8.0'
-gem 'vimeo', '1.5.4'
-gem 'draper', '2.1.0'
-
-gem 'will_paginate', '3.0.7'

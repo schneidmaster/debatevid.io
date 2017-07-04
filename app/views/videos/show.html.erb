@@ -72,7 +72,7 @@
 </div>
 <% if logged_in? %>
   <hr class="no-margin-top">
-  <%= simple_form_for :add_tag, url: video_add_tags_path(@video) do |f| %>
+  <%= form_for :add_tag, url: video_add_tags_path(@video) do |f| %>
     <label for="tags_ids">Add Tags (Policy, Kritik, Nietzsche, etc.)</label>
     <div class="row collapse">
       <div class="small-10 columns">

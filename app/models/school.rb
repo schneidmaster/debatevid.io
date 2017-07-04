@@ -1,4 +1,4 @@
-class School < ActiveRecord::Base
+class School < ApplicationRecord
   has_many :teams
 
   scope :like, ->(q) { where('lower(name) LIKE ? or lower(short_name) LIKE ?', "%#{q.downcase}%", "%#{q.downcase}%") }
