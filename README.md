@@ -9,7 +9,7 @@
 
 ## Developing
 
-DebateVid.io is built on Ruby on Rails and Foundation.
+DebateVid.io is built on Ruby on Rails.
 
 ### Configuration
 

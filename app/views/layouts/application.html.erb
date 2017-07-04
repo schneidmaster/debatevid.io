@@ -25,9 +25,9 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'vendor/modernizr' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+    <%= stylesheet_link_tag *webpack_asset_paths('application', extension: 'css') %>
+    <%= javascript_include_tag *webpack_asset_paths('application', extension: 'js') %>
     <%= csrf_meta_tags %>
   </head>
   <body>

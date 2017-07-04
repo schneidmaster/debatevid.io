@@ -16,5 +16,10 @@
 !/log/.keep
 /tmp
 
+# Ignore npm files.
+/node_modules
+/public/assets
+
+# Ignore dev files.
 .env
-coverage/
+/coverage

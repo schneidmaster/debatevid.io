@@ -2,17 +2,7 @@ source 'https://rubygems.org'
 
 # core gems
 gem 'rails', '4.2.7.1'
-gem 'jquery-rails', '4.0.5'
-gem 'turbolinks', '2.5.3'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'foundation-rails', '~> 5.5.1'
-
-# bower asset packages
-source 'https://rails-assets.org' do
-  gem 'rails-assets-select2', '3.5.2'
-end
+gem 'webpack-rails'
 
 group :development do
   # Use sqlite3 as the database for Active Record
@@ -26,7 +16,7 @@ group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.2.1'
 
-  gem 'rubocop', '0.29.1'
+  gem 'rubocop', '~> 0.49'
 end
 
 group :test do
@@ -61,7 +51,5 @@ gem 'simple_form', '3.1.0'
 gem 'rest-client', '1.8.0'
 gem 'vimeo', '1.5.4'
 gem 'draper', '2.1.0'
-gem 'activeadmin', '~> 1.0.0.pre5'
 
 gem 'will_paginate', '3.0.7'
-gem 'will_paginate-foundation', '5.3.4'

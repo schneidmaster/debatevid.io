@@ -15,5 +15,5 @@
   <% end %>
 </div>
 <% unless defined?(no_paginate) && no_paginate %>
-  <%= will_paginate videos, renderer: FoundationPagination::Rails %>
+  <%= will_paginate videos %>
 <% end %>
