@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  root 'pages#home'
-
-  # Page routes
-  get '/faq', to: 'pages#faq'
-  get '/search', to: 'pages#search'
-
   get '/auth/:provider/callback', to: 'session#create'
   get '/auth/failure', to: 'session#failure'
   get '/logout', to: 'session#logout', as: 'logout'
