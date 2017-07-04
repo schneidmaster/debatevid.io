@@ -9,6 +9,7 @@ import 'basscss/css/basscss';
 import 'ace-css/css/ace';
 import 'font-awesome/css/font-awesome';
 import 'stylesheets/misc';
+import 'stylesheets/nav';
 import 'stylesheets/video';
 
 // Images.

@@ -8,6 +8,12 @@
     <div class='xs-hide flex items-center'>
       <% if logged_in? %>
         <%= link_to 'Submit', new_video_path, class: 'btn py2' %>
+        
+        <%= link_to user_path(current_user), class: 'btn py2' do %>
+          <%= image_tag current_user.avatar, alt: current_user.name, class: 'avatar' %>
+          <%= current_user.name %>
+        <% end %>
+
         <%= link_to 'Logout', logout_path, class: 'btn py2' %>
       <% else %>
         <div class='dropdown relative'>
