@@ -13,6 +13,7 @@ gem 'omniauth-google-oauth2', '~> 0.5'
 # Utility.
 gem 'draper', '~> 3.0'
 gem 'high_voltage', '~> 3.0.0'
+gem 'meta-tags'
 gem 'rest-client', '1.8.0'
 gem 'vimeo', '1.5.4'
 gem 'will_paginate', '~> 3.1'

@@ -1,6 +1,29 @@
 module LayoutHelper
+  def default_meta
+    {
+      title: 'DebateVid.io',
+      viewport: 'width=device-width, initial-scale=1.0',
+      description: 'DebateVid.io is a centralized repository for parliamentary, policy, and Lincoln-Douglas debate videos.',
+      og: {
+        title: 'DebateVid.io',
+        description: 'DebateVid.io is a centralized repository for parliamentary, policy, and Lincoln-Douglas debate videos.',
+        site_name: 'DebateVid.io',
+        image: 'https://debatevid.io/opengraph.png'
+      },
+      'msapplication-TileColor': '#ffffff',
+      'msapplication-TileImage': '/ms-icon-144x144.png',
+      'theme-color': '#ffffff',
+      icon: mobile_icons
+    }
+  end
+
   def mobile_icons
     [
+      {
+        rel: 'manifest',
+        type: nil,
+        href: '/manifest.json'
+      },
       {
         rel: 'apple-touch-icon',
         sizes: '57x57',
@@ -48,21 +71,25 @@ module LayoutHelper
       },
       {
         rel: 'icon',
+        type: 'image/png',
         sizes: '192x192',
         href: '/android-icon-192x192.png'
       },
       {
         rel: 'icon',
+        type: 'image/png',
         sizes: '32x32',
         href: '/favicon-32x32.png'
       },
       {
         rel: 'icon',
+        type: 'image/png',
         sizes: '96x96',
         href: '/favicon-96x96.png'
       },
       {
         rel: 'icon',
+        type: 'image/png',
         sizes: '16x16',
         href: '/favicon-16x16.png'
       }

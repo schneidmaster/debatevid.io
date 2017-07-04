@@ -1,26 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "DebateVid.io" %></title>
-    <meta name="description" content="DebateVid.io is a centralized repository for parliamentary, policy, and Lincoln-Douglas debate videos.">
-    <meta property="og:title" content="<%= content_for?(:title) ? yield(:title) : "DebateVid.io" %>" />
-    <meta property="og:description" content="DebateVid.io is a centralized repository for parliamentary, policy, and Lincoln-Douglas debate videos." />
-    <meta property="og:site_name" content="DebateVid.io" />
-    <meta property="og:image" content="https://debatevid.io/opengraph.png" />
-    <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-
-    <% mobile_icons.each do |icon| %>
-      <%= content_tag(:link, nil, type: 'image/png', rel: icon[:rel], sizes: icon[:sizes], href: icon[:href]) %>
-    <% end %>
+    <%= display_meta_tags(default_meta) %>
+    <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag *webpack_asset_paths('application', extension: 'css') %>
     <%= javascript_include_tag *webpack_asset_paths('vendor', extension: 'js') %>
     <%= javascript_include_tag *webpack_asset_paths('application', extension: 'js') %>
-    <%= csrf_meta_tags %>
   </head>
   <body>
     <div class='flex flex-column page-wrapper'>
