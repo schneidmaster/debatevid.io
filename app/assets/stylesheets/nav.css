@@ -5,6 +5,20 @@ nav {
       box-shadow: none;
     }
   }
+
+  div.nav-dropdown {
+    width: 125px;
+    right: -10px;
+
+    a.nav-dropdown-link {
+      display: flex;
+
+      img.nav-dropdown-img {
+        height: 24px;
+        width: 24px;
+      }
+    }
+  }
 }
 
 footer {
