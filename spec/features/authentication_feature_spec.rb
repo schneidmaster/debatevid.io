@@ -72,7 +72,7 @@ feature 'Authentication' do
     end
 
     scenario 'logs out the user' do
-      within '.dropdown' do
+      within '.navbar-right' do
         click_on 'Logout'
       end
       expect(page).to have_content('Logged out!')
