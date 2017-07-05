@@ -45,18 +45,27 @@ nav.navbar-default {
     }
   }
 
-  .nav-menu li a {
-    padding-left: 10px;
-    color: #326273;
+  .nav-menu li {
+    margin-top: 5px;
 
-    &:hover {
-      background-color: $light;
+    &:first-child {
+      margin-top: 0px;
+    }
+
+    a {
+      padding-left: 10px;
       color: #326273;
+
+      &:hover {
+        background-color: $light;
+        color: #326273;
+      }
     }
   }
 
   .nav-dropdown-img {
     height: 24px;
     width: 24px;
+    margin-right: 5px;
   }
 }
