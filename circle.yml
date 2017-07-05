@@ -1,0 +1,12 @@
+dependencies:
+  pre:
+    - yarn install
+  post:
+    - TARGET=production yarn build
+  cache_directories:
+    - ~/.cache/yarn
+
+test:
+  override:
+    - bundle exec rspec
+    - bundle exec rubocop
