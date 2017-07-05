@@ -10,6 +10,8 @@ dependencies:
   override:
     - yarn install
     - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+  post:
+    - TARGET=production yarn build
   cache_directories:
     - ~/.cache/yarn
 
