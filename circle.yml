@@ -1,8 +1,15 @@
+machine:
+  node:
+    version: 6.9.2
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+
 dependencies:
   pre:
+    - gem install bundler
+  override:
     - yarn install
-  post:
-    - TARGET=production yarn build
+    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
   cache_directories:
     - ~/.cache/yarn
 
