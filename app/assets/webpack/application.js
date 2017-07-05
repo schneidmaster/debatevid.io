@@ -15,5 +15,5 @@ import 'stylesheets/video';
 // Images.
 import 'images/fb.png';
 import 'images/google.png';
-import 'images/icon.png';
+import 'images/logo.png';
 import 'images/twitter.png';

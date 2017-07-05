@@ -1,29 +1,32 @@
-$base: #3AAED8;
-$hover: #1282A2;
-$font: white;
-$lightbase: #DBF0F7;
+$base: #1285AF;
+$highlight: #3AAED8;
+$light: #E8F6FD;
+$font: #133C55;
 
 nav.navbar-default {
-  background-color: $base;
+  background-color: white;
   border-radius: 0px;
   border: none;
+  border-bottom: solid 1px $highlight;
+  height: 75px;
 
   div.container-fluid {
     padding-right: 0px;
   }
 
   .navbar-brand {
-    color: $font;
+    height: 75px;
 
     img {
       height: 100%;
-      // width: 100%;
     }
   }
 
-  .navbar-brand, .navbar-nav li {
+  .navbar-nav li {
+    margin-top: 12.5px;
+
     &:hover {
-      background-color: $hover;
+      background-color: $light;
     }
 
     a {
@@ -38,8 +41,7 @@ nav.navbar-default {
 
   .navbar-nav > .open {
     &>a, &>a:hover, &>a:focus {
-      color: white;
-      background-color: $hover;
+      background-color: $light;
     }
   }
 
@@ -48,7 +50,7 @@ nav.navbar-default {
     color: #326273;
 
     &:hover {
-      background-color: $lightbase;
+      background-color: $light;
       color: #326273;
     }
   }

@@ -10,6 +10,10 @@ div.flex-body {
   main {
     flex: auto;
   }
+
+  footer {
+    margin-bottom: 15px;
+  }
 }
 
 .select2-hidden-accessible {

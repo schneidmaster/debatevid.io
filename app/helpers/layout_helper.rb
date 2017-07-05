@@ -10,9 +10,14 @@ module LayoutHelper
         site_name: 'DebateVid.io',
         image: 'https://debatevid.io/opengraph.png'
       },
-      'msapplication-TileColor': '#ffffff',
-      'msapplication-TileImage': '/ms-icon-144x144.png',
-      'theme-color': '#ffffff',
+      'application-name': 'DebateVid.io',
+      'msapplication-TileColor': '#FFFFFF',
+      'msapplication-TileImage': '/mstile-144x144.png',
+      'msapplication-square70x70logo': '/mstile-70x70.png',
+      'msapplication-square150x150logo': '/mstile-150x150.png',
+      'msapplication-wide310x150logo': '/mstile-310x150.png',
+      'msapplication-square310x310logo': '/mstile-310x310.png',
+      'theme-color': '#FFFFFF',
       icon: mobile_icons
     }
   end
@@ -20,60 +25,79 @@ module LayoutHelper
   def mobile_icons
     [
       {
-        rel: 'manifest',
-        type: nil,
-        href: '/manifest.json'
-      },
-      {
-        rel: 'apple-touch-icon',
+        rel: 'apple-touch-icon-precomposed',
         sizes: '57x57',
-        href: '/apple-icon-57x57.png'
+        href: '/apple-touch-icon-57x57.png'
       },
       {
-        rel: 'apple-touch-icon',
-        sizes: '60x60',
-        href: '/apple-icon-60x60.png'
-      },
-      {
-        rel: 'apple-touch-icon',
-        sizes: '72x72',
-        href: '/apple-icon-72x72.png'
-      },
-      {
-        rel: 'apple-touch-icon',
-        sizes: '76x76',
-        href: '/apple-icon-76x76.png'
-      },
-      {
-        rel: 'apple-touch-icon',
+        rel: 'apple-touch-icon-precomposed',
         sizes: '114x114',
-        href: '/apple-icon-114x114.png'
+        href: '/apple-touch-icon-114x114.png'
       },
       {
-        rel: 'apple-touch-icon',
-        sizes: '120x120',
-        href: '/apple-icon-120x120.png'
+        rel: 'apple-touch-icon-precomposed',
+        sizes: '72x72',
+        href: '/apple-touch-icon-72x72.png'
       },
       {
-        rel: 'apple-touch-icon',
+        rel: 'apple-touch-icon-precomposed',
         sizes: '144x144',
-        href: '/apple-icon-144x144.png'
+        href: '/apple-touch-icon-144x144.png'
       },
       {
-        rel: 'apple-touch-icon',
+        rel: 'apple-touch-icon-precomposed',
+        sizes: '60x60',
+        href: '/apple-touch-icon-60x60.png'
+      },
+      {
+        rel: 'apple-touch-icon-precomposed',
+        sizes: '120x120',
+        href: '/apple-touch-icon-120x120.png'
+      },
+      {
+        rel: 'apple-touch-icon-precomposed',
+        sizes: '76x76',
+        href: '/apple-touch-icon-76x76.png'
+      },
+      {
+        rel: 'apple-touch-icon-precomposed',
         sizes: '152x152',
-        href: '/apple-icon-152x152.png'
-      },
-      {
-        rel: 'apple-touch-icon',
-        sizes: '180x180',
-        href: '/apple-icon-180x180.png'
+        href: '/apple-touch-icon-152x152.png'
       },
       {
         rel: 'icon',
         type: 'image/png',
-        sizes: '192x192',
-        href: '/android-icon-192x192.png'
+        href: '/favicon-196x196.png',
+        sizes: '196x196'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicon-96x96.png',
+        sizes: '96x96'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicon-32x32.png',
+        sizes: '32x32'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicon-16x16.png',
+        sizes: '16x16'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicon-128.png',
+        sizes: '128x128'
+      },
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png'
       },
       {
         rel: 'icon',
@@ -84,14 +108,18 @@ module LayoutHelper
       {
         rel: 'icon',
         type: 'image/png',
-        sizes: '96x96',
-        href: '/favicon-96x96.png'
-      },
-      {
-        rel: 'icon',
-        type: 'image/png',
         sizes: '16x16',
         href: '/favicon-16x16.png'
+      },
+      {
+        rel: 'manifest',
+        type: nil,
+        href: '/manifest.json'
+      },
+      {
+        rel: 'mask-icon',
+        href: '/safari-pinned-tab.svg',
+        color: '#1285AF'
       }
     ]
   end
