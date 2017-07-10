@@ -14,6 +14,9 @@
     </div>
   <% end %>
 </div>
-<% unless defined?(no_paginate) && no_paginate %>
-  <%= will_paginate videos %>
-<% end %>
+
+<div class='text-center'>
+  <% unless defined?(no_paginate) && no_paginate %>
+    <%= will_paginate videos %>
+  <% end %>
+</div>

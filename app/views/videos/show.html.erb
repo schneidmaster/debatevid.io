@@ -1,13 +1,13 @@
 <h3><%= @video.title %></h3>
 <div class="row">
-  <div class="large-12 columns">
+  <div class="col-md-12">
     <div class="frame-wrapper">
       <%= @video.video_frame %>
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="large-9 columns">
+  <div class="col-md-9">
     <p>
       Tags: 
       <% if @video.tags.count > 0 %>
@@ -22,7 +22,7 @@
       <% end %>
     </p>
   </div>
-  <div class="large-3 columns align-right">
+  <div class="col-md-3 align-right">
     <%= link_to user_path(@video.user) do %>
       <%= image_tag @video.user.avatar, class: 'avatar' %>
       <%= @video.user.name %>
@@ -31,12 +31,12 @@
 </div>
 <hr class="no-margin-top">
 <div class="row">
-  <div class="large-12 columns">
+  <div class="col-md-12">
     <h4>Tournament: <%= link_to @video.tournament.year_and_name, tournament_path(@video.tournament) %></h4>
   </div>
 </div>
 <div class="row">
-  <div class="large-6 columns">
+  <div class="col-md-6">
     <h4>Affirmative</h4>
     <p>
       School: <%= link_to @video.aff_team.school.name, school_path(@video.aff_team.school) %>
@@ -53,7 +53,7 @@
     </p>
   </div>
 
-  <div class="large-6 columns">
+  <div class="col-md-6">
     <h4>Negative</h4>
     <p>
       School: <%= link_to @video.neg_team.school.name, school_path(@video.neg_team.school) %>
@@ -70,7 +70,7 @@
     </p>
   </div>
 </div>
-<% if logged_in? %>
+<% if false && logged_in? %>
   <hr class="no-margin-top">
   <%= form_for :add_tag, url: video_add_tags_path(@video) do |f| %>
     <label for="tags_ids">Add Tags (Policy, Kritik, Nietzsche, etc.)</label>
