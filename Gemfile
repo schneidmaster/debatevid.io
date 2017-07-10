@@ -26,6 +26,7 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'dotenv-rails', '2.0.0'
+  gem 'faker', '~> 1.3.0'
   gem 'rubocop', '~> 0.49'
 end
 
@@ -35,7 +36,6 @@ group :test do
   gem 'codeclimate-test-reporter', require: false
   gem 'database_cleaner', '~> 1.6.1'
   gem 'factory_girl_rails', '~> 4.4.1'
-  gem 'faker', '~> 1.3.0'
   gem 'poltergeist', '~> 1.6.0'
   gem 'rack_session_access', '~> 0.1.1'
   gem 'rspec-rails', '~> 3.1'
