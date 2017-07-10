@@ -48,6 +48,8 @@ GEM
     arel (8.0.0)
     ast (2.3.0)
     bindex (0.5.0)
+    bootstrap-will_paginate (1.0.0)
+      will_paginate
     builder (3.2.3)
     byebug (9.0.6)
     capybara (2.3.0)
@@ -279,6 +281,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-will_paginate
   byebug
   capybara (~> 2.3.0)
   capybara-screenshot (~> 0.3.19)

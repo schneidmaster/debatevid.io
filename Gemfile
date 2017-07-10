@@ -17,6 +17,7 @@ gem 'meta-tags'
 gem 'rest-client', '1.8.0'
 gem 'vimeo', '1.5.4'
 gem 'will_paginate', '~> 3.1'
+gem 'bootstrap-will_paginate'
 
 group :development do
   gem 'sqlite3'
