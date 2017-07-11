@@ -9,6 +9,19 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless logged_in? && current_user.is_admin
   end
 
+  protected
+
+  def logged_in?
+    session[:current_user].present?
+  end
+  helper_method :logged_in?
+
+  def current_user
+    return nil unless logged_in?
+    User.find session[:current_user]
+  end
+  helper_method :current_user
+
   private
 
   def redirect_if_heroku
