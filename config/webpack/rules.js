@@ -6,7 +6,7 @@ import precss from 'precss';
 import autoprefixer from 'autoprefixer';
 import vars from 'postcss-simple-vars';
 
-let commonRules = [
+const commonRules = [
   {
     test: /\.(jpg|jpeg|png|gif|eps|sketch|eot|ttf|woff|woff2|svg|pdf)/,
     use: [
@@ -14,10 +14,10 @@ let commonRules = [
         loader: 'file-loader',
         options: {
           name: '[name].[hash].[ext]',
-          context: 'app/assets'
-        }
-      }
-    ]
+          context: 'app/assets',
+        },
+      },
+    ],
   },
   {
     test: /\.js$/,
@@ -27,15 +27,15 @@ let commonRules = [
         options: {
           babelrc: false,
           presets: [
-            ['es2015', { modules: false }]
-          ]
-        }
-      }
-    ]
-  }
+            ['es2015', { modules: false }],
+          ],
+        },
+      },
+    ],
+  },
 ];
 
-let prodRules = [
+const prodRules = [
   {
     test: /\.css$/,
     use: ExtractTextPlugin.extract({
@@ -44,8 +44,8 @@ let prodRules = [
         {
           loader: 'css-loader',
           options: {
-            minimize: true
-          }
+            minimize: true,
+          },
         },
         {
           loader: 'postcss-loader',
@@ -56,31 +56,31 @@ let prodRules = [
                 nested,
                 vars,
                 precss,
-                autoprefixer
+                autoprefixer,
               ];
-            }
-          }
-        }
-      ]
-    })
-  }
+            },
+          },
+        },
+      ],
+    }),
+  },
 ];
 
-let devRules = [
+const devRules = [
   {
     test: /\.css$/,
     use: [
       {
         loader: 'style-loader',
         options: {
-          sourceMap: true
-        }
+          sourceMap: true,
+        },
       },
       {
         loader: 'css-loader',
         options: {
-          sourceMap: true
-        }
+          sourceMap: true,
+        },
       },
       {
         loader: 'postcss-loader',
@@ -91,13 +91,13 @@ let devRules = [
               nested,
               vars,
               precss,
-              autoprefixer
+              autoprefixer,
             ];
-          }
-        }
-      }
-    ]
-  }
+          },
+        },
+      },
+    ],
+  },
 ];
 
 export default function(deployTarget) {

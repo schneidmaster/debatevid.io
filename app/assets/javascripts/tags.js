@@ -1,13 +1,13 @@
 import $ from 'jquery';
 
 $(document).ready(() => {
-  if (!($("#add_tag_tags_ids").length > 0)) {
+  if (!($('#add_tag_tags_ids').length > 0)) {
     return;
   }
 
-  return $(".tag-select").select2({
+  return $('.tag-select').select2({
     ajax: {
-      url: "/tags/autocomplete",
+      url: '/tags/autocomplete',
       delay: 250,
       data(term) {
         return { q: term };
@@ -15,7 +15,7 @@ $(document).ready(() => {
       results(data, page) {
         return { results: data };
       },
-      cache: true
+      cache: true,
     },
     minimumInputLength: 1,
     multiple: true,
@@ -27,9 +27,9 @@ $(document).ready(() => {
       ) {
         return {
           id: term,
-          text: term
+          text: term,
         };
       }
-    }
+    },
   });
 });

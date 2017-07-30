@@ -1,14 +1,14 @@
 import $ from 'jquery';
 
 $(document).ready(() => {
-  if (!($("#search-terms").length > 0)) {
+  if (!($('#search-terms').length > 0)) {
     return;
   }
 
   // Bind autocompletes
-  $(".tournament-select").select2({
+  $('.tournament-select').select2({
     ajax: {
-      url: "/tournaments/autocomplete",
+      url: '/tournaments/autocomplete',
       delay: 250,
       data(term) {
         return { q: term };
@@ -16,14 +16,14 @@ $(document).ready(() => {
       results(data, page) {
         return { results: data };
       },
-      cache: true
+      cache: true,
     },
-    minimumInputLength: 1
+    minimumInputLength: 1,
   });
 
-  $(".school-select").select2({
+  $('.school-select').select2({
     ajax: {
-      url: "/schools/autocomplete",
+      url: '/schools/autocomplete',
       delay: 250,
       data(term) {
         return { q: term };
@@ -31,14 +31,14 @@ $(document).ready(() => {
       results(data, page) {
         return { results: data };
       },
-      cache: true
+      cache: true,
     },
-    minimumInputLength: 1
+    minimumInputLength: 1,
   });
 
-  $(".team-select").select2({
+  $('.team-select').select2({
     ajax: {
-      url: "/teams/autocomplete",
+      url: '/teams/autocomplete',
       delay: 250,
       data(term) {
         return { q: term };
@@ -46,14 +46,14 @@ $(document).ready(() => {
       results(data, page) {
         return { results: data };
       },
-      cache: true
+      cache: true,
     },
-    minimumInputLength: 1
+    minimumInputLength: 1,
   });
 
-  $(".debater-select").select2({
+  $('.debater-select').select2({
     ajax: {
-      url: "/debaters/autocomplete",
+      url: '/debaters/autocomplete',
       delay: 250,
       data(term) {
         return { q: term };
@@ -61,14 +61,14 @@ $(document).ready(() => {
       results(data, page) {
         return { results: data };
       },
-      cache: true
+      cache: true,
     },
-    minimumInputLength: 1
+    minimumInputLength: 1,
   });
 
-  $(".tag-select").select2({
+  $('.tag-select').select2({
     ajax: {
-      url: "/tags/autocomplete",
+      url: '/tags/autocomplete',
       delay: 250,
       data(term) {
         return { q: term };
@@ -76,71 +76,71 @@ $(document).ready(() => {
       results(data, page) {
         return { results: data };
       },
-      cache: true
+      cache: true,
     },
-    minimumInputLength: 1
+    minimumInputLength: 1,
   });
 
-  $("#search-go").on("click", function(event) {
+  $('#search-go').on('click', (event) => {
     event.preventDefault();
 
-    let params = {};
+    const params = {};
 
-    if ($("#search_debate_level").val() !== "") {
-      params["debate_level"] = $("#search_debate_level").val();
+    if ($('#search_debate_level').val() !== '') {
+      params['debate_level'] = $('#search_debate_level').val();
     }
 
-    if ($("#search_debate_type").val() !== "") {
-      params["debate_type"] = $("#search_debate_type").val();
+    if ($('#search_debate_type').val() !== '') {
+      params['debate_type'] = $('#search_debate_type').val();
     }
 
-    if ($("#search_year").val() !== "") {
-      params["year"] = $("#search_year").val();
+    if ($('#search_year').val() !== '') {
+      params['year'] = $('#search_year').val();
     }
 
-    if ($("#search_tournament").val() !== "") {
-      params["tournament"] = $("#search_tournament").val();
+    if ($('#search_tournament').val() !== '') {
+      params['tournament'] = $('#search_tournament').val();
     }
 
-    if ($("#search_school").val() !== "") {
-      params["school"] = $("#search_school").val();
+    if ($('#search_school').val() !== '') {
+      params['school'] = $('#search_school').val();
     }
 
-    if ($("#search_team").val() !== "") {
-      params["team"] = $("#search_team").val();
+    if ($('#search_team').val() !== '') {
+      params['team'] = $('#search_team').val();
     }
 
-    if ($("#search_debater").val() !== "") {
-      params["debater"] = $("#search_debater").val();
+    if ($('#search_debater').val() !== '') {
+      params['debater'] = $('#search_debater').val();
     }
 
-    if ($("#search_tag").val() !== "") {
-      params["tag"] = $("#search_tag").val();
+    if ($('#search_tag').val() !== '') {
+      params['tag'] = $('#search_tag').val();
     }
 
-    return $.get("/videos/search", { data: params }, function(data) {
+    return $.get('/videos/search', { data: params }, (data) => {
       if (data === '<div class="row">\n</div>') {
-        return $("#search-results").html(
-          "No search results; try broadening your terms."
+        return $('#search-results').html(
+          'No search results; try broadening your terms.'
         );
       } else {
-        return $("#search-results").html(data);
+        return $('#search-results').html(data);
       }
     });
   });
 
-  return $("#search-clear").on("click", function(event) {
+  return $('#search-clear').on('click', (event) => {
     event.preventDefault();
 
-    $("#search_debate_level").val("");
-    $("#search_debate_type").val("");
-    $("#search_year").val("");
-    $("#search_tournament").select2("data", null);
-    $("#search_school").select2("data", null);
-    $("#search_team").select2("data", null);
-    $("#search_debater").select2("data", null);
-    $("#search_tag").select2("data", null);
+    $('#search_debate_level').val('');
+    $('#search_debate_type').val('');
+    $('#search_year').val('');
+    $('#search_tournament').select2('data', null);
+    $('#search_school').select2('data', null);
+    $('#search_team').select2('data', null);
+    $('#search_debater').select2('data', null);
+    $('#search_tag').select2('data', null);
 
-    return $("#search-results").html("");
+    return $('#search-results').html('');
   });
 });

@@ -1,4 +1,4 @@
 export default [
   'babel-polyfill',
-  'jquery'
-]
+  'jquery',
+];
