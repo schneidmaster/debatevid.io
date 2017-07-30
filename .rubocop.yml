@@ -18,6 +18,7 @@ Metrics/BlockLength:
   ExcludedMethods: ['describe', 'context', 'feature']
   Exclude:
     - config/routes.rb
+    - spec/spec_helper.rb
 Metrics/CyclomaticComplexity:
   Enabled: false
 Metrics/ClassLength:

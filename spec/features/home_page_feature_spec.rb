@@ -1,4 +1,4 @@
-feature 'Home Page' do
+feature 'Home Page', :needs_assets do
   let!(:video) { create :video }
 
   before { visit root_path }

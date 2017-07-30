@@ -1,4 +1,4 @@
-feature 'Authentication' do
+feature 'Authentication', :needs_assets do
   context 'using facebook' do
     context 'when authentication succeeds' do
       before { mock_fb }

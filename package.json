@@ -34,8 +34,7 @@
     "stats-webpack-plugin": "^0.6.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.1.0",
-    "webpack-bundle-analyzer": "^2.8.2",
-    "webpack-dev-server": "^2.5.1"
+    "webpack-bundle-analyzer": "^2.8.2"
   },
   "devDependencies": {
     "eslint": "^4.3.0",
@@ -47,6 +46,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-standard": "^3.0.1",
-    "eslint-plugin-you-dont-need-lodash-underscore": "^6.3.1"
+    "eslint-plugin-you-dont-need-lodash-underscore": "^6.3.1",
+    "webpack-dev-server": "^2.5.1"
   }
 }
