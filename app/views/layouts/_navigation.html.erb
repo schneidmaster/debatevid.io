@@ -13,16 +13,10 @@
     </div>
 
     <div class='collapse navbar-collapse' id='bs-nav'>
-      <ul class='nav navbar-nav'>
+      <ul class='nav navbar-nav navbar-right'>
         <li>
           <%= link_to 'FAQ', '/faq' %>
         </li>
-        <li>
-          <%= link_to 'Search', '/search' %>
-        </li>
-      </ul>
-
-      <ul class='nav navbar-nav navbar-right'>
         <% if logged_in? %>
           <li>
             <%= link_to 'Submit', new_video_path %>

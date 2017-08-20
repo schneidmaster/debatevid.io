@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.0'
 
 # core gems
 gem 'rails', '5.1'
@@ -13,14 +14,17 @@ gem 'omniauth-google-oauth2', '~> 0.5'
 # Utility.
 gem 'draper', '~> 3.0'
 gem 'high_voltage', '~> 3.0.0'
+gem 'impressionist'
 gem 'meta-tags'
+gem 'pg'
+gem 'react_on_rails', '8.0.0'
 gem 'rest-client', '1.8.0'
+gem 'surus'
 gem 'vimeo', '1.5.4'
 gem 'will_paginate', '~> 3.1'
 gem 'bootstrap-will_paginate'
 
 group :development do
-  gem 'sqlite3'
   gem 'web-console', '~> 3.0'
 end
 
@@ -45,7 +49,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'passenger'
   gem 'rails_12factor'
 

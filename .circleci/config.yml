@@ -3,7 +3,7 @@ jobs:
   test:
     working_directory: ~/debatevid.io
     docker:
-      - image: circleci/ruby:2.3-node
+      - image: circleci/ruby:2.4-node
         environment:
           GEM_HOME: /usr/local/bundle
           NODE_ENV: test

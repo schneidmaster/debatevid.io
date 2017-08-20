@@ -21,17 +21,8 @@ const commonRules = [
   },
   {
     test: /\.js$/,
-    use: [
-      {
-        loader: 'babel-loader',
-        options: {
-          babelrc: false,
-          presets: [
-            ['es2015', { modules: false }],
-          ],
-        },
-      },
-    ],
+    exclude: /node_modules/,
+    use: 'babel-loader',
   },
 ];
 

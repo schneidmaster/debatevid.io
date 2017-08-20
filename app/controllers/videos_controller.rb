@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_action :authorize, except: %i[show search]
+  before_action :authorize, except: %i[show]
 
   def show
     @video = Video.find(params[:id]).decorate
@@ -65,29 +65,10 @@ class VideosController < ApplicationController
     render json: info
   end
 
-  def search
-    videos = Video.all
-
-    videos = videos.send(search_param(:debate_level)) if search_param(:debate_level)
-    videos = videos.send(search_param(:debate_type)) if search_param(:debate_type)
-    videos = videos.joins(:tournament).where('tournaments.year = ?', search_param(:year)) if search_param(:year)
-    videos = videos.where(tournament: search_param(:tournament)) if search_param(:tournament)
-    videos = videos.joins(aff_team: :school).joins(neg_team: :school).where('schools.id = ? or schools_teams.id = ?', search_param(:school), search_param(:school)) if search_param(:school)
-    videos = videos.where('aff_team_id = ? or neg_team_id = ?', search_param(:team), search_param(:team)) if search_param(:team)
-    videos = videos.joins(aff_team: %i[debater_one debater_two]).joins(neg_team: %i[debater_one debater_two]).where('debaters.id = ? or debater_ones_teams.id = ? or debater_twos_teams.id = ? or debater_twos_teams_2.id = ?', search_param(:debater), search_param(:debater), search_param(:debater), search_param(:debater)) if search_param(:debater)
-    videos = videos.joins(:tags).where('tags.id = ?', search_param(:tag)) if search_param(:tag)
-
-    render partial: 'videos/table', locals: { videos: videos, no_paginate: true }
-  end
-
   private
 
   def authorize
     redirect_to [:login] unless logged_in?
-  end
-
-  def search_param(key)
-    params[:data][key]
   end
 
   def param(key)

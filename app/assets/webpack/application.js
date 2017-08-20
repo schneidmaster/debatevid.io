@@ -1,8 +1,6 @@
 // Javascripts.
 import 'bootstrap-jquery';
-import 'javascripts/search';
-import 'javascripts/tags';
-import 'javascripts/videos';
+import 'javascripts/components';
 
 // Styles.
 import 'bootstrap-jquery/dist/css/bootstrap';

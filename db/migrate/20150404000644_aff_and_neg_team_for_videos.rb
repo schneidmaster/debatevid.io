@@ -1,4 +1,4 @@
-class AffAndNegTeamForVideos < ActiveRecord::Migration
+class AffAndNegTeamForVideos < ActiveRecord::Migration[4.2]
   def change
     drop_table :teams_videos
 

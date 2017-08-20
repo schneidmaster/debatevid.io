@@ -1,4 +1,4 @@
-class CreateTournaments < ActiveRecord::Migration
+class CreateTournaments < ActiveRecord::Migration[4.2]
   def change
     create_table :tournaments do |t|
       t.integer :year
