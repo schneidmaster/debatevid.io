@@ -17,6 +17,7 @@ const commonState = Map({
   filters: Map(),
   possibleFilters: Map(),
   searchTerm: '',
+  sortOrder: '',
 });
 
 const parseJson = (json) => camelize(JSON.parse(json));
@@ -80,6 +81,8 @@ const commonReducer = (state, action) => {
     return state.deleteIn(['filters', action.payload.filterId]).set('page', 1);
   case 'SET_SEARCH_TERM':
     return state.set('searchTerm', action.payload).set('page', 1);
+  case 'SET_SORT_ORDER':
+    return state.set('sortOrder', action.payload);
   case 'DEFLATE':
     return commonState;
   default:

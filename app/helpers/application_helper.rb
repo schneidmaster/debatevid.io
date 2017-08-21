@@ -9,7 +9,7 @@ module ApplicationHelper
       debaters: Debater.all_json({ columns: [:id, :first_name, :last_name] }),
       tags: Tag.all_json({ columns: [:id, :title] }),
       videos: Video.all_json({
-        columns: [:id, :debate_type, :debate_level, :thumbnail, :live_now, :is_featured, :tournament_id, :aff_team_id, :neg_team_id],
+        columns: [:id, :created_at, :debate_type, :debate_level, :thumbnail, :live_now, :is_featured, :tournament_id, :aff_team_id, :neg_team_id, :impressionist_count],
         include: {
           tags_videos: {
             columns: [:tag_id]

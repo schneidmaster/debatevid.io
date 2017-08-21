@@ -45,3 +45,10 @@ export const setSearchTerm = (payload) => {
     payload,
   };
 };
+
+export const setSortOrder = (payload) => {
+  return {
+    type: 'SET_SORT_ORDER',
+    payload,
+  };
+};

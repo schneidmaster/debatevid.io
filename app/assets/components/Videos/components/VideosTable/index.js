@@ -7,12 +7,30 @@ const mapStateToProps = (state, ownProps) => {
   const itemsPerPage = state.getIn(['common', 'itemsPerPage']);
   const start = itemsPerPage * (page - 1);
   const searchTerm = state.getIn(['common', 'searchTerm']);
+  const sortOrder = state.getIn(['common', 'sortOrder']);
 
-  const videos =
+  let videos =
     state
       .getIn(['common', 'filters'])
-      .reduce((videos, filter) => filter.filter(videos), state.getIn(['common', 'videos']))
-      .filter((video) => video.matches(searchTerm));
+      .reduce((videos, filter) => filter.filter(videos), state.getIn(['common', 'videos']));
+
+  if(searchTerm !== '') {
+    videos = videos.filter((video) => video.matches(searchTerm));
+  }
+
+  if(sortOrder !== '') {
+    videos = videos.sortBy((video) => {
+      switch(sortOrder) {
+      case 'viewed':
+        return video.impressionistCount;
+      case 'liked':
+        return video.createdAt;
+      case 'recent':
+      default:
+        return video.createdAt;
+      }
+    }).reverse();
+  }
 
   return {
     page,

@@ -20,6 +20,12 @@ div.flex-body {
   margin-bottom: 25px;
 }
 
+.filters > select {
+  display: inline-block;
+  width: auto;
+  margin-right: 15px;
+}
+
 .filters > div, .filters > button {
   display: inline-block;
   margin-right: 15px;

@@ -4,6 +4,7 @@ import Tournament from './tournament';
 
 const defaultVideo = {
   id: null,
+  createdAt: null,
   debateType: null,
   debateLevel: null,
   thumbnail: null,
@@ -17,6 +18,7 @@ const defaultVideo = {
   negTeam: new Team(),
   tags: List(),
   tagsVideos: null,
+  impressionistCount: 0,
 };
 
 export default class Video extends Record(defaultVideo) {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170820185543) do
+ActiveRecord::Schema.define(version: 20170821022854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20170820185543) do
     t.integer "tournament_id"
     t.boolean "live_now", default: false
     t.boolean "is_featured", default: false
+    t.integer "impressionist_count", default: 0
   end
 
 end
