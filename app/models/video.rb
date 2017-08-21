@@ -33,7 +33,7 @@ class Video < ApplicationRecord
 
   attr_accessor :year, :aff_school, :neg_school, :aff_debater_one, :aff_debater_two, :neg_debater_one, :neg_debater_two, :tags_ids
 
-  is_impressionable counter_cache: true
+  is_impressionable counter_cache: true, column_name: :views
 
   def title
     "#{tournament.year_and_name}: #{aff_team.code} vs. #{neg_team.code}"

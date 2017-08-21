@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
     videos = videos.sortBy((video) => {
       switch(sortOrder) {
       case 'viewed':
-        return video.impressionistCount;
+        return video.views;
       case 'liked':
         return video.createdAt;
       case 'recent':

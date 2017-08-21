@@ -32,7 +32,7 @@ group :development, :test do
   gem 'byebug'
   gem 'dotenv-rails', '2.0.0'
   gem 'faker', '~> 1.3.0'
-  gem 'rubocop', '~> 0.49'
+  gem 'rubocop-aha'
 end
 
 group :test do
@@ -44,8 +44,8 @@ group :test do
   gem 'poltergeist', '~> 1.6.0'
   gem 'rack_session_access', '~> 0.1.1'
   gem 'rspec-rails', '~> 3.1'
-  gem 'simplecov', '~> 0.10.0'
-  gem 'webmock', '~> 1.18.0'
+  gem 'simplecov', '~> 0.13.0'
+  gem 'webmock', '~> 3.0.1'
 end
 
 group :production do

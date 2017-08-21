@@ -18,7 +18,7 @@ const defaultVideo = {
   negTeam: new Team(),
   tags: List(),
   tagsVideos: null,
-  impressionistCount: 0,
+  views: 0,
 };
 
 export default class Video extends Record(defaultVideo) {

@@ -1,37 +1,11 @@
+inherit_gem:
+  rubocop-aha: lib/config.yml
+
 AllCops:
   Exclude:
     - bin/**
     - db/**/*
     - node_modules/**/*
     - vendor/**/*
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
   DisplayCopNames: true
-
-Rails:
-  Enabled: true
-
-Bundler/OrderedGems:
-  Enabled: false
-Metrics/AbcSize:
-  Enabled: false
-Metrics/BlockLength:
-  ExcludedMethods: ['describe', 'context', 'feature']
-  Exclude:
-    - config/routes.rb
-    - spec/spec_helper.rb
-Metrics/CyclomaticComplexity:
-  Enabled: false
-Metrics/ClassLength:
-  Enabled: false
-Metrics/LineLength:
-  Enabled: false
-Metrics/MethodLength:
-  Enabled: false
-Metrics/ModuleLength:
-  Enabled: false
-Metrics/PerceivedComplexity:
-  Enabled: false
-Style/Documentation:
-  Enabled: false
-Style/FrozenStringLiteralComment:
-  Enabled: false

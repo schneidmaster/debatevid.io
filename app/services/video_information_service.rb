@@ -23,7 +23,7 @@ class VideoInformationService
         provider: 'vimeo',
         key: id,
         title: raw_info['title'],
-        thumbnail: raw_info['thumbnail_medium']
+        thumbnail: raw_info['thumbnail_medium'],
       }
     end
 
@@ -46,7 +46,7 @@ class VideoInformationService
         provider: 'youtube',
         key: id,
         title: item['snippet']['title'],
-        thumbnail: item['snippet']['thumbnails']['high']['url']
+        thumbnail: item['snippet']['thumbnails']['high']['url'],
       }
     end
 

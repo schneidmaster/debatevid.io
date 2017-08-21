@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 20170821022854) do
     t.integer "tournament_id"
     t.boolean "live_now", default: false
     t.boolean "is_featured", default: false
-    t.integer "impressionist_count", default: 0
+    t.integer "views", default: 0
   end
 
 end
