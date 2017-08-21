@@ -10,7 +10,7 @@ jobs:
           RAILS_ENV: test
       - image: circleci/postgres:9.6
         environment:
-          POSTGRES_USER: root
+          POSTGRES_USER: circleci
 
     steps:
       - checkout
