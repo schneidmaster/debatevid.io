@@ -1,6 +1,12 @@
 import { Record } from 'immutable';
 
-export default Record({
+const defaultTag = {
   id: null,
   title: null,
-}, 'Tag');
+};
+
+export default class Tag extends Record(defaultTag) {
+  matches(term) {
+    return this.title.toLowerCase().includes(term.toLowerCase());
+  }
+}

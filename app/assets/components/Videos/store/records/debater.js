@@ -1,7 +1,13 @@
 import { Record } from 'immutable';
 
-export default Record({
+const defaultDebater = {
   id: null,
   firstName: null,
   lastName: null,
-}, 'Debater');
+};
+
+export default class Debater extends Record(defaultDebater) {
+  getName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}

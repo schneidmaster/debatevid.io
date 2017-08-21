@@ -29,7 +29,7 @@ const inflateTeams = (teams, { schools, debaters }) => {
   return teams.map((team) => team.merge(Map({
     debaterOne: debaters.get(team.debaterOneId),
     debaterTwo: debaters.get(team.debaterTwoId),
-    school: debaters.get(team.schoolId),
+    school: schools.get(team.schoolId),
   })));
 };
 

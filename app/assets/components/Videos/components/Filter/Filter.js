@@ -11,6 +11,12 @@ const Filter = ({ filter, setFilterValue, deleteFilter }) => {
         {filter.options.map((option, label) => <option key={option} value={option}>{label}</option>).toList()}
       </select>
     );
+    break;
+  case 'input':
+    input = (
+      <input value={filter.value} onChange={(e) => setFilterValue(e.target.value)} />
+    );
+    break;
   }
 
   return (
