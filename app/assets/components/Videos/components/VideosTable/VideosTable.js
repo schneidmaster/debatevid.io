@@ -24,12 +24,14 @@ const VideosTable = ({ videos, page, itemsPerPage, videosTotal, handlePageChange
         );
       })}
 
-      <Pagination
-        activePage={page}
-        itemsCountPerPage={itemsPerPage}
-        totalItemsCount={videosTotal}
-        onChange={handlePageChange}
-      />
+      <div className='row text-center'>
+        <Pagination
+          activePage={page}
+          itemsCountPerPage={itemsPerPage}
+          totalItemsCount={videosTotal}
+          onChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 };
