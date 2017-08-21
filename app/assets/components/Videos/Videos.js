@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router/immutable';
 import { store, history } from 'components/Videos/store';
 import { hydrate, deflate } from 'components/Videos/store/actions';
-import VideosTable from 'components/Videos/components/VideosTable';
+import VideosApp from 'components/Videos/components/VideosApp';
 
 export default class Videos extends Component {
   componentWillMount() {
@@ -18,7 +18,7 @@ export default class Videos extends Component {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <VideosTable />
+          <VideosApp />
         </ConnectedRouter>
       </Provider>
     );

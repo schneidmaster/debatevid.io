@@ -16,6 +16,19 @@ div.flex-body {
   }
 }
 
+.mb {
+  margin-bottom: 25px;
+}
+
+.filters > div, .filters > button {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.filters i.fa-times {
+  margin-left: 5px;
+}
+
 .avatar-large {
   height: 35px;
   padding-bottom: 3px;

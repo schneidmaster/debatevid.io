@@ -1,5 +1,4 @@
 import { List, Record } from 'immutable';
-import Tag from './tag';
 import Team from './team';
 import Tournament from './tournament';
 
@@ -10,28 +9,17 @@ const defaultVideo = {
   thumbnail: null,
   liveNow: false,
   isFeatured: false,
+  tournamentId: null,
   tournament: new Tournament(),
+  affTeamId: null,
   affTeam: new Team(),
+  negTeamId: null,
   negTeam: new Team(),
   tags: List(),
+  tagsVideos: null,
 };
 
 export default class Video extends Record(defaultVideo) {
-  constructor({ id, debateType, debateLevel, thumbnail, liveNow, isFeatured, tournament, affTeam, negTeam, tagsVideos } = {}) {
-    super({
-      id,
-      debateType,
-      debateLevel,
-      thumbnail,
-      liveNow,
-      isFeatured,
-      tournament: new Tournament(tournament),
-      affTeam: new Team(affTeam),
-      negTeam: new Team(negTeam),
-      tags: tagsVideos.map(tv => new Tag(tv.tag)),
-    });
-  }
-
   getTitle() {
     return `${this.tournament.getYearAndName()}: ${this.affTeam.getTeamCode()} vs. ${this.negTeam.getTeamCode()}`;
   }

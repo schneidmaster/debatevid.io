@@ -17,3 +17,24 @@ export const setPage = (payload) => {
     payload,
   };
 };
+
+export const setFilter = (payload) => {
+  return {
+    type: 'SET_FILTER',
+    payload,
+  };
+};
+
+export const setFilterValue = (payload) => {
+  return {
+    type: 'SET_FILTER_VALUE',
+    payload,
+  };
+};
+
+export const deleteFilter = (payload) => {
+  return {
+    type: 'DELETE_FILTER',
+    payload,
+  };
+};

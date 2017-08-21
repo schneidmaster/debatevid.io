@@ -11,11 +11,11 @@ class Video < ApplicationRecord
   scope :with_team, ->(t) { where('aff_team_id = ? or neg_team_id = ?', t.id, t.id) }
 
   def self.debate_levels_select
-    { 'HS' => 'hs', 'College' => 'college' }
+    { 'HS' => debate_levels[:hs], 'College' => debate_levels[:college] }
   end
 
   def self.debate_types_select
-    { 'Policy' => 'policy', 'Parli' => 'parli', 'LD' => 'ld' }
+    { 'Policy' => debate_types[:policy], 'Parli' => debate_types[:parli], 'LD' => debate_types[:ld] }
   end
 
   self.per_page = 12

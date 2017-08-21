@@ -5,8 +5,10 @@ import { setPage } from 'components/Videos/store/actions';
 const mapStateToProps = (state, ownProps) => {
   const page = state.getIn(['common', 'page']);
   const itemsPerPage = state.getIn(['common', 'itemsPerPage']);
-  const videos = state.getIn(['common', 'videos']);
+  const allVideos = state.getIn(['common', 'videos']);
   const start = itemsPerPage * (page - 1);
+
+  const videos = state.getIn(['common', 'filters']).reduce((videos, filter) => filter.filter(videos), allVideos);
 
   return {
     page,

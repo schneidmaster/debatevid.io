@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Pagination from 'react-js-pagination';
-import Immutable from 'immutable';
+import { Map } from 'immutable';
 import _ from 'mudash';
 
 const VideosTable = ({ videos, page, itemsPerPage, videosTotal, handlePageChange }) => {
@@ -9,7 +9,7 @@ const VideosTable = ({ videos, page, itemsPerPage, videosTotal, handlePageChange
     <div>
       {_.chunk(videos, 3).map((chunk, idx) => {
         return (
-          <div className='row' key={idx}>
+          <div className='row mb' key={idx}>
             {chunk.map((video) => {
               return (
                 <div className='col-md-4 video-preview' key={video.id}>
@@ -19,7 +19,7 @@ const VideosTable = ({ videos, page, itemsPerPage, videosTotal, handlePageChange
                   </a>
                 </div>
               );
-            })}
+            }).toList()}
           </div>
         );
       })}
@@ -35,7 +35,7 @@ const VideosTable = ({ videos, page, itemsPerPage, videosTotal, handlePageChange
 };
 
 VideosTable.propTypes = {
-  videos: PropTypes.instanceOf(Immutable.List).isRequired,
+  videos: PropTypes.instanceOf(Map).isRequired,
   page: PropTypes.number.isRequired,
   itemsPerPage: PropTypes.number.isRequired,
   videosTotal: PropTypes.number.isRequired,
