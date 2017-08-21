@@ -23,4 +23,16 @@ export default class Video extends Record(defaultVideo) {
   getTitle() {
     return `${this.tournament.getYearAndName()}: ${this.affTeam.getTeamCode()} vs. ${this.negTeam.getTeamCode()}`;
   }
+
+  matchingTag(term) {
+    return this.tags.find((tag) => tag.matches(term)) !== undefined;
+  }
+
+  matches(term) {
+    if(term === '') {
+      return true;
+    } else {
+      return this.getTitle().toLowerCase().includes(term.toLowerCase()) || this.matchingTag(term);
+    }
+  }
 }

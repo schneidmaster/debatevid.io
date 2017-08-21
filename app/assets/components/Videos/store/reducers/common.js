@@ -16,6 +16,7 @@ const commonState = Map({
   videos: List(),
   filters: Map(),
   possibleFilters: Map(),
+  searchTerm: '',
 });
 
 const parseJson = (json) => camelize(JSON.parse(json));
@@ -72,11 +73,13 @@ const commonReducer = (state, action) => {
   case 'SET_PAGE':
     return state.set('page', action.payload);
   case 'SET_FILTER':
-    return state.setIn(['filters', action.payload.id], action.payload);
+    return state.setIn(['filters', action.payload.id], action.payload).set('page', 1);
   case 'SET_FILTER_VALUE':
-    return state.setIn(['filters', action.payload.filterId, 'value'], action.payload.value);
+    return state.setIn(['filters', action.payload.filterId, 'value'], action.payload.value).set('page', 1);
   case 'DELETE_FILTER':
-    return state.deleteIn(['filters', action.payload.filterId]);
+    return state.deleteIn(['filters', action.payload.filterId]).set('page', 1);
+  case 'SET_SEARCH_TERM':
+    return state.set('searchTerm', action.payload).set('page', 1);
   case 'DEFLATE':
     return commonState;
   default:

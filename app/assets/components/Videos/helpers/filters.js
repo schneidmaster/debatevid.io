@@ -124,7 +124,7 @@ export const createFilters = ({ levels, types, tournaments, schools, teams, deba
         if(this.value === '') {
           return videos;
         } else {
-          return videos.filter((video) => video.tags.find((tag) => tag.matches(this.value)));
+          return videos.filter((video) => video.matchingTag(this.value));
         }
       },
     }),
