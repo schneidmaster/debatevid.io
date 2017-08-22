@@ -835,9 +835,9 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
-bootstrap-jquery@^3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/bootstrap-jquery/-/bootstrap-jquery-3.3.2.tgz#a1468f742e2a61cf785b11e9cf03ca1f8e4693dd"
+bootstrap@^3.3.7:
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
 
 brace-expansion@^1.1.7:
   version "1.1.8"
@@ -1742,7 +1742,7 @@ es6-set@~0.1.5:
     es6-symbol "3.1.1"
     event-emitter "~0.3.5"
 
-es6-symbol@3.1.1, es6-symbol@^3.1, es6-symbol@^3.1.0, es6-symbol@^3.1.1, es6-symbol@~3.1, es6-symbol@~3.1.1:
+es6-symbol@3.1.1, es6-symbol@^3.1, es6-symbol@^3.1.1, es6-symbol@~3.1, es6-symbol@~3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/es6-symbol/-/es6-symbol-3.1.1.tgz#bf00ef4fdab6ba1b46ecb7b629b4c7ed5715cc77"
   dependencies:
@@ -2770,10 +2770,6 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
-jquery@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
-
 js-base64@^2.1.9:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.1.9.tgz#f0e80ae039a4bd654b5f281fc93f04a914a7fcce"
@@ -3149,14 +3145,6 @@ ms@0.7.1:
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
-
-mudash@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/mudash/-/mudash-0.10.0.tgz#dfbde3cc70691699ee75033f219bec3cb5ac9160"
-  dependencies:
-    es6-symbol "^3.1.0"
-    immutable "^3.8.1"
-    lodash "^4.17.4"
 
 multicast-dns-service-types@^1.1.0:
   version "1.1.0"

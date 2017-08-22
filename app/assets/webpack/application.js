@@ -1,9 +1,9 @@
 // Javascripts.
-import 'bootstrap-jquery';
 import 'javascripts/components';
+import 'javascripts/nav';
 
 // Styles.
-import 'bootstrap-jquery/dist/css/bootstrap';
+import 'bootstrap/dist/css/bootstrap';
 import 'font-awesome/css/font-awesome';
 import 'react-select/dist/react-select.css';
 import 'stylesheets/fonts';
