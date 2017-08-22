@@ -1,5 +1,5 @@
 import { List, Map } from 'immutable';
-import { Debater, School, Tag, Team, Tournament, Video } from 'components/Videos/store/records';
+import { Debater, School, Tag, Team, Tournament, Video } from 'components/store/records';
 import camelize from 'camelize';
 import { createFilters } from 'components/Videos/helpers/filters';
 

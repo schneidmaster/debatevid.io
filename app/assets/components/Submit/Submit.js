@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import store from 'components/store';
 import { hydrate, deflate } from 'components/store/actions';
-import VideosApp from 'components/Videos/components/VideosApp';
+import SubmitApp from 'components/Submit/components/SubmitApp';
 
-export default class Videos extends Component {
+export default class Submit extends Component {
   componentWillMount() {
     store.dispatch(hydrate(this.props));
   }
@@ -16,7 +16,7 @@ export default class Videos extends Component {
   render() {
     return (
       <Provider store={store}>
-        <VideosApp />
+        <SubmitApp />
       </Provider>
     );
   }

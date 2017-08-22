@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Filter from './Filter';
-import { setFilterValue, deleteFilter } from 'components/Videos/store/actions';
+import { setFilterValue, deleteFilter } from 'components/store/actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import VideosTable from './VideosTable';
-import { setPage } from 'components/Videos/store/actions';
+import { setPage } from 'components/store/actions';
 
 const mapStateToProps = (state, ownProps) => {
   const page = state.getIn(['common', 'page']);

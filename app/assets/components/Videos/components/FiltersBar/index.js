@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import FiltersBar from './FiltersBar';
-import { setFilter } from 'components/Videos/store/actions';
+import { setFilter } from 'components/store/actions';
 
 const mapStateToProps = (state, ownProps) => {
   const possibleFilters = state.getIn(['common', 'possibleFilters']);

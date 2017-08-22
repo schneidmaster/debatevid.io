@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import { Filter as FilterRecord } from 'components/Videos/store/records';
+import { Filter as FilterRecord } from 'components/store/records';
 
 const Filter = ({ filter, setFilterValue, deleteFilter }) => {
   let input;

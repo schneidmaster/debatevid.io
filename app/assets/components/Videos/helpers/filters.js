@@ -1,5 +1,5 @@
 import { List, Map } from 'immutable';
-import { Filter } from 'components/Videos/store/records';
+import { Filter } from 'components/store/records';
 
 export const createFilters = ({ levels, types, tournaments, schools, teams, debaters, tags }) => {
   return List([

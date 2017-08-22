@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Sort from './Sort';
-import { setSortOrder } from 'components/Videos/store/actions';
+import { setSortOrder } from 'components/store/actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
