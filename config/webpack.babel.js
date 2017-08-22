@@ -44,6 +44,7 @@ const config = {
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', minChunks: Infinity }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new StatsPlugin('webpack_manifest.json', {
       chunkModules: false,
       source: false,
@@ -58,7 +59,7 @@ const config = {
 if (deployTarget) {
   config.plugins.push(
     new ExtractTextPlugin({ filename: `${cssNamePattern}.css` }),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new AssetMapPlugin(path.resolve('public', 'assets', 'asset_map.json')),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
