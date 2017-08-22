@@ -8,26 +8,27 @@ import { List, Map } from 'immutable';
 const FiltersBar = ({ filters, availableFilters, addFilter }) => {
   return (
     <div className='row mb'>
-      <div className='col-md-10 filters'>
-        <Sort />
-        <div className='dropdown'>
-          <button className='btn btn-default dropdown-toggle' type='button' id='addFilter' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>
-            Filter <span className='caret' />
-          </button>
-          <ul className='dropdown-menu' aria-labelledby='addFilter'>
-            {availableFilters.map((filter) => {
-              return (
-                <li key={filter}>
-                  <a href='#' onClick={(e) => addFilter(e, filter)}>{filter.label}</a>
-                </li>
-              );
-            })}
-          </ul>
+      <div className='col-md-12 filters'>
+        <div className='filters-left'>
+          <Sort />
+          <div className='dropdown add-filter'>
+            <button className='btn btn-default dropdown-toggle' type='button' id='addFilter' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>
+              Filter <span className='caret' />
+            </button>
+            <ul className='dropdown-menu' aria-labelledby='addFilter'>
+              {availableFilters.map((filter) => {
+                return (
+                  <li key={filter}>
+                    <a href='#' onClick={(e) => addFilter(e, filter)}>{filter.label}</a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          {filters.keySeq().map((key) => <Filter key={key} filterId={key} />)}
         </div>
 
-        {filters.keySeq().map((key) => <Filter key={key} filterId={key} />)}
-      </div>
-      <div className='col-md-2'>
         <Search />
       </div>
     </div>

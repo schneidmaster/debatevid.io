@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 
 const Search = ({ searchTerm, setSearchTerm }) => {
   return (
-    <input
-      type='search'
-      placeholder='Search'
-      className='form-control'
-      value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
-    />
+    <div className='search'>
+      <input
+        type='search'
+        placeholder='Search'
+        className='form-control'
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+    </div>
   );
 };
 

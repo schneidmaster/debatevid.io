@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Select from 'react-select';
 import { Filter as FilterRecord } from 'components/Videos/store/records';
 
 const Filter = ({ filter, setFilterValue, deleteFilter }) => {
@@ -7,9 +8,12 @@ const Filter = ({ filter, setFilterValue, deleteFilter }) => {
   switch(filter.type) {
   case 'select':
     input = (
-      <select value={filter.value} onChange={(e) => setFilterValue(e.target.value)}>
-        {filter.options.map((option, label) => <option key={option} value={option}>{label}</option>).toList()}
-      </select>
+      <Select
+        value={filter.value}
+        options={filter.options.map((value, label) => ({ value, label })).toArray()}
+        onChange={({ value }) => setFilterValue(value)}
+        clearable={false}
+      />
     );
     break;
   case 'input':
@@ -20,13 +24,15 @@ const Filter = ({ filter, setFilterValue, deleteFilter }) => {
   }
 
   return (
-    <button className='btn btn-default'>
-      {filter.label}
+    <div className='filter'>
+      <div className='filter-label'>{filter.label}</div>
 
-      {input}
+      <div className='filter-input'>
+        {input}
+      </div>
 
       <i className='fa fa-times' onClick={(e) => deleteFilter(filter.id)} />
-    </button>
+    </div>
   );
 };
 

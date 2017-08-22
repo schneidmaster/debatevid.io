@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => {
   const filters = state.getIn(['common', 'filters']);
 
   return {
-    availableFilters: possibleFilters.filterNot((filter, key) => filters.has(key)),
+    availableFilters: possibleFilters.filterNot((filter) => filters.has(filter.id)),
     filters,
   };
 };

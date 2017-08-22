@@ -20,19 +20,75 @@ div.flex-body {
   margin-bottom: 25px;
 }
 
-.filters > select {
-  display: inline-block;
-  width: auto;
-  margin-right: 15px;
-}
+.filters {
+  display: flex;
+  flex-direction: row;
 
-.filters > div, .filters > button {
-  display: inline-block;
-  margin-right: 15px;
-}
+  .filters-left {
+    display: flex;
+    flex: 4;
+    justify-content: flex-start;
 
-.filters i.fa-times {
-  margin-left: 5px;
+    .sort {
+      margin-right: 10px;
+
+      .form-control {
+        width: auto;
+        height: 46px;
+      }
+    }
+
+    .add-filter {
+      margin-right: 10px;
+      align-self: flex-start;
+
+      .btn {
+        height: 46px;
+      }
+    }
+
+    .filter {
+      display: flex;
+      background-color: #F0F0F0;
+      padding: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 5px;
+      margin-right: 10px;
+
+      .filter-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .Select {
+        min-width: 100px;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+      .fa-times {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .search {
+    flex: 1;
+    align-self: flex-end;
+    min-width: 75px;
+
+    input {
+      height: 46px;
+    }
+  }
 }
 
 .avatar-large {
