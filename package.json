@@ -14,7 +14,7 @@
     "lint": "eslint 'app/assets/**/*.js' 'config/**/*.js'"
   },
   "dependencies": {
-    "asset-map-webpack-plugin": "git+https://github.com/schneidmaster/asset-map-webpack-plugin#webpack-dev-server",
+    "asset-map-webpack-plugin": "^2.0.0",
     "autoprefixer": "^7.1.1",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",

@@ -60,7 +60,7 @@ if (deployTarget) {
   config.plugins.push(
     new ExtractTextPlugin({ filename: `${cssNamePattern}.css` }),
     new webpack.NoEmitOnErrorsPlugin(),
-    new AssetMapPlugin(path.resolve('public', 'assets', 'asset_map.json')),
+    new AssetMapPlugin('asset_map.json'),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         screw_ie8: true,

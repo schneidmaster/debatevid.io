@@ -213,9 +213,9 @@ assert@^1.1.1:
   dependencies:
     util "0.10.3"
 
-"asset-map-webpack-plugin@git+https://github.com/schneidmaster/asset-map-webpack-plugin#webpack-dev-server":
-  version "1.2.1"
-  resolved "git+https://github.com/schneidmaster/asset-map-webpack-plugin#b740b0204e16bcc1e71874d2a40274d57a854e3c"
+asset-map-webpack-plugin@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/asset-map-webpack-plugin/-/asset-map-webpack-plugin-2.0.0.tgz#a785e2fedb07ead1169e32a906b216d320c9aeae"
   dependencies:
     url "^0.10.3"
     webpack "^1.5.3"
