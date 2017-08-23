@@ -46,7 +46,8 @@
     "stats-webpack-plugin": "^0.6.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.1.0",
-    "webpack-bundle-analyzer": "^2.8.2"
+    "webpack-bundle-analyzer": "^2.8.2",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "eslint": "^4.3.0",

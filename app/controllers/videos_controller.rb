@@ -62,14 +62,14 @@ class VideosController < ApplicationController
   def info
     info = VideoInformationService.link_info(params[:link])
     provider = Video.providers[info[:provider]]
-    info = { exists: true } if Video.where('videos.provider = ? and videos.key like ?', provider, "%#{info[:key]}%").positive?
+    info = { exists: true } if Video.where('videos.provider = ? and videos.key like ?', provider, "%#{info[:key]}%").count.positive?
     render json: info
   end
 
   private
 
   def authorize
-    redirect_to [:login] unless logged_in?
+    redirect_to root_path, error: 'You must log in first.' unless logged_in?
   end
 
   def param(key)

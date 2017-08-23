@@ -23,3 +23,4 @@
 # Ignore dev files.
 .env
 /coverage
+.byebug_history

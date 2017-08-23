@@ -91,6 +91,25 @@ div.flex-body {
   }
 }
 
+.video-preview {
+  margin-bottom: 10px;
+}
+
+.segment {
+  border: solid 1px #999;
+  padding: 5px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+
+  .fa-times {
+    margin: 2px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
 .avatar-large {
   height: 35px;
   padding-bottom: 3px;

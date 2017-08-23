@@ -5,4 +5,4 @@ export { default as Tag } from './records/tag';
 export { default as Team } from './records/team';
 export { default as Tournament } from './records/tournament';
 export { default as Video } from './records/video';
-
+export { default as VideoInfo } from './records/videoInfo';

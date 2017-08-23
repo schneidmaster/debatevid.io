@@ -1,5 +1,6 @@
 export default [
   'babel-polyfill',
+  'whatwg-fetch',
   'camelize',
   'core-js',
   'immutable',
