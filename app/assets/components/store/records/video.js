@@ -30,6 +30,10 @@ export default class Video extends Record(defaultVideo) {
     return this.tags.find((tag) => tag.matches(term)) !== undefined;
   }
 
+  matchingTagId(id) {
+    return this.tags.find((tag) => tag.id === id) !== undefined;
+  }
+
   matches(term) {
     if(term === '') {
       return true;

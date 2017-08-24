@@ -7,7 +7,7 @@ export const createFilters = ({ levels, types, tournaments, schools, teams, deba
       id: 'level',
       label: 'Level',
       type: 'select',
-      options: levels.set('Any', 'any'),
+      options: levels.set('Any', 'any').sort().reverse(),
       value: 'any',
       filter(videos) {
         if(this.value === 'any') {
@@ -22,7 +22,7 @@ export const createFilters = ({ levels, types, tournaments, schools, teams, deba
       id: 'type',
       label: 'Format',
       type: 'select',
-      options: types.set('Any', 'any'),
+      options: types.set('Any', 'any').sort().reverse(),
       value: 'any',
       filter(videos) {
         if(this.value === 'any') {
@@ -37,7 +37,7 @@ export const createFilters = ({ levels, types, tournaments, schools, teams, deba
       id: 'year',
       label: 'Year',
       type: 'select',
-      options: Map(tournaments.map(t => t.year).groupBy(y => y).keySeq().sort().map((y) => [y, y])).set('Any', 'any'),
+      options: Map(tournaments.map(t => t.year).groupBy(y => y).keySeq().sort().map((y) => [y, y])).set('Any', 'any').reverse(),
       value: 'any',
       filter(videos) {
         if(this.value === 'any') {
@@ -52,7 +52,7 @@ export const createFilters = ({ levels, types, tournaments, schools, teams, deba
       id: 'tournament',
       label: 'Tournament',
       type: 'select',
-      options: tournaments.map(t => t.getYearAndName()).flip().set('Any', 'any'),
+      options: tournaments.map(t => t.getYearAndName()).set('any', 'Any').sort().flip(),
       value: 'any',
       filter(videos) {
         if(this.value === 'any') {
@@ -67,7 +67,7 @@ export const createFilters = ({ levels, types, tournaments, schools, teams, deba
       id: 'school',
       label: 'School',
       type: 'select',
-      options: schools.map(s => s.shortName).flip().set('Any', 'any'),
+      options: schools.map(s => s.shortName).set('any', 'Any').sort().flip(),
       value: 'any',
       filter(videos) {
         if(this.value === 'any') {
@@ -82,7 +82,7 @@ export const createFilters = ({ levels, types, tournaments, schools, teams, deba
       id: 'team',
       label: 'Team',
       type: 'select',
-      options: teams.map(t => t.getTeamCode()).flip().set('Any', 'any'),
+      options: teams.map(t => t.getTeamCode()).set('any', 'Any').sort().flip(),
       value: 'any',
       filter(videos) {
         if(this.value === 'any') {
@@ -97,7 +97,7 @@ export const createFilters = ({ levels, types, tournaments, schools, teams, deba
       id: 'debater',
       label: 'Debater',
       type: 'select',
-      options: debaters.map(d => d.getName()).sort().flip().set('Any', 'any'),
+      options: debaters.map(d => d.getName()).set('any', 'Any').sort().flip(),
       value: 'any',
       filter(videos) {
         if(this.value === 'any') {
@@ -118,13 +118,14 @@ export const createFilters = ({ levels, types, tournaments, schools, teams, deba
     new Filter({
       id: 'tag',
       label: 'Tag',
-      type: 'input',
-      value: '',
+      type: 'select',
+      options: tags.map(t => t.title).set('any', 'Any').sort().flip(),
+      value: 'any',
       filter(videos) {
-        if(this.value === '') {
+        if(this.value === 'any') {
           return videos;
         } else {
-          return videos.filter((video) => video.matchingTag(this.value));
+          return videos.filter((video) => video.matchingTagId(this.value));
         }
       },
     }),
