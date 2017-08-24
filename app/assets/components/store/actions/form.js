@@ -21,7 +21,7 @@ const addHydratedFormSegment = (payload) => {
 
 export const addFormSegment = (link) => {
   return (dispatch, getState) => {
-    const link = getState().getIn(['form', 'segmentInput']);
+    const link = getState().getIn(['segments', 'segmentInput']);
     if(link === '') {
       return;
     }

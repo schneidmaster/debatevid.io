@@ -1,26 +1,27 @@
+import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form/immutable';
 import Details from './Details';
-import { setSegmentForm } from 'components/store/actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    hide: state.getIn(['form', 'segments']).size === 0,
+    hide: state.getIn(['segments', 'segments']).size === 0,
     levels: state.getIn(['common', 'levels']),
-    level: state.getIn(['form', 'level']),
     types: state.getIn(['common', 'types']),
-    type: state.getIn(['form', 'type']),
-    year: state.getIn(['form', 'year']),
-    allTags: state.getIn(['common', 'tags']),
-    tags: state.getIn(['form', 'tags']),
+    tags: state.getIn(['common', 'tags']).sortBy((tag) => tag.title),
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    setSegmentForm(field, value) {
-      dispatch(setSegmentForm({ field, value }));
+    onSubmit(values) {
+      // todo: submit form to server
+      console.log(values);
     },
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Details);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  reduxForm({ form: 'videoDetails' })
+)(Details);

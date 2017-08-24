@@ -1,16 +1,19 @@
-import Immutable from 'immutable';
+import { Map } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 import { commonReducer, commonState } from './reducers/common';
-import { formReducer, formState } from './reducers/form';
+import { segmentsReducer, segmentsState } from './reducers/segments';
+import { reducer as formReducer } from 'redux-form/immutable';
 
 const reducers = combineReducers({
   common: commonReducer,
   form: formReducer,
+  segments: segmentsReducer,
 });
 
-const initialState = Immutable.Map({
+const initialState = Map({
   common: commonState,
-  form: formState,
+  form: Map(),
+  segments: segmentsState,
 });
 
 export { reducers, initialState };

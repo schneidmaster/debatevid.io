@@ -1,9 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Select from 'react-select';
+import { Field } from 'redux-form/immutable';
+import Select from 'components/common/RFReactSelect';
 import { Map } from 'immutable';
+import classnames from 'classnames';
 
-const Details = ({ hide, setSegmentForm, levels, level, types, type, year, allTags, tags }) => {
+const required = value => value || value === 0 ? undefined : 'Required';
+
+const renderField = ({ input, label, type, className, meta: { touched, error } }) => {
+  return (
+    <input {...input} type={type} placeholder={label} className={classnames(className, { error: touched && error })} />
+  );
+};
+
+const Details = ({ hide, handleSubmit, levels, types, tags }) => {
   if(hide) {
     return null;
   } else {
@@ -13,44 +23,50 @@ const Details = ({ hide, setSegmentForm, levels, level, types, type, year, allTa
           <h3 className='panel-title'>Video details</h3>
         </div>
         <div className='panel-body'>
-          <div className='form-group'>
-            <label>Level</label>
-            <Select
-              value={level}
-              options={levels.map((value, label) => ({ value, label })).toArray()}
-              onChange={({ value }) => setSegmentForm('level', value)}
-            />
-          </div>
+          <form onSubmit={handleSubmit}>
+            <div className='form-group'>
+              <label>Level</label>
+              <Field
+                name='level'
+                options={levels.map((value, label) => ({ value, label })).toArray()}
+                component={Select}
+                validate={[required]}
+              />
+            </div>
 
-          <div className='form-group'>
-            <label>Debate type</label>
-            <Select
-              value={type}
-              options={types.map((value, label) => ({ value, label })).toArray()}
-              onChange={({ value }) => setSegmentForm('type', value)}
-            />
-          </div>
+            <div className='form-group'>
+              <label>Debate type</label>
+              <Field
+                name='debateType'
+                options={types.map((value, label) => ({ value, label })).toArray()}
+                component={Select}
+                validate={[required]}
+              />
+            </div>
 
-          <div className='form-group'>
-            <label>Year</label>
-            <input
-              type='number'
-              className='form-control'
-              value={year || ''}
-              onChange={(e) => setSegmentForm('year', e.target.value)}
-            />
-          </div>
+            <div className='form-group'>
+              <label>Year</label>
+              <Field
+                className='form-control'
+                name='year'
+                component={renderField}
+                type='number'
+                validate={[required]}
+              />
+            </div>
 
-          <div className='form-group'>
-            <label>Tags</label>
-            <Select
-              value={tags}
-              options={allTags.map((tag) => ({ value: String(tag.id), label: tag.title })).toArray()}
-              onChange={(value) => setSegmentForm('tags', value)}
-              multi
-              simpleValue
-            />
-          </div>
+            <div className='form-group'>
+              <label>Tags</label>
+              <Field
+                name='type'
+                options={tags.map((tag) => ({ value: String(tag.id), label: tag.title })).toArray()}
+                component={Select}
+                multi
+              />
+            </div>
+
+            <button type='submit' className='btn btn-primary'>Submit</button>
+          </form>
         </div>
       </div>
     );
@@ -59,14 +75,9 @@ const Details = ({ hide, setSegmentForm, levels, level, types, type, year, allTa
 
 Details.propTypes = {
   hide: PropTypes.bool.isRequired,
-  setSegmentForm: PropTypes.func.isRequired,
   levels: PropTypes.instanceOf(Map).isRequired,
-  level: PropTypes.number,
   types: PropTypes.instanceOf(Map).isRequired,
-  type: PropTypes.number,
-  year: PropTypes.number,
-  allTags: PropTypes.instanceOf(Map),
-  tags: PropTypes.string,
+  tags: PropTypes.instanceOf(Map).isRequired,
 };
 
 export default Details;

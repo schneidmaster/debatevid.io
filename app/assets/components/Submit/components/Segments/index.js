@@ -4,8 +4,8 @@ import { addFormSegment, deleteFormSegment, setSegmentInput } from 'components/s
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    segmentInput: state.getIn(['form', 'segmentInput']),
-    segments: state.getIn(['form', 'segments']),
+    segmentInput: state.getIn(['segments', 'segmentInput']),
+    segments: state.getIn(['segments', 'segments']),
   };
 };
 

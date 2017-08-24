@@ -110,6 +110,10 @@ div.flex-body {
   }
 }
 
+.error .Select-control, .form-control.error {
+  border: solid red 1px;
+}
+
 .avatar-large {
   height: 35px;
   padding-bottom: 3px;
