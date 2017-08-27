@@ -21,8 +21,6 @@ gem 'react_on_rails', '8.0.0'
 gem 'rest-client', '~> 2.0.1'
 gem 'surus'
 gem 'vimeo', '1.5.4'
-gem 'will_paginate', '~> 3.1'
-gem 'bootstrap-will_paginate'
 
 group :development do
   gem 'web-console', '~> 3.0'

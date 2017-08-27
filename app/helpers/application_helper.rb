@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def data_json
+  def data_json(videos = Video.all)
     {
       levels: Video.debate_levels_select,
       types: Video.debate_types_select,
@@ -8,7 +8,7 @@ module ApplicationHelper
       teams: Team.all_json(columns: %i[id school_id debater_one_id debater_two_id]),
       debaters: Debater.all_json(columns: %i[id first_name last_name]),
       tags: Tag.all_json(columns: %i[id title]),
-      videos: Video.all_json(
+      videos: videos.all_json(
         columns: %i[id created_at debate_type debate_level thumbnail live_now is_featured tournament_id aff_team_id neg_team_id views],
         include: {
           tags_videos: {
