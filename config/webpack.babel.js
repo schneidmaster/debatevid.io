@@ -61,6 +61,11 @@ if (deployTarget) {
     new ExtractTextPlugin({ filename: `${cssNamePattern}.css` }),
     new webpack.NoEmitOnErrorsPlugin(),
     new AssetMapPlugin('asset_map.json'),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         screw_ie8: true,
