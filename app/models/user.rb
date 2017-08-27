@@ -17,8 +17,4 @@ class User < ApplicationRecord
       user
     end
   end
-
-  def to_s
-    name
-  end
 end

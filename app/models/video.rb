@@ -29,11 +29,9 @@ class Video < ApplicationRecord
   has_many :tags_videos
   has_many :tags, through: :tags_videos
 
-  accepts_nested_attributes_for :tournament, :aff_team, :neg_team, :tags
+  accepts_nested_attributes_for :tournament, :aff_team, :neg_team, :tags_videos
 
   serialize :key, Array
-
-  attr_accessor :year, :aff_school, :neg_school, :aff_debater_one, :aff_debater_two, :neg_debater_one, :neg_debater_two, :tags_ids
 
   is_impressionable counter_cache: true, column_name: :views
 
@@ -42,23 +40,24 @@ class Video < ApplicationRecord
   end
 
   def thumbnail
-    return nil unless self[:thumbnail]
     if youtube?
       "https://img.youtube.com/vi/#{key.first}/hqdefault.jpg"
-    else
+    elsif self[:thumbnail]
       self[:thumbnail].sub('200x150', '600x450')
     end
   end
 
-  def team_one
-    teams.first
+  def segments=(attrs)
+    self.provider = attrs.first[:provider]
+    self.thumbnail = attrs.first[:thumbnail]
+    self.key = attrs.map { |segment| segment[:key] }
   end
 
-  def team_two
-    teams.last
+  def autosave_associated_records_for_aff_team
+    self.aff_team = Team.find_or_create_by(school: aff_team.school, debater_one: aff_team.debater_one, debater_two: aff_team.debater_two)
   end
 
-  def to_s
-    title
+  def autosave_associated_records_for_neg_team
+    self.neg_team = Team.find_or_create_by(school: neg_team.school, debater_one: neg_team.debater_one, debater_two: neg_team.debater_two)
   end
 end

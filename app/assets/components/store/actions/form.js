@@ -49,13 +49,17 @@ export const deleteFormSegment = (payload) => {
   };
 };
 
-const objectAttributes = (value, nameParam = 'name') => {
-  if(typeof value === 'undefined') {
-    return null;
-  } else if(isNaN(value)) {
-    return { [nameParam]: value };
+const nestedAttributes = (key, attr, nameParam = 'name') => {
+  if(isNaN(attr)) {
+    return {
+      [`${key}Attributes`]: {
+        [nameParam]: attr,
+      },
+    };
   } else {
-    return { id: value };
+    return {
+      [`${key}Id`]: attr,
+    };
   }
 };
 
@@ -63,31 +67,33 @@ export const createVideo = (values) => {
   return (dispatch, getState) => {
     values = values.toJS();
 
-    values.affTeamAttributes = {
-      debaterOneAttributes: objectAttributes(values.affDebaterOne),
-      debaterTwoAttributes: objectAttributes(values.affDebaterTwo),
-      schoolAttributes: objectAttributes(values.affSchool),
-    };
+    values.affTeamAttributes = Object.assign(
+      {},
+      nestedAttributes('debaterOne', values.affDebaterOne),
+      nestedAttributes('debaterTwo', values.affDebaterTwo),
+      nestedAttributes('school', values.affSchool),
+    );
     delete values.affSchool;
     delete values.affDebaterOne;
     delete values.affDebaterTwo;
 
-    values.negTeamAttributes = {
-      debaterOneAttributes: objectAttributes(values.negDebaterOne),
-      debaterTwoAttributes: objectAttributes(values.negDebaterTwo),
-      schoolAttributes: objectAttributes(values.negSchool),
-    };
+    values.negTeamAttributes = Object.assign(
+      {},
+      nestedAttributes('debaterOne', values.negDebaterOne),
+      nestedAttributes('debaterTwo', values.negDebaterTwo),
+      nestedAttributes('school', values.negSchool),
+    );
     delete values.negSchool;
     delete values.negDebaterOne;
     delete values.negDebaterTwo;
 
-    values.tournamentAttributes = objectAttributes(values.tournament);
+    values = Object.assign(values, nestedAttributes('tournament', values.tournament));
     delete values.tournament;
 
-    values.tagsAttributes = values.tags.map((tag) => objectAttributes(tag, 'title'));
+    values.tagsAttributes = values.tags.map((tag) => nestedAttributes('tag', tag, 'title'));
     delete values.tags;
 
-    values.segments = getState().getIn(['segments', 'segments']);
+    values.segments = getState().getIn(['segments', 'segments']).toJS();
 
     fetch(`/videos`, { credentials: 'same-origin', method: 'POST', body: decamelizeKeys(values) })
       .then((response) => response.json())

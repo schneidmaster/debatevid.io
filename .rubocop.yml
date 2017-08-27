@@ -9,3 +9,6 @@ AllCops:
     - vendor/**/*
   TargetRubyVersion: 2.4
   DisplayCopNames: true
+
+RSpec/LetSetup:
+  Enabled: false

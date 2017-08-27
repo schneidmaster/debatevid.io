@@ -6,7 +6,7 @@ class Team < ApplicationRecord
 
   scope :with_debaters, ->(one, two) { where('(debater_one_id = ? and debater_two_id = ?) or (debater_one_id = ? and debater_two_id = ?)', one, two, two, one) }
 
-  scope :like, ->(q) { joins(:debater_one, :debater_two).where('lower(debaters.first_name) like ? or lower(debaters.last_name) like ? or lower(debater_twos_teams.first_name) like ? or lower(debater_twos_teams.last_name) like ?', "%#{q.downcase}%", "%#{q.downcase}%", "%#{q.downcase}%", "%#{q.downcase}%") }
+  accepts_nested_attributes_for :debater_one, :debater_two
 
   def debater_one
     Debater.find(debater_one_id) if Debater.exists?(debater_one_id)
@@ -30,9 +30,5 @@ class Team < ApplicationRecord
 
   def code_with_names
     "#{school.name_for_code} #{debater_names}"
-  end
-
-  def to_s
-    code
   end
 end

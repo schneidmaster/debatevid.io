@@ -52,6 +52,7 @@ RSpec.configure do |config|
   config.order = 'random'
 
   # Include custom helpers
+  config.include Controllers::AuthenticationHelpers, type: :controller
   config.include Features::MockHelpers, type: :feature
   config.include Features::SessionHelpers, type: :feature
 
