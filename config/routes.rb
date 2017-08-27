@@ -22,5 +22,11 @@ Rails.application.routes.draw do
   end
   resources :videos, only: %i[show new create] do
     post :add_tags, as: 'add_tags'
+
+    resources :favorites, only: [:create] do
+      collection do
+        delete :destroy
+      end
+    end
   end
 end

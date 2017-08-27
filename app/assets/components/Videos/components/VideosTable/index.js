@@ -24,7 +24,7 @@ const mapStateToProps = (state, ownProps) => {
       case 'viewed':
         return video.views;
       case 'liked':
-        return video.createdAt;
+        return video.favoritesCount;
       case 'recent':
       default:
         return video.createdAt;
