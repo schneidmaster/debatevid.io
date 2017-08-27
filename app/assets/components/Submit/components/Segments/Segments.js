@@ -26,7 +26,7 @@ const Segments = ({ segmentInput, segments, setSegmentInput, addFormSegment, del
     );
     helpBlock = (
       <p className='help-block'>
-        If the video is in multiple segments on YouTube, you can add each link and DebateVid.io will automatically display as a playlist. Vimeo only supports one segment.
+        If the video is in multiple segments on YouTube, you can add each link and DebateVid.io will automatically display as a playlist. Only one segment is supported for Vimeo.
       </p>
     );
   } else if(firstSegment.provider === 'youtube') {
