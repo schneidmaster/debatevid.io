@@ -13,12 +13,14 @@ gem 'omniauth-google-oauth2', '~> 0.5'
 
 # Utility.
 gem 'draper', '~> 3.0'
+gem 'fog-aws' # used by sitemap_generator to store on s3
 gem 'high_voltage', '~> 3.0.0'
 gem 'impressionist'
 gem 'meta-tags'
 gem 'pg'
 gem 'react_on_rails', '8.0.0'
 gem 'rest-client', '~> 2.0.1'
+gem 'sitemap_generator'
 gem 'surus'
 gem 'vimeo', '1.5.4'
 

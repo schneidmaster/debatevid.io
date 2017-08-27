@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/auth/failure', to: 'session#failure'
   get '/logout', to: 'session#logout', as: 'logout'
 
+  get '/sitemap.xml.gz', to: 'sitemap#index'
+
   # Error pages.
   %w[404 422 500].each do |code|
     match code, to: "errors#error_#{code}", via: :all

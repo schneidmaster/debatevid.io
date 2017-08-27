@@ -83,6 +83,7 @@ GEM
       activesupport (~> 5.0)
       request_store (~> 1.0)
     erubi (1.6.1)
+    excon (0.58.0)
     execjs (2.7.0)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
@@ -93,6 +94,22 @@ GEM
       i18n (~> 0.5)
     faraday (0.12.1)
       multipart-post (>= 1.2, < 3)
+    fog-aws (1.4.1)
+      fog-core (~> 1.38)
+      fog-json (~> 1.0)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
+    fog-core (1.45.0)
+      builder
+      excon (~> 0.58)
+      formatador (~> 0.2)
+    fog-json (1.0.2)
+      fog-core (~> 1.0)
+      multi_json (~> 1.10)
+    fog-xml (0.1.3)
+      fog-core
+      nokogiri (>= 1.5.11, < 2.0.0)
+    formatador (0.2.5)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     hashdiff (0.3.5)
@@ -106,6 +123,7 @@ GEM
     i18n (0.8.4)
     impressionist (1.6.0)
       nokogiri (~> 1)
+    ipaddress (0.8.3)
     json (2.1.0)
     jwt (1.5.6)
     launchy (2.4.3)
@@ -259,6 +277,8 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    sitemap_generator (5.3.1)
+      builder (~> 3.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -312,6 +332,7 @@ DEPENDENCIES
   draper (~> 3.0)
   factory_girl_rails (~> 4.4.1)
   faker (~> 1.3.0)
+  fog-aws
   high_voltage (~> 3.0.0)
   impressionist
   meta-tags
@@ -332,6 +353,7 @@ DEPENDENCIES
   rspec-rails (~> 3.1)
   rubocop-aha
   simplecov (~> 0.13.0)
+  sitemap_generator
   surus
   vimeo (= 1.5.4)
   web-console (~> 3.0)
