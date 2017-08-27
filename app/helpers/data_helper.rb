@@ -28,16 +28,16 @@ module DataHelper
           columns: %i[id first_name last_name],
           include: {
             school: {
-              columns: %i[id name short_name]
-            }
+              columns: %i[id name short_name],
+            },
           },
         },
         debater_two: {
           columns: %i[id first_name last_name],
           include: {
             school: {
-              columns: %i[id name short_name]
-            }
+              columns: %i[id name short_name],
+            },
           },
         },
       },
@@ -60,7 +60,7 @@ module DataHelper
             columns: [:tag_id],
           },
           user: {
-            columns: [:avatar, :name]
+            columns: %i[avatar name],
           },
         },
       ),
