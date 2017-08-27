@@ -1,10 +1,10 @@
 module LayoutHelper
-  def set_meta_title(title)
+  def set_meta_title(title) # rubocop:disable Style/AccessorMethodName
     set_meta_tags(
       title: title,
       og: {
         title: title,
-      }
+      },
     )
   end
 

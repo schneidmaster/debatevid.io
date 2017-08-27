@@ -11,6 +11,8 @@ Bundler.require(*Rails.groups)
 
 module DebatevidIo
   class Application < Rails::Application
+    config.exceptions_app = routes
+
     # Use public/assets rather than public/webpack
     config.webpack.output_dir = 'public/assets'
     config.webpack.public_path = 'assets'
