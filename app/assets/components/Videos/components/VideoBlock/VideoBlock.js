@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import renderIf from 'render-if';
-import pluralize from 'pluralize';
+import abbreviate from 'number-abbreviate';
 import { Video } from 'components/store/records';
 
 const VideoBlock = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
@@ -26,8 +26,8 @@ const VideoBlock = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
             </div>
 
             <div className='video-stats'>
-              <p>{video.views} {pluralize('View', video.views)}</p>
-              <p>{video.favoritesCount} {pluralize('Fav', video.favoritesCount)}</p>
+              <i className='fa fa-eye' />{abbreviate(video.views)}
+              <i className='fa fa-heart' /> {abbreviate(video.favoritesCount)}
             </div>
           </div>
         </a>

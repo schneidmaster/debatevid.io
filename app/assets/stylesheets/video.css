@@ -27,20 +27,24 @@
       display: flex;
 
       .video-title {
-        flex: 4;
+        flex: 1;
+        flex-grow: 1;
         text-align: left;
         padding: 5px;
       }
 
       .video-stats {
-        flex: 1;
-        min-width: 20%;
         padding: 5px;
         text-align: right;
         color: #999;
 
-        p {
-          margin-bottom: 0px;
+        i {
+          margin-left: 5px;
+          margin-right: 2px;
+
+          &:first-child {
+            margin-left: 2px;
+          }
         }
       }
     }
