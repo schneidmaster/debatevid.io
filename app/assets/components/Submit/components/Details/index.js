@@ -44,8 +44,8 @@ const mapStateToProps = (state, ownProps) => {
 
   const schools =
     state.getIn(['common', 'schools'])
-      .sortBy((school) => school.shortName)
-      .map((school) => ({ value: school.id, label: school.shortName }))
+      .sortBy((school) => school.shortName || school.name)
+      .map((school) => ({ value: school.id, label: school.shortName || school.name }))
       .toArray();
 
   const tags =

@@ -5,6 +5,7 @@ class Team < ApplicationRecord
   belongs_to :debater_two, class_name: 'Debater', foreign_key: :debater_two_id
 
   before_validation :sort_debaters
+  after_create :set_debater_schools
 
   scope :with_debaters, ->(one, two) { where(debater_one: one, debater_two: two).or(where(debater_one: two, debater_two: one)) }
 
@@ -19,6 +20,11 @@ class Team < ApplicationRecord
   end
 
   private
+
+  def set_debater_schools
+    debater_one.update(school: school) if debater_one.school_id.nil?
+    debater_two.update(school: school) if debater_two.present? && debater_two.school_id.nil?
+  end
 
   def sort_debaters
     return unless debater_two && debater_two.last_name < debater_one.last_name
