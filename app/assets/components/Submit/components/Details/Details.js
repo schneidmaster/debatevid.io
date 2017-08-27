@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Panel } from 'react-bootstrap';
 import { Field } from 'redux-form/es/immutable';
 import Select from 'components/common/RFReactSelect';
 import renderIf from 'render-if';
@@ -18,153 +19,148 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
     return null;
   } else {
     return (
-      <div className='panel panel-default'>
-        <div className='panel-heading'>
-          <h3 className='panel-title'>Video details</h3>
-        </div>
-        <div className='panel-body'>
-          <form onSubmit={handleSubmit}>
+      <Panel header='Video details'>
+        <form onSubmit={handleSubmit}>
+          <div className='form-group'>
+            <label>Level</label>
+            <Field
+              name='debateLevel'
+              options={levels}
+              component={Select}
+              validate={[required]}
+            />
+          </div>
+
+          <div className='form-group'>
+            <label>Debate type</label>
+            <Field
+              name='debateType'
+              options={types}
+              component={Select}
+              validate={[required]}
+            />
+          </div>
+
+          <div className='form-group'>
+            <label>Year</label>
+            <Field
+              className='form-control'
+              name='year'
+              component={renderField}
+              type='number'
+              validate={[required]}
+            />
+          </div>
+
+          {renderIf(year)(
             <div className='form-group'>
-              <label>Level</label>
+              <label>Tournament</label>
               <Field
-                name='debateLevel'
-                options={levels}
+                name='tournament'
+                options={tournaments}
                 component={Select}
                 validate={[required]}
+                creatable
               />
             </div>
+          )}
 
-            <div className='form-group'>
-              <label>Debate type</label>
-              <Field
-                name='debateType'
-                options={types}
-                component={Select}
-                validate={[required]}
-              />
-            </div>
+          <div className='form-group'>
+            <label>Tags</label>
+            <Field
+              name='tags'
+              options={tags}
+              component={Select}
+              creatable
+              multi
+            />
+          </div>
 
-            <div className='form-group'>
-              <label>Year</label>
-              <Field
-                className='form-control'
-                name='year'
-                component={renderField}
-                type='number'
-                validate={[required]}
-              />
-            </div>
+          <hr />
 
-            {renderIf(year)(
+          <div className='form-group'>
+            <label>Aff School</label>
+            <Field
+              name='affSchool'
+              options={schools}
+              component={Select}
+              validate={[required]}
+              creatable
+            />
+          </div>
+
+          {renderIf(affSchool)(
+            <div>
               <div className='form-group'>
-                <label>Tournament</label>
+                <label>{debateType === 2 ? 'Aff Debater' : 'Aff Debater 1'}</label>
                 <Field
-                  name='tournament'
-                  options={tournaments}
+                  name='affDebaterOne'
+                  options={affDebaters}
                   component={Select}
                   validate={[required]}
                   creatable
                 />
               </div>
-            )}
 
-            <div className='form-group'>
-              <label>Tags</label>
-              <Field
-                name='tags'
-                options={tags}
-                component={Select}
-                creatable
-                multi
-              />
-            </div>
-
-            <hr />
-
-            <div className='form-group'>
-              <label>Aff School</label>
-              <Field
-                name='affSchool'
-                options={schools}
-                component={Select}
-                validate={[required]}
-                creatable
-              />
-            </div>
-
-            {renderIf(affSchool)(
-              <div>
+              {renderIf(debateType !== 2)(
                 <div className='form-group'>
-                  <label>{debateType === 2 ? 'Aff Debater' : 'Aff Debater 1'}</label>
+                  <label>Aff Debater 2</label>
                   <Field
-                    name='affDebaterOne'
+                    name='affDebaterTwo'
                     options={affDebaters}
                     component={Select}
                     validate={[required]}
                     creatable
                   />
                 </div>
-
-                {renderIf(debateType !== 2)(
-                  <div className='form-group'>
-                    <label>Aff Debater 2</label>
-                    <Field
-                      name='affDebaterTwo'
-                      options={affDebaters}
-                      component={Select}
-                      validate={[required]}
-                      creatable
-                    />
-                  </div>
-                )}
-              </div>
-            )}
-
-            <hr />
-
-            <div className='form-group'>
-              <label>Neg School</label>
-              <Field
-                name='negSchool'
-                options={schools}
-                component={Select}
-                validate={[required]}
-                creatable
-              />
+              )}
             </div>
+          )}
 
-            {renderIf(negSchool)(
-              <div>
+          <hr />
+
+          <div className='form-group'>
+            <label>Neg School</label>
+            <Field
+              name='negSchool'
+              options={schools}
+              component={Select}
+              validate={[required]}
+              creatable
+            />
+          </div>
+
+          {renderIf(negSchool)(
+            <div>
+              <div className='form-group'>
+                <label>{debateType === 2 ? 'Neg Debater' : 'Neg Debater 1'}</label>
+                <Field
+                  name='negDebaterOne'
+                  options={negDebaters}
+                  component={Select}
+                  validate={[required]}
+                  creatable
+                />
+              </div>
+
+              {renderIf(debateType !== 2)(
                 <div className='form-group'>
-                  <label>{debateType === 2 ? 'Neg Debater' : 'Neg Debater 1'}</label>
+                  <label>Neg Debater 2</label>
                   <Field
-                    name='negDebaterOne'
+                    name='negDebaterTwo'
                     options={negDebaters}
                     component={Select}
                     validate={[required]}
                     creatable
                   />
                 </div>
+              )}
+            </div>
+          )}
 
-                {renderIf(debateType !== 2)(
-                  <div className='form-group'>
-                    <label>Neg Debater 2</label>
-                    <Field
-                      name='negDebaterTwo'
-                      options={negDebaters}
-                      component={Select}
-                      validate={[required]}
-                      creatable
-                    />
-                  </div>
-                )}
-              </div>
-            )}
-
-            <button type='submit' className='btn btn-primary'>Submit</button>
-          </form>
-        </div>
-      </div>
+          <button type='submit' className='btn btn-primary'>Submit</button>
+        </form>
+      </Panel>
     );
   }
 };

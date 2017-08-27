@@ -19,6 +19,7 @@
 # Ignore npm files.
 /node_modules
 /public/assets
+npm-debug.log
 
 # Ignore dev files.
 .env

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Pagination from 'react-js-pagination';
 import { Map } from 'immutable';
+import { Row } from 'react-bootstrap';
 import chunk from 'components/Videos/helpers/chunk';
 import VideoBlock from 'components/Videos/components/VideoBlock';
 
@@ -10,20 +11,20 @@ const VideosTable = ({ videos, page, itemsPerPage, videosTotal, handlePageChange
     <div>
       {chunk(videos, 3).map((chunk, idx) => {
         return (
-          <div className='row mb' key={idx}>
+          <Row className='mb' key={idx}>
             {chunk.map((video) => <VideoBlock key={video.id} video={video} />).toList()}
-          </div>
+          </Row>
         );
       })}
 
-      <div className='row text-center'>
+      <Row className='text-center'>
         <Pagination
           activePage={page}
           itemsCountPerPage={itemsPerPage}
           totalItemsCount={videosTotal}
           onChange={handlePageChange}
         />
-      </div>
+      </Row>
     </div>
   );
 };

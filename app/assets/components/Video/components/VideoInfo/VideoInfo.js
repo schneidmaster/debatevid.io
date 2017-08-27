@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import renderIf from 'render-if';
 import abbreviate from 'number-abbreviate';
 import classnames from 'classnames';
+import { Row, Col } from 'react-bootstrap';
 import { Video } from 'components/store/records';
 import Tags from 'components/Video/components/Tags';
 
@@ -19,19 +20,20 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
         {video.getTitle()}
       </h3>
 
-      <div className='row'>
-        <div className='col-md-12'>
+      <Row>
+        <Col xs={12}>
           <div className='frame-wrapper'>
             <iframe {...video.getFrameProps()} />
           </div>
-        </div>
-      </div>
+        </Col>
+      </Row>
 
-      <div className='row'>
-        <div className='col-md-9'>
+      <Row>
+        <Col md={9} xs={12}>
           <Tags />
-        </div>
-        <div className='col-md-3 align-right'>
+        </Col>
+
+        <Col md={3} xs={12} className='align-right'>
           <div className='icons'>
             <i className='fa fa-eye' /> {abbreviate(video.views)}
             <i className='fa fa-heart' /> {abbreviate(video.favoritesCount)}
@@ -41,16 +43,19 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
             <img src={video.user.avatar} alt={video.user.name} className='avatar' />
             {video.user.name}
           </a>
-        </div>
-      </div>
+        </Col>
+      </Row>
+
       <hr className='no-margin-top' />
-      <div className='row'>
-        <div className='col-md-12'>
+
+      <Row>
+        <Col xs={12}>
           <h4>Tournament: <a href={`/tournaments/${video.tournament.id}`}>{video.tournament.getYearAndName()}</a></h4>
-        </div>
-      </div>
-      <div className='row'>
-        <div className='col-md-6'>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col md={6} xs={12}>
           <h4>Affirmative</h4>
           <p>
             School: <a href={`/schools/${video.affTeam.school.id}`}>{video.affTeam.school.getName()}</a>
@@ -66,9 +71,9 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
               </span>
             )}
           </p>
-        </div>
+        </Col>
 
-        <div className='col-md-6'>
+        <Col md={6} xs={12}>
           <h4>Negative</h4>
           <p>
             School: <a href={`/schools/${video.negTeam.school.id}`}>{video.negTeam.school.getName()}</a>
@@ -84,8 +89,8 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
               </span>
             )}
           </p>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </div>
   );
 };

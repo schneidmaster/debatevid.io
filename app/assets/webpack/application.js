@@ -1,6 +1,16 @@
-// Javascripts.
-import 'javascripts/components';
-import 'javascripts/nav';
+// Components.
+import ReactOnRails from 'react-on-rails';
+import Nav from 'components/Nav/Nav';
+import Submit from 'components/Submit/Submit';
+import Video from 'components/Video/Video';
+import Videos from 'components/Videos/Videos';
+
+ReactOnRails.register({
+  Nav,
+  Submit,
+  Video,
+  Videos,
+});
 
 // Styles.
 import 'bootstrap/dist/css/bootstrap';

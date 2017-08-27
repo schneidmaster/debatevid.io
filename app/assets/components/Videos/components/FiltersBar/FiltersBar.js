@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Row, Col } from 'react-bootstrap';
 import Filter from 'components/Videos/components/Filter';
 import Search from 'components/Videos/components/Search';
 import Sort from 'components/Videos/components/Sort';
@@ -7,8 +8,8 @@ import { List, Map } from 'immutable';
 
 const FiltersBar = ({ filters, availableFilters, addFilter }) => {
   return (
-    <div className='row mb'>
-      <div className='col-md-12 filters'>
+    <Row className='mb'>
+      <Col xs={12} className='filters'>
         <div className='filters-left'>
           <Sort />
           <div className='dropdown add-filter'>
@@ -30,8 +31,8 @@ const FiltersBar = ({ filters, availableFilters, addFilter }) => {
         </div>
 
         <Search />
-      </div>
-    </div>
+      </Col>
+    </Row>
   );
 };
 

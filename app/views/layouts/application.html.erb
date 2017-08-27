@@ -10,7 +10,8 @@
   </head>
   <body>
     <div class='flex-body'>
-      <%= render 'layouts/navigation' %>
+      <%#= render 'layouts/navigation' %>
+      <%= react_component 'Nav', props: { loggedIn: logged_in?, currentUser: current_user } %>
 
       <main>
         <div class='container'>

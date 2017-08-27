@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
+import { Panel } from 'react-bootstrap';
 
 const Segments = ({ segmentInput, segments, setSegmentInput, addFormSegment, deleteFormSegment }) => {
   const hasSegments = segments.size > 0;
@@ -56,25 +57,20 @@ const Segments = ({ segmentInput, segments, setSegmentInput, addFormSegment, del
   }
 
   return (
-    <div className='panel panel-default'>
-      <div className='panel-heading'>
-        <h3 className='panel-title'>Video segments</h3>
-      </div>
-      <div className='panel-body'>
-        {preview}
-        {segments.map((segment, idx) => {
-          return (
-            <div className='segment' key={segment.key}>
-              <a href={segment.getLink()} target='_blank'>{segment.title}</a>
+    <Panel header='Video segments'>
+      {preview}
+      {segments.map((segment, idx) => {
+        return (
+          <div className='segment' key={segment.key}>
+            <a href={segment.getLink()} target='_blank'>{segment.title}</a>
 
-              <i className='fa fa-times pull-right' onClick={(e) => deleteFormSegment(idx)} />
-            </div>
-          );
-        })}
-        {instruction}
-        {input}
-      </div>
-    </div>
+            <i className='fa fa-times pull-right' onClick={(e) => deleteFormSegment(idx)} />
+          </div>
+        );
+      })}
+      {instruction}
+      {input}
+    </Panel>
   );
 };
 

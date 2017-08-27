@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row, Col } from 'react-bootstrap';
 import Segments from 'components/Submit/components/Segments';
 import Details from 'components/Submit/components/Details';
 
@@ -7,14 +8,14 @@ const SubmitApp = () => {
     <div>
       <h1>Submit Video</h1>
 
-      <div className='row'>
-        <div className='col-md-6 col-xs-12'>
+      <Row>
+        <Col md={6} xs={12}>
           <Segments />
-        </div>
-        <div className='col-md-6 col-xs-12'>
+        </Col>
+        <Col md={6} xs={12}>
           <Details />
-        </div>
-      </div>
+        </Col>
+      </Row>
     </div>
   );
 };
