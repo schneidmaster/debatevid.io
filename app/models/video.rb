@@ -18,8 +18,6 @@ class Video < ApplicationRecord
     { 'Policy' => debate_types[:policy], 'Parli' => debate_types[:parli], 'LD' => debate_types[:lincoln_douglass] }
   end
 
-  self.per_page = 12
-
   belongs_to :user
   belongs_to :tournament
 

@@ -1,4 +1,13 @@
 module LayoutHelper
+  def set_meta_title(title)
+    set_meta_tags(
+      title: title,
+      og: {
+        title: title,
+      }
+    )
+  end
+
   def default_meta
     {
       title: 'DebateVid.io',
