@@ -90,8 +90,10 @@ export const createVideo = (values) => {
     values = Object.assign(values, nestedAttributes('tournament', values.tournament));
     delete values.tournament;
 
-    values.tagsAttributes = values.tags.map((tag) => nestedAttributes('tag', tag, 'title'));
-    delete values.tags;
+    if(values.tags) {
+      values.tagsAttributes = values.tags.map((tag) => nestedAttributes('tag', tag, 'title'));
+      delete values.tags;
+    }
 
     values.segments = getState().getIn(['segments', 'segments']).toJS();
 
