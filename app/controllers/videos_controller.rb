@@ -2,7 +2,7 @@ class VideosController < ApplicationController
   before_action :authorize, except: %i[show]
 
   def show
-    @video = Video.find(params[:id]).decorate
+    @video = Video.find(params[:id])
     impressionist(@video)
   end
 
@@ -36,7 +36,7 @@ class VideosController < ApplicationController
   def info
     info = VideoInformationService.link_info(params[:link])
     provider = Video.providers[info[:provider]]
-    info = { exists: true } if Video.where('videos.provider = ? and videos.key like ?', provider, "%#{info[:key]}%").count.positive?
+    info = { exists: true } if Video.where(provider: provider).where('key ILIKE ?', "%#{info[:key]}%").any?
     render json: info
   end
 

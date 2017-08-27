@@ -47,6 +47,60 @@ describe VideosController do
 
   before { login_as_user(user) }
 
+  describe '#new' do
+    subject(:request) { get :new }
+
+    it 'renders new' do
+      expect(request).to render_template('videos/new')
+    end
+  end
+
+  describe '#show' do
+    let(:video) { create(:video) }
+
+    subject(:request) { get :show, params: { id: video.id } }
+
+    it 'renders show' do
+      expect(request).to render_template('videos/show')
+    end
+
+    it 'increments views count' do
+      expect { request }.to change { video.reload.views }.by(1)
+    end
+  end
+
+  describe '#info' do
+    let(:link) { 'https://youtube.com?key=abc' }
+
+    subject(:request) { get :info, params: { link: link } }
+
+    context 'valid link' do
+      before { allow(VideoInformationService).to receive(:link_info).with(link).and_return(key: 'abc', provider: 'youtube') }
+
+      context 'video does not exist yet' do
+        it 'returns info' do
+          expect(request.body).to eq({ key: 'abc', provider: 'youtube' }.to_json)
+        end
+      end
+
+      context 'video already exists' do
+        let!(:video) { create(:video, key: %w[abc], provider: 'youtube') }
+
+        it 'returns exists' do
+          expect(request.body).to eq({ exists: true }.to_json)
+        end
+      end
+    end
+
+    context 'invalid link' do
+      before { allow(VideoInformationService).to receive(:link_info).with(link).and_return(invalid: true) }
+
+      it 'returns invalid' do
+        expect(request.body).to eq({ invalid: true }.to_json)
+      end
+    end
+  end
+
   describe '#create' do
     subject(:request) { post :create, format: :json, params: { video: video_params } }
 
@@ -72,7 +126,7 @@ describe VideosController do
         expect(video.neg_team.debater_two).to eq(debater_four)
         expect(video.provider).to eq('youtube')
         expect(video.key).to eq(%w[abc def])
-        expect(video.thumbnail).to eq('https://img.youtube.com/vi/abc/hqdefault.jpg')
+        expect(video.thumbnail).to eq('https://google.com')
       end
     end
   end

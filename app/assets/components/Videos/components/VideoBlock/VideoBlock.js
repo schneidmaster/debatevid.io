@@ -18,7 +18,7 @@ const VideoBlock = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
       )}
       <div className='video-block'>
         <a href={`/videos/${video.id}`}>
-          <img src={video.thumbnail} alt={video.getTitle()} />
+          <img src={video.getThumbnail()} alt={video.getTitle()} />
 
           <div className='video-info'>
             <div className='video-title'>

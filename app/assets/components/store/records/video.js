@@ -32,6 +32,14 @@ export default class Video extends Record(defaultVideo) {
     return `${this.tournament.getYearAndName()}: ${this.affTeam.getTeamCode()} vs. ${this.negTeam.getTeamCode()}`;
   }
 
+  getThumbnail() {
+    if(this.provider === 'youtube') {
+      return `https://img.youtube.com/vi/${this.key.first}/hqdefault.jpg`;
+    } else if(this.thumbnail) {
+      return this.thumbnail.replace('200x150', '600x450');
+    }
+  }
+
   getFrameProps() {
     const keyArray = yaml(this.key);
     const firstKey = keyArray.shift();

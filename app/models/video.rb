@@ -39,14 +39,6 @@ class Video < ApplicationRecord
     "#{tournament.year_and_name}: #{aff_team.code} vs. #{neg_team.code}"
   end
 
-  def thumbnail
-    if youtube?
-      "https://img.youtube.com/vi/#{key.first}/hqdefault.jpg"
-    elsif self[:thumbnail]
-      self[:thumbnail].sub('200x150', '600x450')
-    end
-  end
-
   def segments=(attrs)
     self.provider = attrs.first[:provider]
     self.thumbnail = attrs.first[:thumbnail]
