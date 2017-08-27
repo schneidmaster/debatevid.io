@@ -16,7 +16,7 @@ const Tags = ({ loggedIn, video, tags, adding, addTag, handleSubmit }) => {
               return (
                 <span key={tag.title}>
                   {renderIf(idx > 0)(', ')}
-                  <a href={`/tag/${tag.title}`}>{tag.title}</a>
+                  <a href={`/tags/${tag.title}`}>{tag.title}</a>
                 </span>
               );
             })}

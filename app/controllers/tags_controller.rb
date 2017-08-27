@@ -3,7 +3,8 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find_by(title: params[:id])
-    @videos = @tag.videos
+    video_ids = @tag.videos.pluck(:id)
+    @videos = Video.where(id: video_ids)
   end
 
   def create
