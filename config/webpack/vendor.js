@@ -4,6 +4,7 @@ export default [
   'core-js',
   'humps',
   'immutable',
+  'number-abbreviate',
   'react',
   'react-dom',
   'react-js-pagination',
@@ -14,4 +15,6 @@ export default [
   'redux-form',
   'redux-form/immutable',
   'redux-immutable',
+  'redux-thunk',
+  'render-if',
 ];
