@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Pagination from 'react-js-pagination';
 import { Map } from 'immutable';
 import chunk from 'components/Videos/helpers/chunk';
+import VideoBlock from 'components/Videos/components/VideoBlock';
 
 const VideosTable = ({ videos, page, itemsPerPage, videosTotal, handlePageChange }) => {
   return (
@@ -10,16 +11,7 @@ const VideosTable = ({ videos, page, itemsPerPage, videosTotal, handlePageChange
       {chunk(videos, 3).map((chunk, idx) => {
         return (
           <div className='row mb' key={idx}>
-            {chunk.map((video) => {
-              return (
-                <div className='col-md-4 video-preview' key={video.id}>
-                  <a href={`/videos/${video.id}`}>
-                    <img src={video.thumbnail} alt={video.getTitle()} />
-                    {video.getTitle()}
-                  </a>
-                </div>
-              );
-            }).toList()}
+            {chunk.map((video) => <VideoBlock key={video.id} video={video} />).toList()}
           </div>
         );
       })}

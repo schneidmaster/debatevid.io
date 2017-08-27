@@ -1,5 +1,5 @@
 import { List, Map } from 'immutable';
-import { Debater, School, Tag, Team, Tournament, Video } from 'components/store/records';
+import { Debater, School, Tag, Team, Tournament, Video, Favorite } from 'components/store/records';
 import { camelizeKeys } from 'humps';
 import { createFilters } from 'components/Videos/helpers/filters';
 
@@ -13,6 +13,7 @@ const commonState = Map({
   teams: List(),
   debaters: List(),
   tags: List(),
+  favorites: List(),
   videos: List(),
   filters: Map(),
   possibleFilters: Map(),
@@ -22,9 +23,9 @@ const commonState = Map({
 
 const parseJson = (json) => camelizeKeys(JSON.parse(json));
 
-const simpleMap = (json, Record) => Map(parseJson(json).map((r) => {
+const simpleMap = (json, Record, idAttr = 'id') => Map(parseJson(json).map((r) => {
   const record = new Record(r);
-  return [record.id, record];
+  return [record[idAttr], record];
 }));
 
 const inflateTeams = (teams, { schools, debaters }) => {
@@ -53,6 +54,7 @@ const commonReducer = (state, action) => {
     const schools = simpleMap(data.schools, School);
     const debaters = simpleMap(data.debaters, Debater);
     const tags = simpleMap(data.tags, Tag);
+    const favorites = simpleMap(data.favorites, Favorite, 'videoId');
     const teams = inflateTeams(simpleMap(data.teams, Team), { schools, debaters });
     const videos = inflateVideos(simpleMap(data.videos, Video), { tournaments, teams, tags });
 
@@ -61,6 +63,7 @@ const commonReducer = (state, action) => {
     const possibleFilters = createFilters({ levels, types, tournaments, schools, teams, debaters, tags });
 
     return state.merge(Map({
+      loggedIn: data.logged_in,
       levels,
       types,
       possibleFilters,
@@ -69,6 +72,7 @@ const commonReducer = (state, action) => {
       teams,
       debaters,
       tags,
+      favorites,
       videos,
     }));
   case 'SET_PAGE':
@@ -83,6 +87,10 @@ const commonReducer = (state, action) => {
     return state.set('searchTerm', action.payload).set('page', 1);
   case 'SET_SORT_ORDER':
     return state.set('sortOrder', action.payload);
+  case 'ADD_FAVORITE':
+    return state.setIn(['favorites', action.payload.videoId], new Favorite(action.payload));
+  case 'DELETE_FAVORITE':
+    return state.deleteIn(['favorites', action.payload]);
   case 'DEFLATE':
     return commonState;
   default:

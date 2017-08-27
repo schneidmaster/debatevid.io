@@ -1,3 +1,5 @@
+import { camelizeKeys } from 'humps';
+
 export const hydrate = (payload) => {
   return {
     type: 'HYDRATE',
@@ -50,5 +52,38 @@ export const setSortOrder = (payload) => {
   return {
     type: 'SET_SORT_ORDER',
     payload,
+  };
+};
+
+const addFavorite = (payload) => {
+  return {
+    type: 'ADD_FAVORITE',
+    payload,
+  };
+};
+
+export const favorite = (videoId) => {
+  return (dispatch, getState) => {
+    const token = document.head.querySelector('[name=csrf-token]').content;
+    fetch(`/videos/${videoId}/favorites`, { credentials: 'same-origin', method: 'POST', headers: { 'X-CSRF-Token': token } })
+      .then((response) => response.json())
+      .then((response) => {
+        dispatch(addFavorite(camelizeKeys(response)));
+      });
+  };
+};
+
+const deleteFavorite = (payload) => {
+  return {
+    type: 'DELETE_FAVORITE',
+    payload,
+  };
+};
+
+export const unfavorite = (videoId) => {
+  return (dispatch, getState) => {
+    const token = document.head.querySelector('[name=csrf-token]').content;
+    fetch(`/videos/${videoId}/favorites`, { credentials: 'same-origin', method: 'DELETE', headers: { 'X-CSRF-Token': token } })
+      .then(() => dispatch(deleteFavorite(videoId)));
   };
 };

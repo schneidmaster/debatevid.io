@@ -1,4 +1,5 @@
 export { default as Debater } from './records/debater';
+export { default as Favorite } from './records/favorite';
 export { default as Filter } from './records/filter';
 export { default as School } from './records/school';
 export { default as Tag } from './records/tag';
