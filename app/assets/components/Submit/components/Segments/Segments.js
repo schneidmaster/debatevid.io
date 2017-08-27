@@ -22,7 +22,7 @@ const Segments = ({ segmentInput, segments, setSegmentInput, addFormSegment, del
 
   if(!hasSegments) {
     instruction = (
-      <p>Paste link to video from YouTube or Vimeo</p>
+      <p>Enter link to video from YouTube or Vimeo</p>
     );
     helpBlock = (
       <p className='help-block'>
@@ -31,7 +31,7 @@ const Segments = ({ segmentInput, segments, setSegmentInput, addFormSegment, del
     );
   } else if(firstSegment.provider === 'youtube') {
     instruction = (
-      <p>Paste additional links if the video is in multiple segments.</p>
+      <p>Add additional links if the video is in multiple segments.</p>
     );
   }
 
