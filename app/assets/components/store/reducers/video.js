@@ -6,6 +6,8 @@ const videoState = Map({
   tags: List(),
   favorites: List(),
   video: new Video(),
+  adding: false,
+  tagInput: '',
 });
 
 const videoReducer = (state, action) => {
@@ -44,6 +46,10 @@ const videoReducer = (state, action) => {
     return state.setIn(['favorites', action.payload.videoId], new Favorite(action.payload));
   case 'DELETE_FAVORITE':
     return state.deleteIn(['favorites', action.payload]);
+  case 'ADD_TAG':
+    return state.set('adding', true);
+  case 'SET_TAG_INPUT':
+    return state.set('tagInput', action.payload);
   default:
     return state;
   }

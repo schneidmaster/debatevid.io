@@ -140,4 +140,26 @@
       margin-left: 10px;
     }
   }
+
+  .tags-row {
+    margin-bottom: 15px;
+
+    .tags {
+      display: inline-block;
+    }
+
+    i.fa-plus {
+      margin-left: 5px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .Select {
+      width: 200px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
 }
