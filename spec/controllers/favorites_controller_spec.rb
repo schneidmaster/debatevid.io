@@ -4,6 +4,19 @@ describe FavoritesController do
 
   before { login_as_user(user) }
 
+  describe '#index' do
+    let(:other_video) { create(:video) }
+
+    before { create(:favorite, user: user, video: video) }
+
+    subject(:request) { get :index }
+
+    it 'renders template with videos' do
+      request
+      expect(assigns(:videos)).to eq([video])
+    end
+  end
+
   describe '#create' do
     subject(:request) { post :create, format: :json, params: { video_id: video.id } }
 

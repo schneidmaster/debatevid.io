@@ -42,10 +42,6 @@ class VideosController < ApplicationController
 
   private
 
-  def authorize
-    redirect_to root_path, error: 'You must log in first.' unless logged_in?
-  end
-
   def video_params
     debater_attr_keys = [
       :debater_one_id,

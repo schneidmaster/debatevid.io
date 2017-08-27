@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:show]
   resources :tournaments, only: [:show]
   resources :users, only: [:show]
+  resources :favorites, only: [:index]
 
   namespace :videos do
     get :info

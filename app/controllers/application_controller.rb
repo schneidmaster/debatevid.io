@@ -27,4 +27,8 @@ class ApplicationController < ActionController::Base
   def redirect_if_heroku
     redirect_to "https://debatevid.io#{request.fullpath}" if request.host == 'debatevidio.herokuapp.com'
   end
+
+  def authorize
+    redirect_to root_path, error: 'You must log in first.' unless logged_in?
+  end
 end
