@@ -15,7 +15,7 @@ class Video < ApplicationRecord
   end
 
   def self.debate_types_select
-    { 'Policy' => debate_types[:policy], 'Parli' => debate_types[:parli], 'LD' => debate_types[:ld] }
+    { 'Policy' => debate_types[:policy], 'Parli' => debate_types[:parli], 'LD' => debate_types[:lincoln_douglass] }
   end
 
   self.per_page = 12
@@ -28,6 +28,8 @@ class Video < ApplicationRecord
 
   has_many :tags_videos
   has_many :tags, through: :tags_videos
+
+  accepts_nested_attributes_for :tournament, :aff_team, :neg_team, :tags
 
   serialize :key, Array
 
