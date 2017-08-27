@@ -134,7 +134,9 @@
   }
 
   .icons {
+    display: inline-block;
     color: #999;
+    margin-right: 10px;
 
     .fa-heart {
       margin-left: 10px;

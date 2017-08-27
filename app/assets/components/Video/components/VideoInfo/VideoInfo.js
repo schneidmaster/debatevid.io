@@ -17,11 +17,6 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
           />
         )}
         {video.getTitle()}
-
-        <div className='pull-right icons'>
-          <i className='fa fa-eye' /> {abbreviate(video.views)}
-          <i className='fa fa-heart' /> {abbreviate(video.favoritesCount)}
-        </div>
       </h3>
 
       <div className='row'>
@@ -37,6 +32,11 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
           <Tags />
         </div>
         <div className='col-md-3 align-right'>
+          <div className='icons'>
+            <i className='fa fa-eye' /> {abbreviate(video.views)}
+            <i className='fa fa-heart' /> {abbreviate(video.favoritesCount)}
+          </div>
+
           <a href={`/users/${video.user.id}`}>
             <img src={video.user.avatar} alt={video.user.name} className='avatar' />
             {video.user.name}
