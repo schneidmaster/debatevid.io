@@ -12,7 +12,6 @@ gem 'omniauth-twitter', '~> 1.4'
 gem 'omniauth-google-oauth2', '~> 0.5'
 
 # Utility.
-gem 'draper', '~> 3.0'
 gem 'fog-aws' # used by sitemap_generator to store on s3
 gem 'high_voltage', '~> 3.0.0'
 gem 'impressionist'
