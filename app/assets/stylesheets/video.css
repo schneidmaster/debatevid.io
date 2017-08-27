@@ -1,6 +1,8 @@
 .video-preview {
   text-align: center;
   margin-bottom: 10px;
+  padding: 0px;
+  padding-right: 15px;
   overflow: hidden;
   
   img {
@@ -10,6 +12,37 @@
   &:hover {
     .favorite {
       opacity: 1;
+    }
+  }
+
+  .video-block {
+    border: solid 1px #999;
+    border-top: none;
+
+    a {
+      text-decoration: none;
+    }
+  
+    .video-info {
+      display: flex;
+
+      .video-title {
+        flex: 4;
+        text-align: left;
+        padding: 5px;
+      }
+
+      .video-stats {
+        flex: 1;
+        min-width: 20%;
+        padding: 5px;
+        text-align: right;
+        color: #999;
+
+        p {
+          margin-bottom: 0px;
+        }
+      }
     }
   }
 }
@@ -34,7 +67,7 @@
   transform: rotate(-45deg);
   background-color: #fafafa;
   position: absolute;
-  left: -27px;
+  left: -30px;
   top: -4px;
   height: 30px;
   width: 80px;
@@ -56,6 +89,7 @@
     }
     &:hover {
       cursor: pointer;
+      color: #FFCCCC;
 
       &:before {
         content: "\f004";
@@ -68,12 +102,10 @@
     
     i {
       color: #FFCCCC;
-    }
-  }
 
-  i {
-    &:hover {
-      color: #999;
+      &:hover {
+        color: #999;
+      }
     }
   }
 }
