@@ -74,6 +74,7 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
                 name='tags'
                 options={tags}
                 component={Select}
+                creatable
                 multi
               />
             </div>

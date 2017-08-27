@@ -83,7 +83,6 @@ function multiChangeHandler(func) {
  * wants the array of values in the form [{ value: "grape", label: "Grape" }]
  */
 function transformValue(value, options, multi, creatable) {
-  if (creatable && isNaN(value)) return { label: value, value };
   if (multi && typeof value === 'string') return [];
 
   const filteredOptions = options.filter(option => {
@@ -91,6 +90,14 @@ function transformValue(value, options, multi, creatable) {
       ? value.indexOf(option.value) !== -1
       : option.value === value;
   });
+
+  if(creatable && multi) {
+    value.filter((idOrTitle) => isNaN(idOrTitle)).forEach((v) => {
+      if(!filteredOptions.find(({ value }) => v === value)) {
+        filteredOptions.push({ label: v, value: v });
+      }
+    });
+  }
 
   return multi ? filteredOptions : filteredOptions[0];
 }

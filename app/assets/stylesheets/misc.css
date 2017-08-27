@@ -17,7 +17,7 @@ div.flex-body {
 }
 
 .Select {
-  z-index: 20;
+  z-index: 0.5;
 }
 
 .mb {

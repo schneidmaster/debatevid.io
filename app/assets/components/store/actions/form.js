@@ -94,7 +94,7 @@ export const createVideo = (values) => {
     delete values.tournament;
 
     if(values.tags) {
-      values.tagsAttributes = values.tags.map((tag) => nestedAttributes('tag', tag, 'title'));
+      values.tagsVideosAttributes = values.tags.map((tag) => nestedAttributes('tag', tag, 'title'));
       delete values.tags;
     }
 

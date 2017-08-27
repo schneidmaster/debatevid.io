@@ -37,6 +37,6 @@ class VideosController < ApplicationController
       debater_two_attributes: %i[name school_id],
       school_attributes: [:name],
     ]
-    params.require(:video).permit(:debate_type, :debate_level, :tournament_id, aff_team_attributes: team_attr_keys, neg_team_attributes: team_attr_keys, tournament_attributes: %i[name year], tags_videos_attributes: [:tag_id, tags_attributes: %i[id title]], segments: %i[key provider thumbnail])
+    params.require(:video).permit(:debate_type, :debate_level, :tournament_id, aff_team_attributes: team_attr_keys, neg_team_attributes: team_attr_keys, tournament_attributes: %i[name year], tags_videos_attributes: [:tag_id, tag_attributes: %i[id title]], segments: %i[key provider thumbnail])
   end
 end

@@ -226,6 +226,7 @@ describe VideosController do
         expect(video.provider).to eq('youtube')
         expect(video.key).to eq(%w[abc def])
         expect(video.thumbnail).to eq('https://google.com')
+        expect(video.tags.first.title).to eq('policy')
       end
     end
   end

@@ -12,7 +12,7 @@ const SubmitApp = () => {
           <Segments />
         </div>
         <div className='col-md-6 col-xs-12'>
-          <Details onSubmit={(values) => console.log(values)} />
+          <Details />
         </div>
       </div>
     </div>
