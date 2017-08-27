@@ -1,6 +1,8 @@
 import { List, Record } from 'immutable';
+import { safeLoad as yaml } from 'js-yaml';
 import Team from './team';
 import Tournament from './tournament';
+import User from './user';
 
 const defaultVideo = {
   id: null,
@@ -8,6 +10,8 @@ const defaultVideo = {
   debateType: null,
   debateLevel: null,
   thumbnail: null,
+  key: null,
+  provider: null,
   liveNow: false,
   isFeatured: false,
   tournamentId: null,
@@ -20,11 +24,43 @@ const defaultVideo = {
   tags: List(),
   tagsVideos: null,
   views: 0,
+  user: new User(),
 };
 
 export default class Video extends Record(defaultVideo) {
   getTitle() {
     return `${this.tournament.getYearAndName()}: ${this.affTeam.getTeamCode()} vs. ${this.negTeam.getTeamCode()}`;
+  }
+
+  getFrameProps() {
+    const keyArray = yaml(this.key);
+    const firstKey = keyArray.shift();
+
+    let src;
+    let providerProps;
+
+    if(this.provider === 0) {
+      src = `https://www.youtube.com/embed/${firstKey}?origin=https://debatevid.io`;
+      if(keyArray.length > 0) {
+        src = `&playlist=${keyArray.join(',')}`;
+      }
+      providerProps = {
+        type: 'text/html',
+      };
+    } else if(this.provider === 1) {
+      src = `https://player.vimeo.com/video/${firstKey}`;
+      providerProps = {
+        webkitallowfullscreen: true,
+        mozallowfullscreen: true,
+        allowfullscreen: true,
+      };
+    }
+
+    return Object.assign({
+      id: 'vidframe',
+      frameBorder: 0,
+      src,
+    }, providerProps);
   }
 
   matchingTag(term) {

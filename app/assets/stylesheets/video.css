@@ -48,6 +48,53 @@
         }
       }
     }
+
+    .favorite {
+      transform: rotate(-45deg);
+      background-color: #fafafa;
+      position: absolute;
+      left: -30px;
+      top: -4px;
+      height: 30px;
+      width: 80px;
+      text-align: center;
+      z-index: 10;
+      padding: 6px 7px 2px 4px;
+      box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+      opacity: 0;
+      
+      i {
+        font-size: 18px;
+        transform: rotate(45deg);
+        display: block;
+        color: #999;
+        
+        &:before {
+          content: "\f004";
+          
+        }
+        &:hover {
+          cursor: pointer;
+          color: #FFCCCC;
+
+          &:before {
+            content: "\f004";
+          }
+        }
+      }
+      
+      &.favorited {
+        opacity: 1;
+        
+        i {
+          color: #FFCCCC;
+
+          &:hover {
+            color: #999;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -67,49 +114,30 @@
   margin-bottom: 25px;
 }
 
-.favorite {
-  transform: rotate(-45deg);
-  background-color: #fafafa;
-  position: absolute;
-  left: -30px;
-  top: -4px;
-  height: 30px;
-  width: 80px;
-  text-align: center;
-  z-index: 10;
-  padding: 6px 7px 2px 4px;
-  box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
-  opacity: 0;
-  
-  i {
-    font-size: 18px;
-    transform: rotate(45deg);
-    display: block;
+.video-show {
+  .favorite {
+    margin-right: 10px;
     color: #999;
-    
-    &:before {
-      content: "\f004";
-      
-    }
-    &:hover {
-      cursor: pointer;
-      color: #FFCCCC;
 
-      &:before {
-        content: "\f004";
-      }
+    &:hover {
+      color: #FFCCCC;
+      cursor: pointer;
     }
-  }
-  
-  &.favorited {
-    opacity: 1;
-    
-    i {
+
+    &.favorited {
       color: #FFCCCC;
 
       &:hover {
         color: #999;
       }
+    }
+  }
+
+  .icons {
+    color: #999;
+
+    .fa-heart {
+      margin-left: 10px;
     }
   }
 }

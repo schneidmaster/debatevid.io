@@ -1,7 +1,13 @@
 import { Record } from 'immutable';
 
-export default Record({
+const defaultSchool = {
   id: null,
   name: null,
   shortName: null,
-}, 'School');
+};
+
+export default class School extends Record(defaultSchool) {
+  getNameForCode() {
+    return this.shortName || this.name;
+  }
+};

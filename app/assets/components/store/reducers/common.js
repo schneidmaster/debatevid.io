@@ -1,6 +1,6 @@
 import { List, Map } from 'immutable';
 import { Debater, School, Tag, Team, Tournament, Video, Favorite } from 'components/store/records';
-import { camelizeKeys } from 'humps';
+import { simpleMap } from 'components/helpers/reducers';
 import { createFilters } from 'components/Videos/helpers/filters';
 
 const commonState = Map({
@@ -20,13 +20,6 @@ const commonState = Map({
   searchTerm: '',
   sortOrder: '',
 });
-
-const parseJson = (json) => camelizeKeys(JSON.parse(json));
-
-const simpleMap = (json, Record, idAttr = 'id') => Map(parseJson(json).map((r) => {
-  const record = new Record(r);
-  return [record[idAttr], record];
-}));
 
 const inflateTeams = (teams, { schools, debaters }) => {
   return teams.map((team) => team.merge(Map({
