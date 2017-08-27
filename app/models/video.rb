@@ -25,7 +25,7 @@ class Video < ApplicationRecord
   belongs_to :aff_team, class_name: 'Team', foreign_key: :aff_team_id
   belongs_to :neg_team, class_name: 'Team', foreign_key: :neg_team_id
 
-  has_many :favorites, counter_cache: true
+  has_many :favorites
   has_many :tags_videos
   has_many :tags, through: :tags_videos
 

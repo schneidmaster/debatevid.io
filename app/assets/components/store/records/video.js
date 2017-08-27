@@ -12,6 +12,7 @@ const defaultVideo = {
   isFeatured: false,
   tournamentId: null,
   tournament: new Tournament(),
+  favoritesCount: 0,
   affTeamId: null,
   affTeam: new Team(),
   negTeamId: null,
