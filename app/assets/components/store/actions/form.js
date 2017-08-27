@@ -88,6 +88,9 @@ export const createVideo = (values) => {
     delete values.negDebaterTwo;
 
     values = Object.assign(values, nestedAttributes('tournament', values.tournament));
+    if(values.tournamentAttributes) {
+      values.tournamentAttributes.year = values.year;
+    };
     delete values.tournament;
 
     if(values.tags) {
