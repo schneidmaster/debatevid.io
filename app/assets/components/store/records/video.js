@@ -1,5 +1,5 @@
 import { List, Record } from 'immutable';
-import { safeLoad as yaml } from 'js-yaml';
+import yaml from 'components/helpers/parseYaml';
 import Team from './team';
 import Tournament from './tournament';
 import User from './user';
@@ -50,7 +50,7 @@ export default class Video extends Record(defaultVideo) {
     if(this.provider === 0) {
       src = `https://www.youtube.com/embed/${firstKey}?origin=https://debatevid.io`;
       if(keyArray.length > 0) {
-        src = `&playlist=${keyArray.join(',')}`;
+        src = `${src}&playlist=${keyArray.join(',')}`;
       }
       providerProps = {
         type: 'text/html',

@@ -4,7 +4,6 @@ export default [
   'core-js',
   'humps',
   'immutable',
-  'js-yaml',
   'number-abbreviate',
   'react',
   'react-dom',
