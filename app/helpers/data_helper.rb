@@ -60,7 +60,7 @@ module DataHelper
             columns: [:tag_id],
           },
           user: {
-            columns: %i[avatar name],
+            columns: %i[id avatar name],
           },
         },
       ),
