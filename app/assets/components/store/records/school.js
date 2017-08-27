@@ -7,7 +7,7 @@ const defaultSchool = {
 };
 
 export default class School extends Record(defaultSchool) {
-  getNameForCode() {
+  getName() {
     return this.shortName || this.name;
   }
 };

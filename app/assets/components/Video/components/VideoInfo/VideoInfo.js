@@ -53,7 +53,7 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
         <div className='col-md-6'>
           <h4>Affirmative</h4>
           <p>
-            School: <a href={`/schools/${video.affTeam.school.id}`}>{video.affTeam.school.getNameForCode()}</a>
+            School: <a href={`/schools/${video.affTeam.school.id}`}>{video.affTeam.school.getName()}</a>
           </p>
           <p>
             Team: <a href={`/teams/${video.affTeamId}`}>{video.affTeam.getTeamCode()}</a>
@@ -71,7 +71,7 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
         <div className='col-md-6'>
           <h4>Negative</h4>
           <p>
-            School: <a href={`/schools/${video.negTeam.school.id}`}>{video.negTeam.school.getNameForCode()}</a>
+            School: <a href={`/schools/${video.negTeam.school.id}`}>{video.negTeam.school.getName()}</a>
           </p>
           <p>
             Team: <a href={`/teams/${video.negTeamId}`}>{video.negTeam.getTeamCode()}</a>

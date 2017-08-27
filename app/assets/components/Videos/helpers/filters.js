@@ -67,7 +67,7 @@ export const createFilters = ({ levels, types, tournaments, schools, teams, deba
       id: 'school',
       label: 'School',
       type: 'select',
-      options: schools.map(s => s.shortName).set('any', 'Any').sort().flip(),
+      options: schools.map(s => s.getName()).set('any', 'Any').sort().flip(),
       value: 'any',
       filter(videos) {
         if(this.value === 'any') {
