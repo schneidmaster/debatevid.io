@@ -12,10 +12,10 @@ module LayoutHelper
     {
       title: 'DebateVid.io',
       viewport: 'width=device-width, initial-scale=1.0',
-      description: 'DebateVid.io is a centralized repository for parliamentary, policy, and Lincoln-Douglas debate videos.',
+      description: 'DebateVid.io is a centralized source to find and search debate videos hosted on YouTube and Vimeo.',
       og: {
         title: 'DebateVid.io',
-        description: 'DebateVid.io is a centralized repository for parliamentary, policy, and Lincoln-Douglas debate videos.',
+        description: 'DebateVid.io is a centralized source to find and search debate videos hosted on YouTube and Vimeo.',
         site_name: 'DebateVid.io',
         image: 'https://debatevid.io/opengraph.png',
       },
