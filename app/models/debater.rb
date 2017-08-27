@@ -8,4 +8,8 @@ class Debater < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
+
+  def name=(name)
+    self.first_name, self.last_name = name.split(' ', 2)
+  end
 end

@@ -23,12 +23,4 @@ class Team < ApplicationRecord
       "#{school.name_for_code} #{debater_one.code_letter}"
     end
   end
-
-  def debater_names
-    "#{debater_one.name} & #{debater_two.name}"
-  end
-
-  def code_with_names
-    "#{school.name_for_code} #{debater_names}"
-  end
 end
