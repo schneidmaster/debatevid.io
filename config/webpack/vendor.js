@@ -11,5 +11,7 @@ export default [
   'react-redux',
   'react-select',
   'redux',
+  'redux-form',
+  'redux-form/immutable',
   'redux-immutable',
 ];

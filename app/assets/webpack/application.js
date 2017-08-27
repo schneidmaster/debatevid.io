@@ -7,9 +7,12 @@ import 'bootstrap/dist/css/bootstrap';
 import 'font-awesome/css/font-awesome';
 import 'react-select/dist/react-select.css';
 import 'stylesheets/fonts';
+import 'stylesheets/form';
 import 'stylesheets/misc';
 import 'stylesheets/nav';
+import 'stylesheets/profile';
 import 'stylesheets/video';
+import 'stylesheets/videos';
 
 // Images.
 import 'images/fb.png';
