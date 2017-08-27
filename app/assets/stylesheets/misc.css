@@ -16,6 +16,10 @@ div.flex-body {
   }
 }
 
+.Select {
+  z-index: 20;
+}
+
 .mb {
   margin-bottom: 25px;
 }
