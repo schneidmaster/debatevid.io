@@ -50,6 +50,11 @@ const videoReducer = (state, action) => {
     return state.set('adding', true);
   case 'SET_TAG_INPUT':
     return state.set('tagInput', action.payload);
+  case 'CREATED_TAG':
+    return state
+      .set('adding', false)
+      .set('tagInput', '')
+      .updateIn(['video', 'tags'], (tags) => tags.push(new Tag(action.payload)));
   default:
     return state;
   }

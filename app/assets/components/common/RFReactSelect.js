@@ -83,7 +83,7 @@ function multiChangeHandler(func) {
  * wants the array of values in the form [{ value: "grape", label: "Grape" }]
  */
 function transformValue(value, options, multi, creatable) {
-  if (creatable && typeof value === 'string') return { label: value, value };
+  if (creatable && isNaN(value)) return { label: value, value };
   if (multi && typeof value === 'string') return [];
 
   const filteredOptions = options.filter(option => {

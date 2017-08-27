@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import renderIf from 'render-if';
 import abbreviate from 'number-abbreviate';
 import classnames from 'classnames';
-import Select from 'react-select';
 import { Video } from 'components/store/records';
+import Tags from 'components/Video/components/Tags';
 
-const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite, tags, tagInput, adding, addTag, setTagInput, createTag }) => {
+const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
   return (
     <div className='video-show'>
       <h3>
@@ -33,40 +33,8 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite, tags, tag
       </div>
 
       <div className='row'>
-        <div className='col-md-9 tags-row'>
-          <div className='tags'>
-          Tags:&nbsp;
-            {renderIf(video.tags.size > 0)(
-              <span>
-                {video.tags.map((tag, idx) => {
-                  return (
-                    <span key={tag.title}>
-                      {renderIf(idx > 0)(', ')}
-                      <a href={`/tag/${tag.title}`}>{tag.title}</a>
-                    </span>
-                  );
-                })}
-              </span>
-            )}
-            {renderIf(video.tags.size === 0)(
-              <span>No tags yet.</span>
-            )}
-          </div>
-
-          {renderIf(adding)(
-            <div>
-              <Select
-                options={tags}
-                onChange={({ value }) => setTagInput(value)}
-                value={tagInput}
-              />
-
-              <button className='btn btn-primary' onClick={createTag}>Add</button>
-            </div>
-          )}
-          {renderIf(loggedIn && !adding)(
-            <i className='fa fa-plus' onClick={addTag} />
-          )}
+        <div className='col-md-9'>
+          <Tags />
         </div>
         <div className='col-md-3 align-right'>
           <a href={`/users/${video.user.id}`}>
@@ -128,9 +96,6 @@ VideoInfo.propTypes = {
   favorited: PropTypes.bool.isRequired,
   favorite: PropTypes.func.isRequired,
   unfavorite: PropTypes.func.isRequired,
-  tags: PropTypes.instanceOf(Array).isRequired,
-  tagInput: PropTypes.string,
-  adding: PropTypes.bool,
 };
 
 export default VideoInfo;

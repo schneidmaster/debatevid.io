@@ -95,7 +95,11 @@ export const createVideo = (values) => {
 
     values.segments = getState().getIn(['segments', 'segments']).toJS();
 
-    fetch(`/videos`, { credentials: 'same-origin', method: 'POST', body: decamelizeKeys(values) })
+    const token = document.head.querySelector('[name=csrf-token]').content;
+    const headers = { 'X-CSRF-Token': token, 'Content-Type': 'application/json' };
+    const body = JSON.stringify(decamelizeKeys(values));
+
+    fetch('/videos', { credentials: 'same-origin', method: 'POST', body, headers })
       .then((response) => response.json())
       .then((response) => {
         console.log(response);

@@ -18,12 +18,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :favorites, only: [:index]
 
-  namespace :videos do
-    get :info
-  end
   resources :videos, only: %i[show new create] do
-    post :add_tags, as: 'add_tags'
+    collection do
+      get :info
+    end
 
+    resources :tags, only: [:create]
     resources :favorites, only: [:create] do
       collection do
         delete :destroy
