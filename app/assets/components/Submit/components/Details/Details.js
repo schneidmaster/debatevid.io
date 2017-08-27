@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form/immutable';
+import { Field } from 'redux-form/es/immutable';
 import Select from 'components/common/RFReactSelect';
 import renderIf from 'render-if';
 import classnames from 'classnames';

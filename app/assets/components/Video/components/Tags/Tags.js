@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'components/common/RFReactSelect';
-import { Field } from 'redux-form/immutable';
+import { Field } from 'redux-form/es/immutable';
 import renderIf from 'render-if';
 import { Video } from 'components/store/records';
 
