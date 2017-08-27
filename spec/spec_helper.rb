@@ -4,6 +4,7 @@ SimpleCov.start 'rails'
 
 ENV['RAILS_ENV'] = 'test'
 ENV['S3_BUCKET_NAME'] = 'test-debatevidio'
+ENV['YOUTUBE_DEV_KEY'] = 'youtube-dev'
 require File.expand_path('../../config/environment', __FILE__)
 
 require 'rspec/rails'
