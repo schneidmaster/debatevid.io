@@ -72,6 +72,7 @@
   
     .video-info {
       display: flex;
+      height: 50px;
 
       .video-title {
         flex: 1;
