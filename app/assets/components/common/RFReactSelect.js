@@ -84,6 +84,9 @@ function multiChangeHandler(func) {
  */
 function transformValue(value, options, multi, creatable) {
   if (multi && typeof value === 'string') return [];
+  if (creatable && !multi && isNaN(value)) {
+    return { label: value, value };
+  }
 
   const filteredOptions = options.filter(option => {
     return multi
