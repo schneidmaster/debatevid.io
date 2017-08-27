@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Col, Glyphicon } from 'react-bootstrap';
+import { Col, Glyphicon } from 'react-bootstrap/es';
 import renderIf from 'render-if';
 import abbreviate from 'number-abbreviate';
 import { Video } from 'components/store/records';

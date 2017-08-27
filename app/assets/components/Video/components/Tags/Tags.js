@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Glyphicon, Button } from 'react-bootstrap';
+import { Glyphicon, Button } from 'react-bootstrap/es';
 import Select from 'components/common/RFReactSelect';
 import { Field } from 'redux-form/es/immutable';
 import renderIf from 'render-if';

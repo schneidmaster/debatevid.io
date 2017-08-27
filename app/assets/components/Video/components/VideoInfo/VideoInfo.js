@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import renderIf from 'render-if';
 import abbreviate from 'number-abbreviate';
 import classnames from 'classnames';
-import { Row, Col, Glyphicon } from 'react-bootstrap';
+import { Row, Col, Glyphicon } from 'react-bootstrap/es';
 import { Video } from 'components/store/records';
 import Tags from 'components/Video/components/Tags';
 

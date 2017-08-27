@@ -6,6 +6,7 @@ export default [
   'immutable',
   'number-abbreviate',
   'react',
+  'react-bootstrap/es',
   'react-dom',
   'react-js-pagination',
   'react-on-rails',

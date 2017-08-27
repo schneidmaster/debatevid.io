@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Panel, Button, FormGroup, ControlLabel } from 'react-bootstrap';
+import { Panel, Button, FormGroup, ControlLabel } from 'react-bootstrap/es';
 import { Field } from 'redux-form/es/immutable';
 import Select from 'components/common/RFReactSelect';
 import renderIf from 'render-if';

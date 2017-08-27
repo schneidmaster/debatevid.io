@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Glyphicon } from 'react-bootstrap';
+import { Glyphicon } from 'react-bootstrap/es';
 import Select from 'react-select';
 import { Filter as FilterRecord } from 'components/store/records';
 

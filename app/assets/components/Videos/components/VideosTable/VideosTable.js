@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Pagination from 'react-js-pagination';
 import { Map } from 'immutable';
-import { Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap/es';
 import chunk from 'components/Videos/helpers/chunk';
 import VideoBlock from 'components/Videos/components/VideoBlock';
 

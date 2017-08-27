@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap/es';
 import Segments from 'components/Submit/components/Segments';
 import Details from 'components/Submit/components/Details';
 

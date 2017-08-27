@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
-import { Panel, Glyphicon, Button, FormGroup, InputGroup, FormControl } from 'react-bootstrap';
+import { Panel, Glyphicon, Button, FormGroup, InputGroup, FormControl } from 'react-bootstrap/es';
 import renderIf from 'render-if';
 
 const Segments = ({ segmentInput, segments, setSegmentInput, addFormSegment, deleteFormSegment }) => {
@@ -10,12 +10,12 @@ const Segments = ({ segmentInput, segments, setSegmentInput, addFormSegment, del
 
   return (
     <Panel header='Video segments'>
-      {renderIf(hasSegments)(
+      {renderIf(hasSegments)(() => (
         <div className='video-preview'>
           <strong>{firstSegment.title}</strong>
           <img src={firstSegment.thumbnail} alt={firstSegment.title} />
         </div>
-      )}
+      ))}
 
       {segments.map((segment, idx) => {
         return (
