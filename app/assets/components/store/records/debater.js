@@ -2,6 +2,7 @@ import { Record } from 'immutable';
 
 const defaultDebater = {
   id: null,
+  schoolId: null,
   firstName: null,
   lastName: null,
 };

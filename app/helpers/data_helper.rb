@@ -7,7 +7,7 @@ module DataHelper
       tournaments: Tournament.all_json(columns: %i[id year name]),
       schools: School.all_json(columns: %i[id name short_name]),
       teams: Team.all_json(columns: %i[id school_id debater_one_id debater_two_id]),
-      debaters: Debater.all_json(columns: %i[id first_name last_name]),
+      debaters: Debater.all_json(columns: %i[id school_id first_name last_name]),
       tags: Tag.all_json(columns: %i[id title]),
       favorites: Favorite.for_user(current_user).all_json(columns: %i[video_id]),
       videos: videos.all_json(
@@ -49,7 +49,7 @@ module DataHelper
       favorites: Favorite.for_user(current_user).all_json(columns: %i[video_id]),
       video: Video.find_json(
         video.id,
-        columns: %i[id key provider views favorites_count user_id],
+        columns: %i[id key provider views favorites_count user_id aff_team_id neg_team_id],
         include: {
           aff_team: team_json,
           neg_team: team_json,

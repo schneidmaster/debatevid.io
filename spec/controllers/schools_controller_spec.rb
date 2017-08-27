@@ -1,6 +1,6 @@
 describe SchoolsController do
   let(:school) { create(:school) }
-  let(:video) { create(:video, aff_team: create(:team, school: school)) }
+  let!(:video) { create(:video, aff_team: create(:team, school: school)) }
   let(:other_video) { create(:video) }
 
   describe '#show' do

@@ -97,12 +97,12 @@ export const createVideo = (values) => {
 
     const token = document.head.querySelector('[name=csrf-token]').content;
     const headers = { 'X-CSRF-Token': token, 'Content-Type': 'application/json' };
-    const body = JSON.stringify(decamelizeKeys(values));
+    const body = JSON.stringify(decamelizeKeys({ video: values }));
 
     fetch('/videos', { credentials: 'same-origin', method: 'POST', body, headers })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        window.location.href = `/videos/${response.id}`;
       });
   };
 };

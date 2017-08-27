@@ -21,11 +21,26 @@ const mapStateToProps = (state, ownProps) => {
     tournaments = [];
   }
 
-  const debaters =
-    state.getIn(['common', 'debaters'])
-      .sortBy((debater) => debater.getName())
-      .map((debater) => ({ value: debater.id, label: debater.getName() }))
-      .toArray();
+  const affSchool = selector(state, 'affSchool');
+  const negSchool = selector(state, 'negSchool');
+
+  const debaters = state.getIn(['common', 'debaters']).sortBy((debater) => debater.getName());
+  let affDebaters = [];
+  let negDebaters = [];
+  if(affSchool) {
+    affDebaters =
+      debaters
+        .filter((debater) => debater.schoolId === affSchool)
+        .map((debater) => ({ value: debater.id, label: debater.getName() }))
+        .toArray();
+  }
+  if(negSchool) {
+    negDebaters =
+      debaters
+        .filter((debater) => debater.schoolId === negSchool)
+        .map((debater) => ({ value: debater.id, label: debater.getName() }))
+        .toArray();
+  }
 
   const schools =
     state.getIn(['common', 'schools'])
@@ -46,7 +61,8 @@ const mapStateToProps = (state, ownProps) => {
     tags,
     tournaments,
     schools,
-    debaters,
+    affDebaters,
+    negDebaters,
     debateType: selector(state, 'debateType'),
     year,
     affSchool: selector(state, 'affSchool'),

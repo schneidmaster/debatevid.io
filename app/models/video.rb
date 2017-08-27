@@ -8,7 +8,7 @@ class Video < ApplicationRecord
   scope :featured, -> { where(is_featured: true) }
   scope :with_debater, ->(d) { joins(aff_team: %i[debater_one debater_two], neg_team: %i[debater_one debater_two]).where('debaters.id = ? or debater_ones_teams.id = ? or debater_twos_teams.id = ? or debater_twos_teams_2.id = ?', d.id, d.id, d.id, d.id) }
   scope :with_school, ->(s) { joins(aff_team: :school, neg_team: :school).where('schools.id = ? or schools_teams.id = ?', s.id, s.id) }
-  scope :with_team, ->(t) { where('aff_team_id = ? or neg_team_id = ?', t.id, t.id) }
+  scope :with_team, ->(t) { where(aff_team_id: t.id).or(where(neg_team_id: t.id)) }
   scope :favorited_by, ->(u) { joins(:favorites).where(favorites: { user_id: u.id }) }
 
   def self.debate_levels_select

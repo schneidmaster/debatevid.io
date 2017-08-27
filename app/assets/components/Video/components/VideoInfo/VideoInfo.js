@@ -56,7 +56,7 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
             School: <a href={`/schools/${video.affTeam.school.id}`}>{video.affTeam.school.getNameForCode()}</a>
           </p>
           <p>
-            Team: <a href={`/teams/${video.affTeam.id}`}>{video.affTeam.getTeamCode()}</a>
+            Team: <a href={`/teams/${video.affTeamId}`}>{video.affTeam.getTeamCode()}</a>
           </p>
           <p>
             Debater: <a href={`/debaters/${video.affTeam.debaterOne.id}`}>{video.affTeam.debaterOne.getName()}</a>
@@ -74,7 +74,7 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
             School: <a href={`/schools/${video.negTeam.school.id}`}>{video.negTeam.school.getNameForCode()}</a>
           </p>
           <p>
-            Team: <a href={`/teams/${video.negTeam.id}`}>{video.negTeam.getTeamCode()}</a>
+            Team: <a href={`/teams/${video.negTeamId}`}>{video.negTeam.getTeamCode()}</a>
           </p>
           <p>
             Debater: <a href={`/debaters/${video.negTeam.debaterOne.id}`}>{video.negTeam.debaterOne.getName()}</a>

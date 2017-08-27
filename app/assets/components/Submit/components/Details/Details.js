@@ -13,7 +13,7 @@ const renderField = ({ input, label, type, className, meta: { touched, error } }
   );
 };
 
-const Details = ({ hide, handleSubmit, levels, types, debateType, year, tournaments, tags, schools, affSchool, negSchool, debaters }) => {
+const Details = ({ hide, handleSubmit, levels, types, debateType, year, tournaments, tags, schools, affSchool, negSchool, affDebaters, negDebaters }) => {
   if(hide) {
     return null;
   } else {
@@ -97,7 +97,7 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
                   <label>{debateType === 2 ? 'Aff Debater' : 'Aff Debater 1'}</label>
                   <Field
                     name='affDebaterOne'
-                    options={debaters}
+                    options={affDebaters}
                     component={Select}
                     validate={[required]}
                     creatable
@@ -109,7 +109,7 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
                     <label>Aff Debater 2</label>
                     <Field
                       name='affDebaterTwo'
-                      options={debaters}
+                      options={affDebaters}
                       component={Select}
                       validate={[required]}
                       creatable
@@ -138,7 +138,7 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
                   <label>{debateType === 2 ? 'Neg Debater' : 'Neg Debater 1'}</label>
                   <Field
                     name='negDebaterOne'
-                    options={debaters}
+                    options={negDebaters}
                     component={Select}
                     validate={[required]}
                     creatable
@@ -150,7 +150,7 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
                     <label>Neg Debater 2</label>
                     <Field
                       name='negDebaterTwo'
-                      options={debaters}
+                      options={negDebaters}
                       component={Select}
                       validate={[required]}
                       creatable
@@ -175,7 +175,8 @@ Details.propTypes = {
   tags: PropTypes.instanceOf(Array).isRequired,
   tournaments: PropTypes.instanceOf(Array).isRequired,
   schools: PropTypes.instanceOf(Array).isRequired,
-  debaters: PropTypes.instanceOf(Array).isRequired,
+  affDebaters: PropTypes.instanceOf(Array).isRequired,
+  negDebaters: PropTypes.instanceOf(Array).isRequired,
   debateType: PropTypes.number,
   year: PropTypes.number,
   affSchool: PropTypes.oneOfType([
