@@ -12,25 +12,11 @@ class VideosController < ApplicationController
 
   def create
     video = current_user.videos.new(video_params)
-    response = if video.save
-      video
+    if video.save
+      render json: video
     else
-      video.errors
+      render json: video.errors, status: :unprocessable_entity
     end
-
-    respond_to do |format|
-      format.json { render json: response }
-    end
-  end
-
-  def add_tags
-    video = Video.find(params[:video_id])
-
-    find_or_create_tags(params[:add_tag][:tags_ids]).each do |tag|
-      TagsVideo.create(tag: tag, video: video, user: current_user) unless video.tags.include?(tag)
-    end
-
-    redirect_to video_path(video)
   end
 
   def info
@@ -43,7 +29,7 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    debater_attr_keys = [
+    team_attr_keys = [
       :debater_one_id,
       :debater_two_id,
       :school_id,
@@ -51,6 +37,6 @@ class VideosController < ApplicationController
       debater_two_attributes: %i[name school_id],
       school_attributes: [:name],
     ]
-    params.require(:video).permit(:debate_type, :debate_level, :tournament_id, aff_team_attributes: debater_attr_keys, neg_team_attributes: debater_attr_keys, tournament_attributes: [:name], tags_videos_attributes: [:tag_id, tags_attributes: %i[id title]], segments: %i[key provider thumbnail])
+    params.require(:video).permit(:debate_type, :debate_level, :tournament_id, aff_team_attributes: team_attr_keys, neg_team_attributes: team_attr_keys, tournament_attributes: %i[name year], tags_videos_attributes: [:tag_id, tags_attributes: %i[id title]], segments: %i[key provider thumbnail])
   end
 end

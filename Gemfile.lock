@@ -231,6 +231,7 @@ GEM
     rspec-expectations (3.6.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.6.0)
+    rspec-json_expectations (2.1.0)
     rspec-mocks (3.6.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.6.0)
@@ -337,6 +338,7 @@ DEPENDENCIES
   rails_12factor
   react_on_rails (= 8.0.0)
   rest-client (~> 2.0.1)
+  rspec-json_expectations
   rspec-rails (~> 3.1)
   rubocop-aha
   simplecov (~> 0.13.0)

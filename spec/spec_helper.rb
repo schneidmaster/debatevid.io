@@ -7,6 +7,7 @@ ENV['S3_BUCKET_NAME'] = 'test-debatevidio'
 require File.expand_path('../../config/environment', __FILE__)
 
 require 'rspec/rails'
+require 'rspec/json_expectations'
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
 require 'capybara/poltergeist'

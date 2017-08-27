@@ -43,6 +43,7 @@ group :test do
   gem 'poltergeist', '~> 1.6.0'
   gem 'rack_session_access', '~> 0.1.1'
   gem 'rails-controller-testing'
+  gem 'rspec-json_expectations'
   gem 'rspec-rails', '~> 3.1'
   gem 'simplecov', '~> 0.13.0'
   gem 'webmock', '~> 3.0.1'

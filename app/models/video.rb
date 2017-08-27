@@ -22,6 +22,8 @@ class Video < ApplicationRecord
   belongs_to :user
   belongs_to :tournament
 
+  validates :debate_type, :debate_level, :user, :aff_team, :neg_team, :tournament, :provider, :key, presence: true
+
   belongs_to :aff_team, class_name: 'Team', foreign_key: :aff_team_id
   belongs_to :neg_team, class_name: 'Team', foreign_key: :neg_team_id
 
@@ -46,10 +48,16 @@ class Video < ApplicationRecord
   end
 
   def autosave_associated_records_for_aff_team
-    self.aff_team = Team.find_or_create_by(school: aff_team.school, debater_one: aff_team.debater_one, debater_two: aff_team.debater_two)
+    return if aff_team.nil?
+    team = Team.with_debaters(aff_team.debater_one, aff_team.debater_two).find_by(school: aff_team.school)
+    team = Team.create(school: aff_team.school, debater_one: aff_team.debater_one, debater_two: aff_team.debater_two) if team.nil?
+    self.aff_team = team
   end
 
   def autosave_associated_records_for_neg_team
-    self.neg_team = Team.find_or_create_by(school: neg_team.school, debater_one: neg_team.debater_one, debater_two: neg_team.debater_two)
+    return if neg_team.nil?
+    team = Team.with_debaters(neg_team.debater_one, neg_team.debater_two).find_by(school: neg_team.school)
+    team = Team.create(school: neg_team.school, debater_one: neg_team.debater_one, debater_two: neg_team.debater_two) if team.nil?
+    self.neg_team = team
   end
 end

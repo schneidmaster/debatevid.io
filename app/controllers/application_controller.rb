@@ -5,10 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_action :redirect_if_heroku
 
-  def authenticate_admin_user!
-    redirect_to root_path unless logged_in? && current_user.is_admin
-  end
-
   protected
 
   def logged_in?
