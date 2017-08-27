@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, DropdownButton, MenuItem } from 'react-bootstrap';
 import Filter from 'components/Videos/components/Filter';
 import Search from 'components/Videos/components/Search';
 import Sort from 'components/Videos/components/Sort';
@@ -12,20 +12,16 @@ const FiltersBar = ({ filters, availableFilters, addFilter }) => {
       <Col xs={12} className='filters'>
         <div className='filters-left'>
           <Sort />
-          <div className='dropdown add-filter'>
-            <button className='btn btn-default dropdown-toggle' type='button' id='addFilter' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>
-              Filter <span className='caret' />
-            </button>
-            <ul className='dropdown-menu' aria-labelledby='addFilter'>
-              {availableFilters.map((filter) => {
-                return (
-                  <li key={filter}>
-                    <a href='#' onClick={(e) => addFilter(e, filter)}>{filter.label}</a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+
+          <DropdownButton id='filters' className='add-filter' title='Filter'>
+            {availableFilters.map((filter) => {
+              return (
+                <MenuItem key={filter} onClick={(e) => addFilter(e, filter)}>
+                  {filter.label}
+                </MenuItem>
+              );
+            })}
+          </DropdownButton>
 
           {filters.keySeq().map((key) => <Filter key={key} filterId={key} />)}
         </div>

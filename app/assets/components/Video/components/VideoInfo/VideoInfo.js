@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import renderIf from 'render-if';
 import abbreviate from 'number-abbreviate';
 import classnames from 'classnames';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Glyphicon } from 'react-bootstrap';
 import { Video } from 'components/store/records';
 import Tags from 'components/Video/components/Tags';
 
@@ -12,8 +12,9 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
     <div className='video-show'>
       <h3>
         {renderIf(loggedIn)(
-          <i
-            className={classnames('fa', 'fa-heart', 'favorite', { favorited })}
+          <Glyphicon
+            glyph='heart'
+            className={classnames('favorite', { favorited })}
             onClick={() => favorited ? unfavorite() : favorite()}
           />
         )}
@@ -35,8 +36,8 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
 
         <Col md={3} xs={12} className='align-right'>
           <div className='icons'>
-            <i className='fa fa-eye' /> {abbreviate(video.views)}
-            <i className='fa fa-heart' /> {abbreviate(video.favoritesCount)}
+            <Glyphicon glyph='eye-open' /> {abbreviate(video.views)}
+            <Glyphicon glyph='heart' /> {abbreviate(video.favoritesCount)}
           </div>
 
           <a href={`/users/${video.user.id}`}>

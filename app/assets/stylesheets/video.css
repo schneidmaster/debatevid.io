@@ -29,14 +29,14 @@
     box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
     opacity: 0;
     
-    i {
+    .glyphicon {
       font-size: 18px;
       transform: rotate(45deg);
       display: block;
       color: #999;
       
       &:before {
-        content: "\f004";
+        content: "\E005";
         
       }
       &:hover {
@@ -44,7 +44,7 @@
         color: #FFCCCC;
 
         &:before {
-          content: "\f004";
+          content: "\E005";
         }
       }
     }
@@ -52,7 +52,7 @@
     &.favorited {
       opacity: 1;
       
-      i {
+      .glyphicon {
         color: #FFCCCC;
 
         &:hover {
@@ -86,7 +86,7 @@
         text-align: right;
         color: #999;
 
-        i {
+        .glyphicon {
           margin-left: 5px;
           margin-right: 2px;
 
@@ -116,7 +116,7 @@
 }
 
 .video-show {
-  .favorite {
+  .glyphicon-heart {
     margin-right: 10px;
     color: #999;
 
@@ -139,7 +139,7 @@
     color: #999;
     margin-right: 10px;
 
-    .fa-heart {
+    .glyphicon-heart {
       margin-left: 10px;
     }
   }
@@ -151,7 +151,7 @@
       display: inline-block;
     }
 
-    i.fa-plus {
+    .glyphicon-plus {
       margin-left: 5px;
 
       &:hover {

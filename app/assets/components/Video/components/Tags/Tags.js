@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Glyphicon, Button } from 'react-bootstrap';
 import Select from 'components/common/RFReactSelect';
 import { Field } from 'redux-form/es/immutable';
 import renderIf from 'render-if';
@@ -37,12 +38,12 @@ const Tags = ({ loggedIn, video, tags, adding, addTag, handleSubmit }) => {
               creatable
             />
 
-            <button type='submit' className='btn btn-primary'>Add</button>
+            <Button type='submit' bsStyle='primary'>Add</Button>
           </form>
         </div>
       )}
       {renderIf(loggedIn && !adding)(
-        <i className='fa fa-plus' onClick={addTag} />
+        <Glyphicon glyph='plus' onClick={addTag} />
       )}
     </div>
   );

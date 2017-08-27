@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Col } from 'react-bootstrap';
+import { Col, Glyphicon } from 'react-bootstrap';
 import renderIf from 'render-if';
 import abbreviate from 'number-abbreviate';
 import { Video } from 'components/store/records';
@@ -15,7 +15,7 @@ const VideoBlock = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
             className={classnames('favorite', { favorited })}
             onClick={(e) => favorited ? unfavorite() : favorite()}
           >
-            <i className='fa fa-favorite' />
+            <Glyphicon glyph='heart' />
           </div>
         )}
         <div className='video-block'>
@@ -28,8 +28,8 @@ const VideoBlock = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
               </div>
 
               <div className='video-stats'>
-                <i className='fa fa-eye' />{abbreviate(video.views)}
-                <i className='fa fa-heart' /> {abbreviate(video.favoritesCount)}
+                <Glyphicon glyph='eye-open' /> {abbreviate(video.views)}
+                <Glyphicon glyph='heart' /> {abbreviate(video.favoritesCount)}
               </div>
             </div>
           </a>

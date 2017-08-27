@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Panel } from 'react-bootstrap';
+import { Panel, Button, FormGroup, ControlLabel } from 'react-bootstrap';
 import { Field } from 'redux-form/es/immutable';
 import Select from 'components/common/RFReactSelect';
 import renderIf from 'render-if';
@@ -21,28 +21,28 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
     return (
       <Panel header='Video details'>
         <form onSubmit={handleSubmit}>
-          <div className='form-group'>
-            <label>Level</label>
+          <FormGroup>
+            <ControlLabel>Level</ControlLabel>
             <Field
               name='debateLevel'
               options={levels}
               component={Select}
               validate={[required]}
             />
-          </div>
+          </FormGroup>
 
-          <div className='form-group'>
-            <label>Debate type</label>
+          <FormGroup>
+            <ControlLabel>Debate type</ControlLabel>
             <Field
               name='debateType'
               options={types}
               component={Select}
               validate={[required]}
             />
-          </div>
+          </FormGroup>
 
-          <div className='form-group'>
-            <label>Year</label>
+          <FormGroup>
+            <ControlLabel>Year</ControlLabel>
             <Field
               className='form-control'
               name='year'
@@ -50,11 +50,11 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
               type='number'
               validate={[required]}
             />
-          </div>
+          </FormGroup>
 
           {renderIf(year)(
-            <div className='form-group'>
-              <label>Tournament</label>
+            <FormGroup>
+              <ControlLabel>Tournament</ControlLabel>
               <Field
                 name='tournament'
                 options={tournaments}
@@ -62,11 +62,11 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
                 validate={[required]}
                 creatable
               />
-            </div>
+            </FormGroup>
           )}
 
-          <div className='form-group'>
-            <label>Tags</label>
+          <FormGroup>
+            <ControlLabel>Tags</ControlLabel>
             <Field
               name='tags'
               options={tags}
@@ -74,12 +74,12 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
               creatable
               multi
             />
-          </div>
+          </FormGroup>
 
           <hr />
 
-          <div className='form-group'>
-            <label>Aff School</label>
+          <FormGroup>
+            <ControlLabel>Aff School</ControlLabel>
             <Field
               name='affSchool'
               options={schools}
@@ -87,12 +87,12 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
               validate={[required]}
               creatable
             />
-          </div>
+          </FormGroup>
 
           {renderIf(affSchool)(
             <div>
-              <div className='form-group'>
-                <label>{debateType === 2 ? 'Aff Debater' : 'Aff Debater 1'}</label>
+              <FormGroup>
+                <ControlLabel>{debateType === 2 ? 'Aff Debater' : 'Aff Debater 1'}</ControlLabel>
                 <Field
                   name='affDebaterOne'
                   options={affDebaters}
@@ -100,11 +100,11 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
                   validate={[required]}
                   creatable
                 />
-              </div>
+              </FormGroup>
 
               {renderIf(debateType !== 2)(
-                <div className='form-group'>
-                  <label>Aff Debater 2</label>
+                <FormGroup>
+                  <ControlLabel>Aff Debater 2</ControlLabel>
                   <Field
                     name='affDebaterTwo'
                     options={affDebaters}
@@ -112,15 +112,15 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
                     validate={[required]}
                     creatable
                   />
-                </div>
+                </FormGroup>
               )}
             </div>
           )}
 
           <hr />
 
-          <div className='form-group'>
-            <label>Neg School</label>
+          <FormGroup>
+            <ControlLabel>Neg School</ControlLabel>
             <Field
               name='negSchool'
               options={schools}
@@ -128,12 +128,12 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
               validate={[required]}
               creatable
             />
-          </div>
+          </FormGroup>
 
           {renderIf(negSchool)(
             <div>
-              <div className='form-group'>
-                <label>{debateType === 2 ? 'Neg Debater' : 'Neg Debater 1'}</label>
+              <FormGroup>
+                <ControlLabel>{debateType === 2 ? 'Neg Debater' : 'Neg Debater 1'}</ControlLabel>
                 <Field
                   name='negDebaterOne'
                   options={negDebaters}
@@ -141,11 +141,11 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
                   validate={[required]}
                   creatable
                 />
-              </div>
+              </FormGroup>
 
               {renderIf(debateType !== 2)(
-                <div className='form-group'>
-                  <label>Neg Debater 2</label>
+                <FormGroup>
+                  <ControlLabel>Neg Debater 2</ControlLabel>
                   <Field
                     name='negDebaterTwo'
                     options={negDebaters}
@@ -153,12 +153,12 @@ const Details = ({ hide, handleSubmit, levels, types, debateType, year, tourname
                     validate={[required]}
                     creatable
                   />
-                </div>
+                </FormGroup>
               )}
             </div>
           )}
 
-          <button type='submit' className='btn btn-primary'>Submit</button>
+          <Button type='submit' bsStyle='primary'>Submit</Button>
         </form>
       </Panel>
     );

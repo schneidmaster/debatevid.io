@@ -19,10 +19,7 @@
     .add-filter {
       margin-right: 10px;
       align-self: flex-start;
-
-      .btn {
-        height: 46px;
-      }
+      height: 46px;
     }
 
     .filter {
@@ -46,7 +43,7 @@
         margin-right: 5px;
       }
 
-      .fa-times {
+      .glyphicon-remove {
         display: flex;
         align-items: center;
         justify-content: center;

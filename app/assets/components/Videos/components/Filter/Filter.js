@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Glyphicon } from 'react-bootstrap';
 import Select from 'react-select';
 import { Filter as FilterRecord } from 'components/store/records';
 
@@ -17,7 +18,7 @@ const Filter = ({ filter, setFilterValue, deleteFilter }) => {
         />
       </div>
 
-      <i className='fa fa-times' onClick={(e) => deleteFilter(filter.id)} />
+      <Glyphicon glyph='remove' onClick={(e) => deleteFilter(filter.id)} />
     </div>
   );
 };
