@@ -1,3 +1,3 @@
 <h2><%= image_tag @user.avatar, alt: @user.name, class: 'avatar-large' %><%= @user.name %></h2>
-<h3><%= @user.videos.count %> submitted videos</h3>
+<h3><%= @user.videos.count %> submitted <%= 'video'.pluralize(@user.videos.count) %></h3>
 <%= react_component 'Videos', props: { data: data_json(@videos) } %>
