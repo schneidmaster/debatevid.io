@@ -72,9 +72,7 @@ feature 'Authentication', :needs_assets do
     end
 
     scenario 'logs out the user' do
-      within '.navbar-right' do
-        click_on 'Logout'
-      end
+      visit logout_path
       expect(page).to have_content('Logged out!')
     end
   end
