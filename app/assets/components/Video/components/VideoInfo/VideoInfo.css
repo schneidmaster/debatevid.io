@@ -1,0 +1,55 @@
+@import '../../../../stylesheets/vars';
+
+.videoShow {
+  .favorite {
+    margin-right: 10px;
+    color: $offGray;
+
+    &:hover {
+      color: $highlightPink;
+      cursor: pointer;
+    }
+
+    &.favorited {
+      color: $highlightPink;
+
+      &:hover {
+        color: $offGray;
+      }
+    }
+  }
+
+  .icons {
+    display: inline-block;
+    color: $offGray;
+    margin-right: 10px;
+
+    :global(.glyphicon-heart) {
+      margin-left: 10px;
+    }
+  }
+}
+
+.frameWrapper {
+  position: relative;
+  width: 100%;
+  height: 0px;
+  padding-bottom: 60%;
+  margin-bottom: 25px;
+}
+
+.vidframe {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.noMarginTop {
+  margin-top: 0;
+}
+
+.alignRight {
+  text-align: right;
+}

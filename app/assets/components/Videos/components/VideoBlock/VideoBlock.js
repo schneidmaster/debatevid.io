@@ -5,29 +5,30 @@ import { Col, Glyphicon } from 'react-bootstrap';
 import renderIf from 'render-if';
 import abbreviate from 'number-abbreviate';
 import { Video } from 'components/store/records';
+import styles from './VideoBlock.css';
 
 const VideoBlock = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
   return (
     <Col md={4}>
-      <div className='video-preview'>
+      <div className={styles.videoPreview}>
         {renderIf(loggedIn)(
           <div
-            className={classnames('favorite', { favorited })}
+            className={classnames(styles.favorite, { [styles.favorited]: favorited })}
             onClick={(e) => favorited ? unfavorite() : favorite()}
           >
             <Glyphicon glyph='heart' />
           </div>
         )}
-        <div className='video-block'>
+        <div className={styles.videoBlock}>
           <a href={`/videos/${video.id}`}>
             <img src={video.getThumbnail()} alt={video.getTitle()} />
 
-            <div className='video-info'>
-              <div className='video-title'>
+            <div className={styles.videoInfo}>
+              <div className={styles.videoTitle}>
                 {video.getTitle()}
               </div>
 
-              <div className='video-stats'>
+              <div className={styles.videoStats}>
                 <Glyphicon glyph='eye-open' /> {abbreviate(video.views)}
                 <Glyphicon glyph='heart' /> {abbreviate(video.favoritesCount)}
               </div>

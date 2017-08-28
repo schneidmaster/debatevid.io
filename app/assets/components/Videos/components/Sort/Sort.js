@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Sort.css';
 
 const Sort = ({ sortOrder, setSortOrder }) => {
   return (
-    <div className='sort'>
+    <div className={styles.sort}>
       <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)} className='form-control'>
         <option value=''>Sort</option>
         <option value='recent'>Sort Recent</option>

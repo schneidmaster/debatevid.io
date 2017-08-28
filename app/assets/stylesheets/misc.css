@@ -1,7 +1,3 @@
-.hidden {
-  display: none;
-}
-
 div.flex-body {
   display: flex;
   flex-direction: column;
@@ -24,10 +20,6 @@ div.flex-body {
   margin-bottom: 10px;
 }
 
-.align-right {
-  text-align: right;
-}
-
-.no-margin-top {
-  margin-top: 0;
+.error .Select-control, .form-control.error {
+  border: solid red 1px;
 }

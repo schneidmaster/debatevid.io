@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Search.css';
 
 const Search = ({ searchTerm, setSearchTerm }) => {
   return (
-    <div className='search'>
+    <div className={styles.search}>
       <input
         type='search'
         placeholder='Search'

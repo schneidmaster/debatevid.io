@@ -36,6 +36,7 @@
     "humps": "^2.0.1",
     "immutable": "^3.8.1",
     "number-abbreviate": "^2.0.0",
+    "postcss-import": "^10.0.0",
     "postcss-loader": "^2.0.6",
     "postcss-nested": "^2.0.2",
     "postcss-simple-vars": "^4.0.0",

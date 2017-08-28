@@ -5,15 +5,16 @@ import Filter from 'components/Videos/components/Filter';
 import Search from 'components/Videos/components/Search';
 import Sort from 'components/Videos/components/Sort';
 import { List, Map } from 'immutable';
+import styles from './FiltersBar.css';
 
 const FiltersBar = ({ filters, availableFilters, addFilter }) => {
   return (
     <Row className='mb'>
-      <Col xs={12} className='filters'>
-        <div className='filters-left'>
+      <Col xs={12} className={styles.filters}>
+        <div className={styles.filtersLeft}>
           <Sort />
 
-          <DropdownButton id='filters' className='add-filter' title='Filter'>
+          <DropdownButton id='filters' className={styles.addFilter} title='Filter'>
             {availableFilters.map((filter) => {
               return (
                 <MenuItem key={filter} onClick={(e) => addFilter(e, filter)}>
@@ -23,7 +24,7 @@ const FiltersBar = ({ filters, availableFilters, addFilter }) => {
             })}
           </DropdownButton>
 
-          <div className='filters-active'>
+          <div className={styles.filtersActive}>
             {filters.keySeq().map((key) => <Filter key={key} filterId={key} />)}
           </div>
         </div>

@@ -6,15 +6,16 @@ import classnames from 'classnames';
 import { Row, Col, Glyphicon } from 'react-bootstrap';
 import { Video } from 'components/store/records';
 import Tags from 'components/Video/components/Tags';
+import styles from './VideoInfo.css';
 
 const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
   return (
-    <div className='video-show'>
+    <div className={styles.videoShow}>
       <h3>
         {renderIf(loggedIn)(
           <Glyphicon
             glyph='heart'
-            className={classnames('favorite', { favorited })}
+            className={classnames(styles.favorite, { [styles.favorited]: favorited })}
             onClick={() => favorited ? unfavorite() : favorite()}
           />
         )}
@@ -23,8 +24,8 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
 
       <Row>
         <Col xs={12}>
-          <div className='frame-wrapper'>
-            <iframe {...video.getFrameProps()} />
+          <div className={styles.frameWrapper}>
+            <iframe className={styles.vidframe} {...video.getFrameProps()} />
           </div>
         </Col>
       </Row>
@@ -34,8 +35,8 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
           <Tags />
         </Col>
 
-        <Col md={3} xs={12} className='align-right'>
-          <div className='icons'>
+        <Col md={3} xs={12} className={styles.alignRight}>
+          <div className={styles.icons}>
             <Glyphicon glyph='eye-open' /> {abbreviate(video.views)}
             <Glyphicon glyph='heart' /> {abbreviate(video.favoritesCount)}
           </div>
@@ -47,7 +48,7 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
         </Col>
       </Row>
 
-      <hr className='no-margin-top' />
+      <hr className={styles.noMarginTop} />
 
       <Row>
         <Col xs={12}>

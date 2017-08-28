@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { List } from 'immutable';
 import { Panel, Glyphicon, Button, FormGroup, InputGroup, FormControl } from 'react-bootstrap';
 import renderIf from 'render-if';
+import styles from './Segments.css';
 
 const Segments = ({ segmentInput, segments, setSegmentInput, addFormSegment, deleteFormSegment }) => {
   const hasSegments = segments.size > 0;
@@ -11,7 +12,7 @@ const Segments = ({ segmentInput, segments, setSegmentInput, addFormSegment, del
   return (
     <Panel header='Video segments'>
       {renderIf(hasSegments)(() => (
-        <div className='video-preview'>
+        <div className={styles.videoPreview}>
           <strong>{firstSegment.title}</strong>
           <img src={firstSegment.thumbnail} alt={firstSegment.title} />
         </div>
@@ -19,7 +20,7 @@ const Segments = ({ segmentInput, segments, setSegmentInput, addFormSegment, del
 
       {segments.map((segment, idx) => {
         return (
-          <div className='segment' key={segment.key}>
+          <div className={styles.segment} key={segment.key}>
             <a href={segment.getLink()} target='_blank'>{segment.title}</a>
 
             <Glyphicon glyph='remove' className='pull-right' onClick={(e) => deleteFormSegment(idx)} />

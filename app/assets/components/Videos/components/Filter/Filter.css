@@ -1,0 +1,34 @@
+@import '../../../../stylesheets/vars';
+
+.filter {
+  display: flex;
+  background-color: $filterBg;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+
+  .filterLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(.Select) {
+    min-width: 125px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  :global(.glyphicon-remove) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

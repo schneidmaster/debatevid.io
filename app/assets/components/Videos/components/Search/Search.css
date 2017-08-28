@@ -1,0 +1,9 @@
+.search {
+  flex: 1;
+  align-self: flex-start;
+  min-width: 75px;
+
+  input {
+    height: 46px;
+  }
+}

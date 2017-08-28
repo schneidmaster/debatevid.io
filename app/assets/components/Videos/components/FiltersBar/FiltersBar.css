@@ -1,0 +1,25 @@
+.filters {
+  display: flex;
+  flex-direction: row;
+
+  .filtersLeft {
+    display: flex;
+    flex: 4;
+    justify-content: flex-start;
+
+    .addFilter {
+      margin-right: 10px;
+      align-self: flex-start;
+      height: 46px;
+    }
+
+    :global(.dropdown-menu) {
+      top: 50px;
+    }
+
+    .filtersActive {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}

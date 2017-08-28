@@ -1,0 +1,26 @@
+.videoPreview {
+  text-align: center;
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+  border: solid 1px #999;
+  
+  img {
+    width: 100%;
+  }
+}
+
+.segment {
+  border: solid 1px #999;
+  padding: 5px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+
+  :global(.glyphicon-remove) {
+    margin: 2px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

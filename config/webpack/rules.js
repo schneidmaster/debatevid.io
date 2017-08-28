@@ -5,6 +5,7 @@ import nested from 'postcss-nested';
 import precss from 'precss';
 import autoprefixer from 'autoprefixer';
 import vars from 'postcss-simple-vars';
+import postcssImport from 'postcss-import';
 
 const commonRules = [
   {
@@ -49,6 +50,7 @@ const commonRules = [
 const prodRules = [
   {
     test: /\.css$/,
+    exclude: /componnets/,
     use: ExtractTextPlugin.extract({
       fallback: 'style-loader',
       use: [
@@ -75,11 +77,42 @@ const prodRules = [
       ],
     }),
   },
+  {
+    test: /\.css$/,
+    include: /components/,
+    use: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: [
+        {
+          loader: 'css-loader',
+          options: {
+            minimize: true,
+            modules: true,
+          },
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true,
+            plugins() {
+              return [
+                nested,
+                vars,
+                precss,
+                autoprefixer,
+              ];
+            },
+          },
+        },
+      ],
+    }),
+  },
 ];
 
 const devRules = [
   {
     test: /\.css$/,
+    exclude: /components/,
     use: [
       {
         loader: 'style-loader',
@@ -99,6 +132,41 @@ const devRules = [
           sourceMap: true,
           plugins() {
             return [
+              postcssImport,
+              nested,
+              vars,
+              precss,
+              autoprefixer,
+            ];
+          },
+        },
+      },
+    ],
+  },
+  {
+    test: /\.css$/,
+    include: /components/,
+    use: [
+      {
+        loader: 'style-loader',
+        options: {
+          sourceMap: true,
+        },
+      },
+      {
+        loader: 'css-loader',
+        options: {
+          sourceMap: true,
+          modules: true,
+        },
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          sourceMap: true,
+          plugins() {
+            return [
+              postcssImport,
               nested,
               vars,
               precss,

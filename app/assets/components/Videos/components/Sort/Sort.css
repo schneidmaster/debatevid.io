@@ -1,0 +1,9 @@
+.sort {
+  margin-right: 10px;
+  margin-bottom: 10px;
+
+  :global(.form-control) {
+    width: auto;
+    height: 46px;
+  }
+}

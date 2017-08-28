@@ -1,7 +1,4 @@
-$base: #1285AF;
-$highlight: #3AAED8;
-$light: #E8F6FD;
-$font: #133C55;
+@import './vars';
 
 nav.navbar-default {
   background-color: white;
@@ -64,11 +61,11 @@ nav.navbar-default {
 
     a {
       padding-left: 10px;
-      color: #326273;
+      color: $teal;
 
       &:hover {
         background-color: $light;
-        color: #326273;
+        color: $teal;
       }
     }
   }

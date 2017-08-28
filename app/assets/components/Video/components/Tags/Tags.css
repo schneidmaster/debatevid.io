@@ -1,0 +1,21 @@
+.tagsRow {
+  margin-bottom: 15px;
+
+  .tags {
+    display: inline-block;
+  }
+
+  :global(.glyphicon-plus) {
+    margin-left: 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  :global(.Select) {
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}

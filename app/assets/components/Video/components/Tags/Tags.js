@@ -5,11 +5,12 @@ import Select from 'components/common/RFReactSelect';
 import { Field } from 'redux-form';
 import renderIf from 'render-if';
 import { Video } from 'components/store/records';
+import styles from './Tags.css';
 
 const Tags = ({ loggedIn, video, tags, adding, addTag, handleSubmit }) => {
   return (
-    <div className='tags-row'>
-      <div className='tags'>
+    <div className={styles.tagsRow}>
+      <div className={styles.tags}>
         Tags:&nbsp;
         {renderIf(video.tags.size > 0)(
           <span>
