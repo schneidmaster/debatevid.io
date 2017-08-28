@@ -66,11 +66,11 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
           </p>
           <p>
             Debater: <a href={`/debaters/${video.affTeam.debaterOne.id}`}>{video.affTeam.debaterOne.getName()}</a>
-            {renderIf(video.affTeam.debaterTwo)(
+            {renderIf(video.affTeam.debaterTwo)(() => (
               <span>
                 &nbsp;&amp; <a href={`/debaters/${video.affTeam.debaterTwo.id}`}>{video.affTeam.debaterTwo.getName()}</a>
               </span>
-            )}
+            ))}
           </p>
         </Col>
 
@@ -84,11 +84,11 @@ const VideoInfo = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
           </p>
           <p>
             Debater: <a href={`/debaters/${video.negTeam.debaterOne.id}`}>{video.negTeam.debaterOne.getName()}</a>
-            {renderIf(video.negTeam.debaterTwo)(
+            {renderIf(video.negTeam.debaterTwo)(() => (
               <span>
                 &nbsp;&amp; <a href={`/debaters/${video.negTeam.debaterTwo.id}`}>{video.negTeam.debaterTwo.getName()}</a>
               </span>
-            )}
+            ))}
           </p>
         </Col>
       </Row>
