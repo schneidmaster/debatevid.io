@@ -4,14 +4,16 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import AssetMapPlugin from 'asset-map-webpack-plugin';
 import StatsPlugin from 'stats-webpack-plugin';
+import SentrySourcemapPlugin from 'webpack-sentry-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import git from 'git-rev-sync';
 import envRules from './webpack/rules';
 import { devServer, publicPath } from './webpack/dev';
 import buildEnv from './webpack/env';
 import runtime from './webpack/runtime';
 import vendor from './webpack/vendor';
 
-const { TARGET: target, BUNDLE_ANALYZE: bundleAnalyze } = process.env;
+const { TARGET: target, BUNDLE_ANALYZE: bundleAnalyze, SENTRY_KEY: sentryKey, SENTRY_JS_DSN: sentryDsn } = process.env;
 const { deployTarget, namePattern, cssNamePattern } = buildEnv(target);
 
 const resolvedRules = envRules(deployTarget);
@@ -67,6 +69,8 @@ if (deployTarget) {
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
       },
+      SENTRY_DSN: JSON.stringify(sentryDsn),
+      GITSHA: JSON.stringify(git.short()),
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -80,6 +84,14 @@ if (deployTarget) {
         screw_ie8: true,
       },
     }),
+    new webpack.SourceMapDevToolPlugin({
+      module: true,
+      columns: true,
+      filename: '[file].map',
+      moduleFilenameTemplate: 'file://[resource-path]',
+      fallbackModuleFilenameTemplate: 'file://[resource-path]?[hash]',
+      append: '\n//# sourceMappingURL=/assets/[url]',
+    }),
     new CompressionPlugin({
       asset: '[path].gz',
       test: /\.(css|js)$/,
@@ -88,6 +100,33 @@ if (deployTarget) {
 
   if(bundleAnalyze) {
     config.plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'static' }));
+  }
+
+  if(sentryKey) {
+    config.plugins.push(
+      new SentrySourcemapPlugin({
+        organisation: 'schneidmaster',
+        project: 'debatevid.io',
+        apiKey: sentryKey,
+        release: git.short(),
+        include: /\.js(\.map)?$/,
+        filenameTransform(filename) {
+          return `~/assets/${filename}`;
+        },
+        releaseBody(version) {
+          return {
+            version,
+            refs: [
+              {
+                repository: 'schneidmaster/debatevid.io',
+                commit: git.long(),
+              },
+            ],
+            projects: ['debatevid.io'],
+          };
+        },
+      })
+    );
   }
 } else {
   config.devServer = devServer;

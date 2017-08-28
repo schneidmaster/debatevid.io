@@ -261,6 +261,8 @@ GEM
       rubocop (>= 0.37)
     ruby-progressbar (1.8.1)
     safe_yaml (1.0.4)
+    sentry-raven (2.6.3)
+      faraday (>= 0.7.6, < 1.0)
     simplecov (0.13.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -341,6 +343,7 @@ DEPENDENCIES
   rspec-json_expectations
   rspec-rails (~> 3.1)
   rubocop-aha
+  sentry-raven
   simplecov (~> 0.13.0)
   sitemap_generator
   surus
