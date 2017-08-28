@@ -6,14 +6,19 @@ import AssetMapPlugin from 'asset-map-webpack-plugin';
 import StatsPlugin from 'stats-webpack-plugin';
 import SentrySourcemapPlugin from 'webpack-sentry-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import git from 'git-rev-sync';
 import envRules from './webpack/rules';
 import { devServer, publicPath } from './webpack/dev';
 import buildEnv from './webpack/env';
 import runtime from './webpack/runtime';
 import vendor from './webpack/vendor';
 
-const { TARGET: target, BUNDLE_ANALYZE: bundleAnalyze, SENTRY_KEY: sentryKey, SENTRY_JS_DSN: sentryDsn } = process.env;
+const {
+  TARGET: target,
+  BUNDLE_ANALYZE: bundleAnalyze,
+  SENTRY_KEY: sentryKey,
+  SENTRY_JS_DSN: sentryDsn,
+  HEROKU_SLUG_COMMIT: commit,
+} = process.env;
 const { deployTarget, namePattern, cssNamePattern } = buildEnv(target);
 
 const resolvedRules = envRules(deployTarget);
@@ -70,7 +75,7 @@ if (deployTarget) {
         NODE_ENV: JSON.stringify('production'),
       },
       SENTRY_DSN: JSON.stringify(sentryDsn),
-      GITSHA: JSON.stringify(git.short()),
+      GITSHA: JSON.stringify(commit),
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -108,7 +113,7 @@ if (deployTarget) {
         organisation: 'schneidmaster',
         project: 'debatevid.io',
         apiKey: sentryKey,
-        release: git.short(),
+        release: commit,
         include: /\.js(\.map)?$/,
         filenameTransform(filename) {
           return `~/assets/${filename}`;
@@ -119,7 +124,7 @@ if (deployTarget) {
             refs: [
               {
                 repository: 'schneidmaster/debatevid.io',
-                commit: git.long(),
+                commit: commit,
               },
             ],
             projects: ['debatevid.io'],
