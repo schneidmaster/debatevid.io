@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
-import { Panel, Glyphicon, Button, FormGroup, InputGroup, FormControl } from 'react-bootstrap/es';
+import { Panel, Glyphicon, Button, FormGroup, InputGroup, FormControl } from 'react-bootstrap';
 import renderIf from 'render-if';
 
 const Segments = ({ segmentInput, segments, setSegmentInput, addFormSegment, deleteFormSegment }) => {

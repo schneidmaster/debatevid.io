@@ -29,6 +29,18 @@ const commonRules = [
           ['es2015', { modules: false }],
           'react',
         ],
+        plugins: [
+          ['transform-imports', {
+            'react-bootstrap': {
+              transform: 'react-bootstrap/es/${member}', // eslint-disable-line no-template-curly-in-string
+              preventFullImport: true,
+            },
+            'redux-form': {
+              transform: 'redux-form/es/immutable/${member}', // eslint-disable-line no-template-curly-in-string
+              preventFullImport: true,
+            },
+          }],
+        ],
       },
     },
   },

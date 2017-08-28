@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Glyphicon, Button } from 'react-bootstrap/es';
+import { Glyphicon, Button } from 'react-bootstrap';
 import Select from 'components/common/RFReactSelect';
-import { Field } from 'redux-form/es/immutable';
+import { Field } from 'redux-form';
 import renderIf from 'render-if';
 import { Video } from 'components/store/records';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap/es';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import renderIf from 'render-if';
 import logo from 'images/logo.png';
 import fb from 'images/fb.png';

@@ -1,6 +1,6 @@
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { reduxForm, formValueSelector } from 'redux-form/es/immutable';
+import { reduxForm, formValueSelector } from 'redux-form';
 import { createVideo } from 'components/store/actions';
 import Details from './Details';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, DropdownButton, MenuItem } from 'react-bootstrap/es';
+import { Row, Col, DropdownButton, MenuItem } from 'react-bootstrap';
 import Filter from 'components/Videos/components/Filter';
 import Search from 'components/Videos/components/Search';
 import Sort from 'components/Videos/components/Sort';
