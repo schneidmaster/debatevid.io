@@ -23,7 +23,7 @@ const mapStateToProps = (state, ownProps) => {
       switch(sortOrder) {
       case 'viewed':
         return video.views;
-      case 'liked':
+      case 'favd':
         return video.favoritesCount;
       case 'recent':
       default:

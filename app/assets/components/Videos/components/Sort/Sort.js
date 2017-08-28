@@ -8,7 +8,7 @@ const Sort = ({ sortOrder, setSortOrder }) => {
         <option value=''>Sort</option>
         <option value='recent'>Sort Recent</option>
         <option value='viewed'>Sort Top Viewed</option>
-        <option value='liked'>Sort Top Liked</option>
+        <option value='favd'>Sort Top Fav'd</option>
       </select>
     </div>
   );
