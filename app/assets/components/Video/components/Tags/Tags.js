@@ -14,7 +14,7 @@ const Tags = ({ loggedIn, video, tags, adding, addTag, handleSubmit }) => {
         Tags:&nbsp;
         {renderIf(video.tags.size > 0)(
           <span>
-            {video.tags.map((tag, idx) => {
+            {video.tags.filter(t => t).map((tag, idx) => {
               return (
                 <span key={tag.title}>
                   {renderIf(idx > 0)(', ')}
