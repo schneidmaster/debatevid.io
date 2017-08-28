@@ -66,6 +66,7 @@ const config = {
 };
 
 if (deployTarget) {
+  config.devtool = 'source-map';
   config.plugins.push(
     new ExtractTextPlugin({ filename: `${cssNamePattern}.css` }),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -78,6 +79,8 @@ if (deployTarget) {
       GITSHA: JSON.stringify(commit),
     }),
     new webpack.optimize.UglifyJsPlugin({
+      sourceMapFilename: `${namePattern}.js.map`,
+      sourceMap: true,
       compress: {
         screw_ie8: true,
       },
@@ -88,12 +91,6 @@ if (deployTarget) {
         comments: false,
         screw_ie8: true,
       },
-    }),
-    new webpack.SourceMapDevToolPlugin({
-      filename: `${namePattern}.js.map`,
-      moduleFilenameTemplate: 'file://[resource-path]',
-      fallbackModuleFilenameTemplate: 'file://[resource-path]?[hash]',
-      append: '\n//# sourceMappingURL=/assets/[url]',
     }),
     new CompressionPlugin({
       asset: '[path].gz',
