@@ -33,7 +33,7 @@ export default class Video extends Record(defaultVideo) {
   }
 
   getThumbnail() {
-    if(this.provider === 'youtube') {
+    if(this.provider === 0) {
       return `https://img.youtube.com/vi/${this.key.first}/hqdefault.jpg`;
     } else if(this.thumbnail) {
       return this.thumbnail.replace('200x150', '600x450');
