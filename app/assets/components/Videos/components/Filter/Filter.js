@@ -10,14 +10,12 @@ const Filter = ({ filter, setFilterValue, deleteFilter }) => {
     <div className={styles.filter}>
       <div className={styles.filterLabel}>{filter.label}</div>
 
-      <div>
-        <Select
-          value={filter.value}
-          options={filter.options.map((value, label) => ({ value, label })).toArray()}
-          onChange={({ value }) => setFilterValue(value)}
-          clearable={false}
-        />
-      </div>
+      <Select
+        value={filter.value}
+        options={filter.options.map((value, label) => ({ value, label })).toArray()}
+        onChange={({ value }) => setFilterValue(value)}
+        clearable={false}
+      />
 
       <Glyphicon glyph='remove' onClick={(e) => deleteFilter(filter.id)} />
     </div>
