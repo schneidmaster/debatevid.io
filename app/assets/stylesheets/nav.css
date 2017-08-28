@@ -39,8 +39,10 @@ nav.navbar-default {
     }
   }
 
-  .auth-dropdown li {
-    margin-top: 0px;
+  @media screen and (min-width: 768px) {
+    .auth-dropdown li {
+      margin-top: 0px;
+    }
   }
 
   .navbar-collapse {

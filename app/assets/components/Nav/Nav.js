@@ -38,7 +38,7 @@ const Navigation = ({ loggedIn, currentUser }) => {
             <NavItem href='/videos/new'>Submit</NavItem>
           )}
           {renderIf(loggedIn)(() => (
-            <NavDropdown id='nav-dropdown' title={dropdownTitle}>
+            <NavDropdown id='nav-dropdown' title={dropdownTitle} className='auth-dropdown'>
               <MenuItem href={`/users/${currentUser.id}`}>Profile</MenuItem>
               <MenuItem href='/favorites'>Favorites</MenuItem>
               <MenuItem href='/logout'>Logout</MenuItem>
