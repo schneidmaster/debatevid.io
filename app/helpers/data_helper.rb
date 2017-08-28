@@ -11,7 +11,7 @@ module DataHelper
       tags: Tag.all_json(columns: %i[id title]),
       favorites: Favorite.for_user(current_user).all_json(columns: %i[video_id]),
       videos: videos.all_json(
-        columns: %i[id created_at debate_type debate_level thumbnail provider live_now is_featured tournament_id aff_team_id neg_team_id views favorites_count],
+        columns: %i[id created_at debate_type debate_level thumbnail key provider live_now is_featured tournament_id aff_team_id neg_team_id views favorites_count],
         include: {
           tags_videos: {
             columns: [:tag_id],
