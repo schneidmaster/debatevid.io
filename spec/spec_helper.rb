@@ -1,6 +1,14 @@
 require 'simplecov'
 
-SimpleCov.start 'rails'
+SimpleCov.start do
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Models', 'app/models'
+  add_group 'Helpers', 'app/helpers'
+  add_group 'Services', 'app/services'
+
+  add_filter 'config/'
+  add_filter 'spec/'
+end
 
 ENV['RAILS_ENV'] = 'test'
 ENV['S3_BUCKET_NAME'] = 'test-debatevidio'
