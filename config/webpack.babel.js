@@ -111,7 +111,7 @@ if (deployTarget) {
     config.plugins.push(
       new SentrySourcemapPlugin({
         organisation: 'schneidmaster',
-        project: 'debatevid.io',
+        project: 'debatevidio',
         apiKey: sentryKey,
         release: commit,
         include: /\.js(\.map)?$/,
@@ -127,7 +127,7 @@ if (deployTarget) {
                 commit: commit,
               },
             ],
-            projects: ['debatevid.io'],
+            projects: ['debatevidio'],
           };
         },
       })
