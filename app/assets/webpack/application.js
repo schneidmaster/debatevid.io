@@ -5,6 +5,7 @@ import Submit from 'components/Submit/Submit';
 import Video from 'components/Video/Video';
 import Videos from 'components/Videos/Videos';
 
+// Register components.
 ReactOnRails.register({
   Nav,
   Submit,
@@ -23,9 +24,3 @@ import 'stylesheets/nav';
 import 'stylesheets/profile';
 import 'stylesheets/video';
 import 'stylesheets/videos';
-
-// Images.
-import 'images/fb.png';
-import 'images/google.png';
-import 'images/logo.png';
-import 'images/twitter.png';
