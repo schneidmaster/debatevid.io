@@ -23,7 +23,9 @@ const FiltersBar = ({ filters, availableFilters, addFilter }) => {
             })}
           </DropdownButton>
 
-          {filters.keySeq().map((key) => <Filter key={key} filterId={key} />)}
+          <div className='filters-active'>
+            {filters.keySeq().map((key) => <Filter key={key} filterId={key} />)}
+          </div>
         </div>
 
         <Search />
