@@ -1,4 +1,4 @@
-class CreateDebaters < ActiveRecord::Migration
+class CreateDebaters < ActiveRecord::Migration[4.2]
   def change
     create_table :debaters do |t|
       t.belongs_to :team

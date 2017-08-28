@@ -1,0 +1,9 @@
+engines:
+  rubocop:
+    enabled: false
+  jshint:
+    enabled: false
+
+ratings:
+  paths:
+  - "app/**/*"

@@ -1,4 +1,4 @@
-feature 'Authentication' do
+feature 'Authentication', :needs_assets do
   context 'using facebook' do
     context 'when authentication succeeds' do
       before { mock_fb }
@@ -72,9 +72,7 @@ feature 'Authentication' do
     end
 
     scenario 'logs out the user' do
-      within '.dropdown' do
-        click_on 'Logout'
-      end
+      visit logout_path
       expect(page).to have_content('Logged out!')
     end
   end

@@ -7,9 +7,16 @@
 
 [DebateVid.io](https://debatevid.io) is a centralized repository for parliamentary, policy, and Lincoln-Douglas debate videos. 
 
-## Developing
+## Development
 
-DebateVid.io is built on Ruby on Rails and Foundation.
+DebateVid.io is built on Ruby on Rails and uses yarn for frontend assets.
+
+### Setup
+
+1. Clone the repository (`git clone git@github.com:schneidmaster/debatevid.io.git`)
+2. Install gems: `bundle install`
+3. Install packages: `yarn install`
+4. Start the Rails and webpack servers: `foreman start -f Procfile.dev`
 
 ### Configuration
 
@@ -25,16 +32,26 @@ GOOGLE_SECRET=################
 YOUTUBE_DEV_KEY=################
 ```
 
-In the production environment, the Rails secret key base and database password are also kept in `.env`:
+In the production environment, the Rails secret key base and database password are also kept in the application environment:
 
 ```
 SECRET_KEY_BASE=################
 DB_PASSWORD=################
 ```
 
+## Staging/Production Configuration
+
+On Heroku, DebateVid.io requires both the node buildpack (for webpack/asset compilation) and the ruby buildpack. Add them with:
+
+```
+heroku buildpacks:clear
+heroku buildpacks:set heroku/nodejs
+heroku buildpacks:add heroku/ruby --index 2
+```
+
 ## Contributing
 
-1. Fork it ( https://github.com/schneidmaster/debatevid.io/fork )
+1. Fork it (https://github.com/schneidmaster/debatevid.io/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -43,4 +60,3 @@ DB_PASSWORD=################
 ## License
 
 MIT
-

@@ -1,10 +1,14 @@
-class Tag < ActiveRecord::Base
+class Tag < ApplicationRecord
   has_many :tags_videos
   has_many :videos, through: :tags_videos
 
-  scope :like, ->(q) { where('lower(title) LIKE ?', "%#{q.downcase}%") }
+  validates :title, presence: true
 
-  def to_s
-    title
+  before_validation :downcase_title
+
+  private
+
+  def downcase_title
+    title&.downcase!
   end
 end

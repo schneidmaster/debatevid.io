@@ -1,10 +1,23 @@
 class TagsController < ApplicationController
+  before_action :authorize, except: %i[show]
+
   def show
-    @tag = Tag.find_by_title(params[:id])
-    @videos = @tag.videos.paginate(page: params[:page])
+    @tag = Tag.find_by(title: params[:id])
+    video_ids = @tag.videos.pluck(:id)
+    @videos = Video.where(id: video_ids)
   end
 
-  def autocomplete
-    render json: Tag.like(params[:q]).map { |tag| { id: tag.id, text: tag.title } }
+  def create
+    video = Video.find(params[:video_id])
+    id_or_title = tag_params[:title]
+    tag = Tag.find_by(id: id_or_title) || Tag.find_or_create_by(title: id_or_title)
+    TagsVideo.create(user: current_user, tag: tag, video: video) unless video.tags_videos.exists?(tag_id: tag.id)
+    render json: tag
+  end
+
+  private
+
+  def tag_params
+    params.require(:tag).permit(:title)
   end
 end

@@ -1,4 +1,4 @@
-class CreateTeamsVideos < ActiveRecord::Migration
+class CreateTeamsVideos < ActiveRecord::Migration[4.2]
   def change
     create_table :teams_videos do |t|
       t.belongs_to :team, index: true

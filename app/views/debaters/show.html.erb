@@ -1,3 +1,3 @@
 <h2><%= @debater.name %></h2>
 <h3><%= link_to @debater.school.name, school_path(@debater.school) %></h3>
-<%= render partial: "videos/table", locals: { videos: @videos } %>
+<%= react_component 'Videos', props: { data: data_json(@videos) } %>

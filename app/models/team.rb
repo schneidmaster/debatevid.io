@@ -1,20 +1,15 @@
-class Team < ActiveRecord::Base
+class Team < ApplicationRecord
   belongs_to :school
 
   belongs_to :debater_one, class_name: 'Debater', foreign_key: :debater_one_id
   belongs_to :debater_two, class_name: 'Debater', foreign_key: :debater_two_id
 
-  scope :with_debaters, ->(one, two) { where('(debater_one_id = ? and debater_two_id = ?) or (debater_one_id = ? and debater_two_id = ?)', one, two, two, one) }
+  before_validation :sort_debaters
+  after_create :set_debater_schools
 
-  scope :like, ->(q) { joins(:debater_one, :debater_two).where('lower(debaters.first_name) like ? or lower(debaters.last_name) like ? or lower(debater_twos_teams.first_name) like ? or lower(debater_twos_teams.last_name) like ?', "%#{q.downcase}%", "%#{q.downcase}%", "%#{q.downcase}%", "%#{q.downcase}%") }
+  scope :with_debaters, ->(one, two) { where(debater_one: one, debater_two: two).or(where(debater_one: two, debater_two: one)) }
 
-  def debater_one
-    Debater.find(debater_one_id) if Debater.exists?(debater_one_id)
-  end
-
-  def debater_two
-    Debater.find(debater_two_id) if Debater.exists?(debater_two_id)
-  end
+  accepts_nested_attributes_for :debater_one, :debater_two, :school
 
   def code
     if debater_two
@@ -24,15 +19,17 @@ class Team < ActiveRecord::Base
     end
   end
 
-  def debater_names
-    "#{debater_one.name} & #{debater_two.name}"
+  private
+
+  def set_debater_schools
+    debater_one.update(school: school) if debater_one.school_id.nil?
+    debater_two.update(school: school) if debater_two.present? && debater_two.school_id.nil?
   end
 
-  def code_with_names
-    "#{school.name_for_code} #{debater_names}"
-  end
-
-  def to_s
-    code
+  def sort_debaters
+    return unless debater_two && debater_two.last_name < debater_one.last_name
+    tmp = debater_one
+    self.debater_one = debater_two
+    self.debater_two = tmp
   end
 end

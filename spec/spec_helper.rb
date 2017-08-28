@@ -1,15 +1,14 @@
-require 'codeclimate-test-reporter'
 require 'simplecov'
 
-SimpleCov.formatter = CodeClimate::TestReporter::Formatter if ENV['CIRCLE_ARTIFACTS']
-SimpleCov.start 'rails' do
-  add_filter '/app/admin/'
-end
+SimpleCov.start 'rails'
 
 ENV['RAILS_ENV'] = 'test'
+ENV['S3_BUCKET_NAME'] = 'test-debatevidio'
+ENV['YOUTUBE_DEV_KEY'] = 'youtube-dev'
 require File.expand_path('../../config/environment', __FILE__)
 
 require 'rspec/rails'
+require 'rspec/json_expectations'
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
 require 'capybara/poltergeist'
@@ -17,11 +16,11 @@ require 'webmock/rspec'
 require 'rack_session_access/capybara'
 require 'byebug'
 
-WebMock.disable_net_connect!(allow_localhost: true, allow: %w(codeclimate.com))
+WebMock.disable_net_connect!(allow_localhost: true, allow: %w[lvh.me])
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -37,7 +36,7 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = Rails.root.join('spec', 'fixtures')
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -56,6 +55,7 @@ RSpec.configure do |config|
   config.order = 'random'
 
   # Include custom helpers
+  config.include Controllers::AuthenticationHelpers, type: :controller
   config.include Features::MockHelpers, type: :feature
   config.include Features::SessionHelpers, type: :feature
 
@@ -79,5 +79,33 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+  end
+
+  # Start webpack server if needed.
+  config.add_setting :webpack_dev_server_pid
+
+  config.when_first_matching_example_defined(:needs_assets) do
+    # Start webpack-dev-server unless in CI or it is already running
+    next if ENV['CI'] == 'true' || system('lsof -i:3808', out: '/dev/null')
+
+    config.webpack_dev_server_pid = fork do
+      puts 'Child process starting webpack-dev-server...'
+      exec 'TARGET=development ./node_modules/.bin/webpack-dev-server --config config/webpack.babel.js --quiet'
+    end
+  end
+
+  config.after(:suite) do
+    next unless config.webpack_dev_server_pid
+    puts 'Killing webpack-dev-server'
+    Process.kill('HUP', config.webpack_dev_server_pid)
+    begin
+      Timeout.timeout(2) do
+        Process.wait(config.webpack_dev_server_pid, 0)
+      end
+    rescue Timeout::Error
+      Process.kill(9, config.webpack_dev_server_pid)
+    ensure
+      config.webpack_dev_server_pid = nil
+    end
   end
 end

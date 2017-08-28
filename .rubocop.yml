@@ -1,20 +1,14 @@
+inherit_gem:
+  rubocop-aha: lib/config.yml
+
 AllCops:
   Exclude:
     - bin/**
     - db/**/*
+    - node_modules/**/*
     - vendor/**/*
+  TargetRubyVersion: 2.4
+  DisplayCopNames: true
 
-AbcSize:
-  Enabled: false
-CyclomaticComplexity:
-  Enabled: false
-Documentation:
-  Enabled: false
-ClassLength:
-  Enabled: false
-LineLength:
-  Enabled: false
-MethodLength:
-  Enabled: false
-PerceivedComplexity:
+RSpec/LetSetup:
   Enabled: false

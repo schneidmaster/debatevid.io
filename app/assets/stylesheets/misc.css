@@ -1,0 +1,33 @@
+.hidden {
+  display: none;
+}
+
+div.flex-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  main {
+    flex: auto;
+  }
+
+  footer {
+    margin-bottom: 15px;
+  }
+}
+
+.Select {
+  z-index: 0.5;
+}
+
+.mb {
+  margin-bottom: 10px;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.no-margin-top {
+  margin-top: 0;
+}
