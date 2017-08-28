@@ -23,9 +23,15 @@ const videoReducer = (state, action) => {
     const affSchool = new School(videoData.affTeam.debaterOne.school);
     const negSchool = new School(videoData.negTeam.debaterOne.school);
     const affDebaterOne = new Debater(Object.assign(videoData.affTeam.debaterOne, { school: affSchool }));
-    const affDebaterTwo = new Debater(Object.assign(videoData.affTeam.debaterTwo, { school: affSchool }));
+    let affDebaterTwo;
+    if(videoData.affTeam.debaterTwo) {
+      affDebaterTwo = new Debater(Object.assign(videoData.affTeam.debaterTwo, { school: affSchool }));
+    }
     const negDebaterOne = new Debater(Object.assign(videoData.negTeam.debaterOne, { school: negSchool }));
-    const negDebaterTwo = new Debater(Object.assign(videoData.negTeam.debaterTwo, { school: negSchool }));
+    let negDebaterTwo;
+    if(videoData.negTeam.debaterTwo) {
+      negDebaterTwo = new Debater(Object.assign(videoData.negTeam.debaterTwo, { school: negSchool }));
+    }
 
     const video = new Video(Object.assign(videoData, {
       tournament: new Tournament(videoData.tournament),
