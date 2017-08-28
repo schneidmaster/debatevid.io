@@ -90,9 +90,7 @@ if (deployTarget) {
       },
     }),
     new webpack.SourceMapDevToolPlugin({
-      module: true,
-      columns: true,
-      filename: '[file].map',
+      filename: `${namePattern}.js.map`,
       moduleFilenameTemplate: 'file://[resource-path]',
       fallbackModuleFilenameTemplate: 'file://[resource-path]?[hash]',
       append: '\n//# sourceMappingURL=/assets/[url]',
