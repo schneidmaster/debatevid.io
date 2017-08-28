@@ -116,7 +116,7 @@
 }
 
 .video-show {
-  .glyphicon-heart {
+  .favorite.glyphicon-heart {
     margin-right: 10px;
     color: #999;
 
