@@ -18,19 +18,17 @@ const mapStateToProps = (state, ownProps) => {
     videos = videos.filter((video) => video.matches(searchTerm));
   }
 
-  if(sortOrder !== '') {
-    videos = videos.sortBy((video) => {
-      switch(sortOrder) {
-      case 'viewed':
-        return video.views;
-      case 'favd':
-        return video.favoritesCount;
-      case 'recent':
-      default:
-        return video.createdAt;
-      }
-    }).reverse();
-  }
+  videos = videos.sortBy((video) => {
+    switch(sortOrder) {
+    case 'viewed':
+      return video.views;
+    case 'favd':
+      return video.favoritesCount;
+    case 'recent':
+    default:
+      return video.createdAt;
+    }
+  }).reverse();
 
   return {
     page,
