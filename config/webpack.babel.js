@@ -17,7 +17,7 @@ const {
   BUNDLE_ANALYZE: bundleAnalyze,
   SENTRY_KEY: sentryKey,
   SENTRY_JS_DSN: sentryDsn,
-  HEROKU_SLUG_COMMIT: commit,
+  SOURCE_VERSION: commit,
 } = process.env;
 const { deployTarget, namePattern, cssNamePattern } = buildEnv(target);
 
