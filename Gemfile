@@ -25,6 +25,7 @@ gem 'surus'
 gem 'vimeo', '1.5.4'
 
 group :development do
+  gem 'foreman'
   gem 'web-console', '~> 3.0'
 end
 
