@@ -14,6 +14,10 @@ const defaultTeam = {
 
 export default class Team extends Record(defaultTeam) {
   getTeamCode() {
-    return `${this.school.name} ${this.debaterOne.lastName.charAt(0)}${this.debaterTwo.lastName.charAt(0)}`;
+    if(this.debaterTwo) {
+      return `${this.school.name} ${this.debaterOne.lastName.charAt(0)}${this.debaterTwo.lastName.charAt(0)}`;
+    } else {
+      return `${this.school.name} ${this.debaterOne.lastName.charAt(0)}`;
+    }
   }
 }
