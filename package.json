@@ -14,6 +14,9 @@
     "analyze": "TARGET=production BUNDLE_ANALYZE=true npm run build",
     "lint": "eslint 'app/assets/**/*.js' 'config/**/*.js'"
   },
+  "engines": {
+    "node": ">=8.4.0"
+  },
   "dependencies": {
     "asset-map-webpack-plugin": "^2.0.0",
     "autoprefixer": "^7.1.1",
