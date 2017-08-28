@@ -107,9 +107,9 @@ export const createFilters = ({ levels, types, tournaments, schools, teams, deba
           return videos.filter((video) => {
             return (
               video.affTeam.debaterOne.id === intValue ||
-              video.affTeam.debaterTwo.id === intValue ||
+              video.affTeam.debaterTwo && video.affTeam.debaterTwo.id === intValue ||
               video.negTeam.debaterOne.id === intValue ||
-              video.negTeam.debaterTwo.id === intValue
+              video.negTeam.debaterTwo && video.negTeam.debaterTwo.id === intValue
             );
           });
         }
