@@ -76,7 +76,7 @@ export default class Video extends Record(defaultVideo) {
   }
 
   matchingTagId(id) {
-    return this.tags.find((tag) => tag.id === id) !== undefined;
+    return this.tags.find((tag) => tag && tag.id === id) !== undefined;
   }
 
   matches(term) {
