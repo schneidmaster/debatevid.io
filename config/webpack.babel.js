@@ -8,6 +8,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import envRules from './webpack/rules';
 import { devServer, publicPath } from './webpack/dev';
 import buildEnv from './webpack/env';
+import runtime from './webpack/runtime';
 import vendor from './webpack/vendor';
 
 const { TARGET: target, BUNDLE_ANALYZE: bundleAnalyze } = process.env;
@@ -18,6 +19,7 @@ const resolvedRules = envRules(deployTarget);
 const config = {
   entry: {
     application: './app/assets/webpack/application',
+    runtime,
     vendor,
   },
 
@@ -43,7 +45,7 @@ const config = {
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', minChunks: Infinity }),
+    new webpack.optimize.CommonsChunkPlugin({ names: ['vendor', 'runtime'], minChunks: Infinity }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new StatsPlugin('webpack_manifest.json', {
       chunkModules: false,

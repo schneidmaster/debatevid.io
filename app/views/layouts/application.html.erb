@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag *webpack_asset_paths('application', extension: 'css') %>
+    <%= javascript_include_tag *webpack_asset_paths('runtime', extension: 'js') %>
     <%= javascript_include_tag *webpack_asset_paths('vendor', extension: 'js') %>
     <%= javascript_include_tag *webpack_asset_paths('application', extension: 'js') %>
   </head>
