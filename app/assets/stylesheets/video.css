@@ -15,6 +15,20 @@
     }
   }
 
+  .featured {
+    position: absolute;
+    top: 20px;
+    right: -40px;
+    width: 150px;
+    transform: rotate(45deg);
+    background-color: #1285AF;
+    color: white;
+    padding: 5px;
+    text-transform: uppercase;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: bold;
+  }
+
   .favorite {
     transform: rotate(-45deg);
     background-color: #fafafa;

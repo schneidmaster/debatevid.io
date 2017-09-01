@@ -18,6 +18,11 @@ const VideoBlock = ({ video, loggedIn, favorited, favorite, unfavorite }) => {
             <Glyphicon glyph='heart' />
           </div>
         )}
+        {renderIf(video.isFeatured)(
+          <div className='featured'>
+            Featured
+          </div>
+        )}
         <div className='video-block'>
           <a href={`/videos/${video.id}`}>
             <img src={video.getThumbnail()} alt={video.getTitle()} />
