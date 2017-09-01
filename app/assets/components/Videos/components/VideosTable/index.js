@@ -28,7 +28,13 @@ const mapStateToProps = (state, ownProps) => {
     default:
       return video.createdAt;
     }
-  }).reverse();
+  });
+
+  if(sortOrder === '') {
+    videos = videos.sortBy(video => video.isFeatured);
+  }
+
+  videos = videos.reverse();
 
   return {
     page,
