@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :favorites
+  has_many :tags_videos
   has_many :videos
 
   class << self
