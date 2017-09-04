@@ -31,3 +31,8 @@ div.flex-body {
 .no-margin-top {
   margin-top: 0;
 }
+
+.leaderboard-avatar {
+  max-height: 20px;
+  margin-right: 5px;
+}
