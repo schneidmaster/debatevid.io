@@ -4,7 +4,7 @@ import { List } from 'immutable';
 import { Row, Col, Table, Panel, Tooltip, Glyphicon, OverlayTrigger } from 'react-bootstrap';
 import Pagination from 'react-js-pagination';
 
-const LeaderboardApp = ({ tagsPage, videosPage, scorePage, itemsPerPage, tagsUsers, videosUsers, scoreUsers, setTagsPage, setVideosPage, setScorePage }) => {
+const LeaderboardApp = ({ tagsPage, videosPage, scorePage, itemsPerPage, users, tagsUsers, videosUsers, scoreUsers, setTagsPage, setVideosPage, setScorePage }) => {
   const tooltip = (
     <Tooltip id='score-tooltip'>
       3 points per video, 1 point per tag
@@ -44,7 +44,7 @@ const LeaderboardApp = ({ tagsPage, videosPage, scorePage, itemsPerPage, tagsUse
             <Pagination
               activePage={scorePage}
               itemsCountPerPage={itemsPerPage}
-              totalItemsCount={scoreUsers.size}
+              totalItemsCount={users.size}
               onChange={setScorePage}
             />
           </div>
@@ -76,7 +76,7 @@ const LeaderboardApp = ({ tagsPage, videosPage, scorePage, itemsPerPage, tagsUse
             <Pagination
               activePage={videosPage}
               itemsCountPerPage={itemsPerPage}
-              totalItemsCount={videosUsers.size}
+              totalItemsCount={users.size}
               onChange={setVideosPage}
             />
           </div>
@@ -108,7 +108,7 @@ const LeaderboardApp = ({ tagsPage, videosPage, scorePage, itemsPerPage, tagsUse
             <Pagination
               activePage={tagsPage}
               itemsCountPerPage={itemsPerPage}
-              totalItemsCount={tagsUsers.size}
+              totalItemsCount={users.size}
               onChange={setTagsPage}
             />
           </div>
@@ -123,6 +123,7 @@ LeaderboardApp.propTypes = {
   videosPage: PropTypes.number.isRequired,
   scorePage: PropTypes.number.isRequired,
   itemsPerPage: PropTypes.number.isRequired,
+  users: PropTypes.instanceOf(List).isRequired,
   tagsUsers: PropTypes.instanceOf(List).isRequired,
   videosUsers: PropTypes.instanceOf(List).isRequired,
   scoreUsers: PropTypes.instanceOf(List).isRequired,
