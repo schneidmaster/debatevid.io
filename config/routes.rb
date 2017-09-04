@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :tournaments, only: [:show]
   resources :users, only: [:show]
   resources :favorites, only: [:index]
+  resources :leaderboard, only: [:index]
 
   resources :videos, only: %i[show new create] do
     collection do

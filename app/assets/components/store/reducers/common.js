@@ -1,9 +1,11 @@
 import { List, Map } from 'immutable';
-import { Debater, School, Tag, Team, Tournament, Video, Favorite } from 'components/store/records';
+import { Debater, School, Tag, Team, Tournament, Video, Favorite, User } from 'components/store/records';
 import { simpleMap } from 'components/helpers/reducers';
 import { createFilters } from 'components/Videos/helpers/filters';
 
 const commonState = Map({
+  loggedIn: false,
+  currentUser: new User(),
   page: 1,
   itemsPerPage: 12,
   levels: List(),
@@ -15,6 +17,7 @@ const commonState = Map({
   tags: List(),
   favorites: List(),
   videos: List(),
+  users: List(),
   filters: Map(),
   possibleFilters: Map(),
   searchTerm: '',
@@ -50,6 +53,7 @@ const commonReducer = (state, action) => {
     const favorites = simpleMap(data.favorites, Favorite, 'videoId');
     const teams = inflateTeams(simpleMap(data.teams, Team), { schools, debaters });
     const videos = inflateVideos(simpleMap(data.videos, Video), { tournaments, teams, tags });
+    const users = simpleMap(data.users, User);
 
     const levels = Map(data.levels);
     const types = Map(data.types);
@@ -57,6 +61,7 @@ const commonReducer = (state, action) => {
 
     return state.merge(Map({
       loggedIn: data.logged_in,
+      currentUser: data.current_user,
       levels,
       types,
       possibleFilters,
@@ -67,6 +72,7 @@ const commonReducer = (state, action) => {
       tags,
       favorites,
       videos,
+      users,
     }));
   case 'SET_PAGE':
     return state.set('page', action.payload);

@@ -33,6 +33,7 @@ const Navigation = ({ loggedIn, currentUser }) => {
 
       <Navbar.Collapse>
         <Nav pullRight>
+          <NavItem href='/leaderboard'>Leaderboard</NavItem>
           <NavItem href='/faq'>FAQ</NavItem>
           {renderIf(loggedIn)(
             <NavItem href='/videos/new'>Submit</NavItem>

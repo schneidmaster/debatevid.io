@@ -1,5 +1,6 @@
 // Components.
 import ReactOnRails from 'react-on-rails';
+import Leaderboard from 'components/Leaderboard/Leaderboard';
 import Nav from 'components/Nav/Nav';
 import Submit from 'components/Submit/Submit';
 import Video from 'components/Video/Video';
@@ -7,6 +8,7 @@ import Videos from 'components/Videos/Videos';
 
 // Register components.
 ReactOnRails.register({
+  Leaderboard,
   Nav,
   Submit,
   Video,
