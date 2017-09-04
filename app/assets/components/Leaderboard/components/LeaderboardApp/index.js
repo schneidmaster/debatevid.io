@@ -17,9 +17,10 @@ const mapStateToProps = (state, ownProps) => {
     videosPage,
     scorePage,
     itemsPerPage,
-    tagsUsers: users.sortBy((user) => user.tagsCount).slice(tagsStart, tagsStart + itemsPerPage),
-    videosUsers: users.sortBy((user) => user.videosCount).slice(videosStart, videosStart + itemsPerPage),
-    scoreUsers: users.sortBy((user) => user.score).slice(scoreStart, scoreStart + itemsPerPage),
+    users,
+    tagsUsers: users.sortBy((user) => -user.tagsCount).slice(tagsStart, tagsStart + itemsPerPage),
+    videosUsers: users.sortBy((user) => -user.videosCount).slice(videosStart, videosStart + itemsPerPage),
+    scoreUsers: users.sortBy((user) => -user.score).slice(scoreStart, scoreStart + itemsPerPage),
   };
 };
 
