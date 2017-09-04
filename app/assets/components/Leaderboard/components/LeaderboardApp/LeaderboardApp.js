@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { List } from 'immutable';
 import { Row, Col, Table, Panel, Tooltip, Glyphicon, OverlayTrigger } from 'react-bootstrap';
 import Pagination from 'react-js-pagination';
-import renderIf from 'render-if';
 
 const LeaderboardApp = ({ tagsPage, videosPage, scorePage, itemsPerPage, users, tagsUsers, videosUsers, scoreUsers, setTagsPage, setVideosPage, setScorePage }) => {
   const tooltip = (
@@ -34,12 +33,7 @@ const LeaderboardApp = ({ tagsPage, videosPage, scorePage, itemsPerPage, users, 
               {scoreUsers.map((user, idx) => (
                 <tr key={user.id}>
                   <td>{itemsPerPage * (scorePage - 1) + idx + 1}</td>
-                  <td>
-                    {renderIf(user.avatar)(
-                      <img src={user.avatar} alt={user.name} className='leaderboard-avatar' />
-                    )}
-                    <a href={`/users/${user.id}`}>{user.name}</a>
-                  </td>
+                  <td><a href={`/users/${user.id}`}>{user.name}</a></td>
                   <td>{user.score}</td>
                 </tr>
               ))}
