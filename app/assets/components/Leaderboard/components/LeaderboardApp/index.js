@@ -26,14 +26,14 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    setTagsPage() {
-      dispatch(setTagsPage());
+    setTagsPage(page) {
+      dispatch(setTagsPage(page));
     },
-    setVideosPage() {
-      dispatch(setVideosPage());
+    setVideosPage(page) {
+      dispatch(setVideosPage(page));
     },
-    setScorePage() {
-      dispatch(setScorePage());
+    setScorePage(page) {
+      dispatch(setScorePage(page));
     },
   };
 };

@@ -32,7 +32,7 @@ const LeaderboardApp = ({ tagsPage, videosPage, scorePage, itemsPerPage, users, 
             <tbody>
               {scoreUsers.map((user, idx) => (
                 <tr key={user.id}>
-                  <td>{idx + 1}</td>
+                  <td>{itemsPerPage * (scorePage - 1) + idx + 1}</td>
                   <td>{user.name}</td>
                   <td>{user.score}</td>
                 </tr>
@@ -64,7 +64,7 @@ const LeaderboardApp = ({ tagsPage, videosPage, scorePage, itemsPerPage, users, 
             <tbody>
               {videosUsers.map((user, idx) => (
                 <tr key={user.id}>
-                  <td>{idx + 1}</td>
+                  <td>{itemsPerPage * (videosPage - 1) + idx + 1}</td>
                   <td>{user.name}</td>
                   <td>{user.videosCount}</td>
                 </tr>
@@ -96,7 +96,7 @@ const LeaderboardApp = ({ tagsPage, videosPage, scorePage, itemsPerPage, users, 
             <tbody>
               {tagsUsers.map((user, idx) => (
                 <tr key={user.id}>
-                  <td>{idx + 1}</td>
+                  <td>{itemsPerPage * (tagsPage - 1) + idx + 1}</td>
                   <td>{user.name}</td>
                   <td>{user.tagsCount}</td>
                 </tr>
