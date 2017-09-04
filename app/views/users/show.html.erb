@@ -1,3 +1,5 @@
+<% set_meta_title("#{@user.name} | DebateVid.io") %>
+
 <h2><%= image_tag @user.avatar, alt: @user.name, class: 'avatar-large' %><%= @user.name %></h2>
 <h3><%= @user.videos.count %> submitted <%= 'video'.pluralize(@user.videos.count) %></h3>
 <%= react_component 'Videos', props: { data: data_json(@videos) } %>
