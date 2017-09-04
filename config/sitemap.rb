@@ -24,6 +24,7 @@ SitemapGenerator::Sitemap.create do
     add video_path(video), priority: 0.8, changefreq: :daily
   end
 
+  add leaderboard_index_path, priority: 0.7, changefreq: :weekly
   add page_path('faq'), priority: 0.6, changefreq: :weekly
 
   Debater.all.each do |debater|
