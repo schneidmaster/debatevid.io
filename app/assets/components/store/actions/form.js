@@ -70,9 +70,14 @@ export const createVideo = (values) => {
     values.affTeamAttributes = Object.assign(
       {},
       nestedAttributes('debaterOne', values.affDebaterOne),
-      nestedAttributes('debaterTwo', values.affDebaterTwo),
       nestedAttributes('school', values.affSchool),
     );
+    if(values.affDebaterTwo) {
+      Object.assign(
+        values.affTeamAttributes,
+        nestedAttributes('debaterTwo', values.affDebaterTwo),
+      );
+    }
     delete values.affSchool;
     delete values.affDebaterOne;
     delete values.affDebaterTwo;
@@ -80,9 +85,14 @@ export const createVideo = (values) => {
     values.negTeamAttributes = Object.assign(
       {},
       nestedAttributes('debaterOne', values.negDebaterOne),
-      nestedAttributes('debaterTwo', values.negDebaterTwo),
       nestedAttributes('school', values.negSchool),
     );
+    if(values.negDebaterTwo) {
+      Object.assign(
+        values.negTeamAttributes,
+        nestedAttributes('debaterTwo', values.negDebaterTwo),
+      );
+    }
     delete values.negSchool;
     delete values.negDebaterOne;
     delete values.negDebaterTwo;
