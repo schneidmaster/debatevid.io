@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   before_action :authorize, except: %i[show]
 
   def show
-    @tag = Tag.find_by(title: params[:id])
+    @tag = Tag.find_by!(title: params[:id])
     video_ids = @tag.videos.pluck(:id)
     @videos = Video.where(id: video_ids)
   end
