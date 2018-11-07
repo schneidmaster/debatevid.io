@@ -179,7 +179,7 @@ GEM
       websocket-driver (>= 0.2.0)
     powerpack (0.1.1)
     public_suffix (2.0.5)
-    rack (2.0.5)
+    rack (2.0.6)
     rack-test (0.6.3)
       rack (>= 1.0)
     rack_session_access (0.1.1)
