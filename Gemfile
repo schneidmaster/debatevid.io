@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # core gems
-gem 'rails', '5.1'
+gem 'rails', '~> 5.1.6.1'
 gem 'webpack-rails'
 
 # Authentication.
