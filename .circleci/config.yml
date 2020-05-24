@@ -10,6 +10,7 @@ jobs:
       - image: circleci/postgres:9.6
         environment:
           POSTGRES_USER: circleci
+          POSTGRES_PASSWORD: circleci
 
     steps:
       - checkout
