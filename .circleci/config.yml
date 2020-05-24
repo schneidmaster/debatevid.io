@@ -3,13 +3,14 @@ jobs:
   test:
     working_directory: ~/debatevid.io
     docker:
-      - image: circleci/ruby:2.4-node
+      - image: circleci/ruby:2.6-node
         environment:
           NODE_ENV: test
           RAILS_ENV: test
       - image: circleci/postgres:9.6
         environment:
           POSTGRES_USER: circleci
+          POSTGRES_PASSWORD: circleci
 
     steps:
       - checkout

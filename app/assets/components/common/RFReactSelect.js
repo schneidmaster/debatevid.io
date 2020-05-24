@@ -76,10 +76,10 @@ function multiChangeHandler(func) {
 }
 
 /**
- * For single select, Redux Form keeps the value as a string, while React Select 
+ * For single select, Redux Form keeps the value as a string, while React Select
  * wants the value in the form { value: "grape", label: "Grape" }
- * 
- * * For multi select, Redux Form keeps the value as array of strings, while React Select 
+ *
+ * * For multi select, Redux Form keeps the value as array of strings, while React Select
  * wants the array of values in the form [{ value: "grape", label: "Grape" }]
  */
 function transformValue(value, options, multi, creatable) {

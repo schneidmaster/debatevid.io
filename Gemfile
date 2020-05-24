@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # core gems
-gem 'rails', '~> 5.2.2.1'
+gem 'rails', '~> 5.2.4.2'
 gem 'webpack-rails'
 
 # Authentication.
@@ -11,7 +11,7 @@ gem 'omniauth-twitter', '~> 1.4'
 gem 'omniauth-google-oauth2', '~> 0.5'
 
 # Utility.
-gem 'fog-aws' # used by sitemap_generator to store on s3
+gem 'fog-aws', '< 2' # used by sitemap_generator to store on s3
 gem 'high_voltage', '~> 3.0.0'
 gem 'impressionist'
 gem 'meta-tags'
