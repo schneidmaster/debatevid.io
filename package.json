@@ -73,7 +73,7 @@
     "eslint-plugin-react": "^7.2.1",
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-you-dont-need-lodash-underscore": "^6.3.1",
-    "webpack-dev-server": "^2.11.5"
+    "webpack-dev-server": "^3.1.11"
   },
   "resolutions": {
     "js-yaml": "^3.14.0",
