@@ -1,5 +1,8 @@
-import { Record } from 'immutable';
+import { Record } from "immutable";
 
-export default Record({
-  videoId: null,
-}, 'Favorite');
+export default Record(
+  {
+    videoId: null
+  },
+  "Favorite"
+);

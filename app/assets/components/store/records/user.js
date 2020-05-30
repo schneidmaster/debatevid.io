@@ -1,4 +1,4 @@
-import { Record } from 'immutable';
+import { Record } from "immutable";
 
 const defaultUser = {
   id: null,
@@ -6,7 +6,7 @@ const defaultUser = {
   avatar: null,
   tagsCount: 0,
   videosCount: 0,
-  score: 0,
+  score: 0
 };
 
 export default class User extends Record(defaultUser) {

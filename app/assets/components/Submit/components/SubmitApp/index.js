@@ -1,7 +1,7 @@
-import React from 'react';
-import { Row, Col } from 'react-bootstrap';
-import Segments from 'components/Submit/components/Segments';
-import Details from 'components/Submit/components/Details';
+import React from "react";
+import { Row, Col } from "react-bootstrap";
+import Segments from "components/Submit/components/Segments";
+import Details from "components/Submit/components/Details";
 
 const SubmitApp = () => {
   return (

@@ -1,89 +1,96 @@
-import { camelizeKeys } from 'humps';
+import { camelizeKeys } from "humps";
 
-export const hydrate = (payload) => {
+export const hydrate = payload => {
   return {
-    type: 'HYDRATE',
-    payload,
+    type: "HYDRATE",
+    payload
   };
 };
 
-export const deflate = (payload) => {
+export const deflate = payload => {
   return {
-    type: 'DEFLATE',
+    type: "DEFLATE"
   };
 };
 
-export const setPage = (payload) => {
+export const setPage = payload => {
   return {
-    type: 'SET_PAGE',
-    payload,
+    type: "SET_PAGE",
+    payload
   };
 };
 
-export const setFilter = (payload) => {
+export const setFilter = payload => {
   return {
-    type: 'SET_FILTER',
-    payload,
+    type: "SET_FILTER",
+    payload
   };
 };
 
-export const setFilterValue = (payload) => {
+export const setFilterValue = payload => {
   return {
-    type: 'SET_FILTER_VALUE',
-    payload,
+    type: "SET_FILTER_VALUE",
+    payload
   };
 };
 
-export const deleteFilter = (payload) => {
+export const deleteFilter = payload => {
   return {
-    type: 'DELETE_FILTER',
-    payload,
+    type: "DELETE_FILTER",
+    payload
   };
 };
 
-export const setSearchTerm = (payload) => {
+export const setSearchTerm = payload => {
   return {
-    type: 'SET_SEARCH_TERM',
-    payload,
+    type: "SET_SEARCH_TERM",
+    payload
   };
 };
 
-export const setSortOrder = (payload) => {
+export const setSortOrder = payload => {
   return {
-    type: 'SET_SORT_ORDER',
-    payload,
+    type: "SET_SORT_ORDER",
+    payload
   };
 };
 
-const addFavorite = (payload) => {
+const addFavorite = payload => {
   return {
-    type: 'ADD_FAVORITE',
-    payload,
+    type: "ADD_FAVORITE",
+    payload
   };
 };
 
-export const favorite = (videoId) => {
+export const favorite = videoId => {
   return (dispatch, getState) => {
-    const token = document.head.querySelector('[name=csrf-token]').content;
-    fetch(`/videos/${videoId}/favorites`, { credentials: 'same-origin', method: 'POST', headers: { 'X-CSRF-Token': token } })
-      .then((response) => response.json())
-      .then((response) => {
+    const token = document.head.querySelector("[name=csrf-token]").content;
+    fetch(`/videos/${videoId}/favorites`, {
+      credentials: "same-origin",
+      method: "POST",
+      headers: { "X-CSRF-Token": token }
+    })
+      .then(response => response.json())
+      .then(response => {
         dispatch(addFavorite(camelizeKeys(response)));
       });
   };
 };
 
-const deleteFavorite = (payload) => {
+const deleteFavorite = payload => {
   return {
-    type: 'DELETE_FAVORITE',
-    payload,
+    type: "DELETE_FAVORITE",
+    payload
   };
 };
 
-export const unfavorite = (videoId) => {
+export const unfavorite = videoId => {
   return (dispatch, getState) => {
-    const token = document.head.querySelector('[name=csrf-token]').content;
-    fetch(`/videos/${videoId}/favorites`, { credentials: 'same-origin', method: 'DELETE', headers: { 'X-CSRF-Token': token } })
-      .then(() => dispatch(deleteFavorite(videoId)));
+    const token = document.head.querySelector("[name=csrf-token]").content;
+    fetch(`/videos/${videoId}/favorites`, {
+      credentials: "same-origin",
+      method: "DELETE",
+      headers: { "X-CSRF-Token": token }
+    }).then(() => dispatch(deleteFavorite(videoId)));
   };
 };

@@ -1,9 +1,9 @@
-import { Record } from 'immutable';
+import { Record } from "immutable";
 
 const defaultTournament = {
   id: null,
   name: null,
-  year: null,
+  year: null
 };
 
 export default class Tournament extends Record(defaultTournament) {

@@ -1,8 +1,8 @@
-import { Record } from 'immutable';
+import { Record } from "immutable";
 
 const defaultTag = {
   id: null,
-  title: null,
+  title: null
 };
 
 export default class Tag extends Record(defaultTag) {

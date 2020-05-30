@@ -1,80 +1,52 @@
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 // PostCSS plugins.
-import nested from 'postcss-nested';
-import precss from 'precss';
-import autoprefixer from 'autoprefixer';
-import vars from 'postcss-simple-vars';
+import nested from "postcss-nested";
+import precss from "precss";
+import autoprefixer from "autoprefixer";
+import vars from "postcss-simple-vars";
 
 const commonRules = [
   {
     test: /\.(jpg|jpeg|png|gif|eps|sketch|eot|ttf|woff|woff2|svg|pdf)/,
     use: [
       {
-        loader: 'file-loader',
+        loader: "file-loader",
         options: {
-          name: '[name].[hash].[ext]',
-          context: 'app/assets',
-        },
-      },
-    ],
+          name: "[name].[hash].[ext]",
+          context: "app/assets"
+        }
+      }
+    ]
   },
   {
     test: /\.js$/,
     exclude: /node_modules/,
     use: {
-      loader: 'babel-loader',
-      options: {
-        presets: [
-          ['es2015', { modules: false }],
-          'react',
-        ],
-        plugins: [
-          ['transform-imports', {
-            'react-bootstrap': {
-              transform: 'react-bootstrap/es/${member}', // eslint-disable-line no-template-curly-in-string
-              preventFullImport: true,
-            },
-            'redux-form': {
-              transform: 'redux-form/es/immutable/${member}', // eslint-disable-line no-template-curly-in-string
-              preventFullImport: true,
-            },
-          }],
-        ],
-      },
-    },
-  },
+      loader: "babel-loader"
+    }
+  }
 ];
 
 const prodRules = [
   {
     test: /\.css$/,
-    use: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: [
-        {
-          loader: 'css-loader',
-          options: {
-            minimize: true,
-          },
-        },
-        {
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: true,
-            plugins() {
-              return [
-                nested,
-                vars,
-                precss,
-                autoprefixer,
-              ];
-            },
-          },
-        },
-      ],
-    }),
-  },
+    use: [
+      MiniCssExtractPlugin.loader,
+      {
+        loader: "css-loader"
+      },
+      {
+        loader: "postcss-loader",
+        options: {
+          sourceMap: true,
+          plugins() {
+            return [nested, vars, precss, autoprefixer];
+          }
+        }
+      }
+    ]
+  }
 ];
 
 const devRules = [
@@ -82,33 +54,22 @@ const devRules = [
     test: /\.css$/,
     use: [
       {
-        loader: 'style-loader',
-        options: {
-          sourceMap: true,
-        },
+        loader: "style-loader"
       },
       {
-        loader: 'css-loader',
-        options: {
-          sourceMap: true,
-        },
+        loader: "css-loader"
       },
       {
-        loader: 'postcss-loader',
+        loader: "postcss-loader",
         options: {
           sourceMap: true,
           plugins() {
-            return [
-              nested,
-              vars,
-              precss,
-              autoprefixer,
-            ];
-          },
-        },
-      },
-    ],
-  },
+            return [nested, vars, precss, autoprefixer];
+          }
+        }
+      }
+    ]
+  }
 ];
 
 export default function(deployTarget) {
@@ -121,4 +82,4 @@ export default function(deployTarget) {
   }
 
   return rules;
-};
+}

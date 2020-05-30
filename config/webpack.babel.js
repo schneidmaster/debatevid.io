@@ -1,23 +1,24 @@
-import path from 'path';
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import CompressionPlugin from 'compression-webpack-plugin';
-import AssetMapPlugin from 'asset-map-webpack-plugin';
-import StatsPlugin from 'stats-webpack-plugin';
-import SentrySourcemapPlugin from 'webpack-sentry-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import envRules from './webpack/rules';
-import { devServer, publicPath } from './webpack/dev';
-import buildEnv from './webpack/env';
-import runtime from './webpack/runtime';
-import vendor from './webpack/vendor';
+import path from "path";
+import webpack from "webpack";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CompressionPlugin from "compression-webpack-plugin";
+import TerserPlugin from "terser-webpack-plugin";
+import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
+import AssetMapPlugin from "asset-map-webpack-plugin";
+import StatsPlugin from "stats-webpack-plugin";
+import SentrySourcemapPlugin from "webpack-sentry-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import envRules from "./webpack/rules";
+import { devServer, publicPath } from "./webpack/dev";
+import buildEnv from "./webpack/env";
+import vendor from "./webpack/vendor";
 
 const {
   TARGET: target,
   BUNDLE_ANALYZE: bundleAnalyze,
   SENTRY_KEY: sentryKey,
   SENTRY_JS_DSN: sentryDsn,
-  SOURCE_VERSION: commit,
+  SOURCE_VERSION: commit
 } = process.env;
 const { deployTarget, namePattern, cssNamePattern } = buildEnv(target);
 
@@ -25,88 +26,92 @@ const resolvedRules = envRules(deployTarget);
 
 const config = {
   entry: {
-    application: './app/assets/webpack/application',
-    runtime,
-    vendor,
+    application: "./app/assets/webpack/application",
+    vendorModules: vendor
   },
 
+  mode: deployTarget ? "production" : "development",
+
   output: {
-    path: path.join(__dirname, '..', 'public', 'assets'),
-    publicPath: '/assets/',
-    filename: `${namePattern}.js`,
+    path: path.join(__dirname, "..", "public", "assets"),
+    publicPath: "/assets/",
+    filename: `${namePattern}.js`
   },
 
   resolve: {
     modules: [
-      path.join('app', 'assets'),
-      path.join('vendor', 'assets'),
-      path.join('app', 'assets', 'stylesheets'),
-      path.join('app'),
-      'node_modules',
+      path.join("app", "assets"),
+      path.join("vendor", "assets"),
+      path.join("app", "assets", "stylesheets"),
+      path.join("app"),
+      "node_modules"
     ],
-    extensions: ['.js', '.css'],
+    extensions: [".js", ".css"]
   },
 
   module: {
-    rules: resolvedRules,
+    rules: resolvedRules
+  },
+
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        sourceMap: true,
+        parallel: true
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ],
+    runtimeChunk: "single",
+    splitChunks: {
+      cacheGroups: {
+        default: false,
+        vendor: {
+          name: "vendor",
+          test: "vendorModules",
+          enforce: true,
+          chunks: "all"
+        }
+      }
+    }
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({ names: ['vendor', 'runtime'], minChunks: Infinity }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    new StatsPlugin('webpack_manifest.json', {
+    new StatsPlugin("webpack_manifest.json", {
       chunkModules: false,
       source: false,
       chunks: false,
       modules: false,
       assets: true,
-      warnings: target === 'development',
-    }),
-  ],
+      warnings: target === "development"
+    })
+  ]
 };
 
 if (deployTarget) {
-  config.devtool = 'source-map';
+  config.devtool = "source-map";
   config.plugins.push(
-    new ExtractTextPlugin({ filename: `${cssNamePattern}.css` }),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new AssetMapPlugin('asset_map.json'),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
-      SENTRY_DSN: JSON.stringify(sentryDsn),
-      GITSHA: JSON.stringify(commit),
+    new MiniCssExtractPlugin({
+      filename: `${cssNamePattern}.css`
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMapFilename: `${namePattern}.js.map`,
-      sourceMap: true,
-      compress: {
-        screw_ie8: true,
-      },
-      mangle: {
-        screw_ie8: true,
-      },
-      output: {
-        comments: false,
-        screw_ie8: true,
-      },
+    new AssetMapPlugin("asset_map.json"),
+    new webpack.DefinePlugin({
+      SENTRY_DSN: JSON.stringify(sentryDsn),
+      GITSHA: JSON.stringify(commit)
     }),
     new CompressionPlugin({
-      asset: '[path].gz',
-      test: /\.(css|js)$/,
+      test: /\.(css|js)$/
     })
   );
 
-  if(bundleAnalyze) {
-    config.plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'static' }));
+  if (bundleAnalyze) {
+    config.plugins.push(new BundleAnalyzerPlugin({ analyzerMode: "static" }));
   }
 
-  if(sentryKey) {
+  if (sentryKey) {
     config.plugins.push(
       new SentrySourcemapPlugin({
-        organisation: 'schneidmaster',
-        project: 'debatevidio',
+        organisation: "schneidmaster",
+        project: "debatevidio",
         apiKey: sentryKey,
         release: commit,
         include: /\.js(\.map)?$/,
@@ -118,13 +123,13 @@ if (deployTarget) {
             version,
             refs: [
               {
-                repository: 'schneidmaster/debatevid.io',
-                commit: commit,
-              },
+                repository: "schneidmaster/debatevid.io",
+                commit: commit
+              }
             ],
-            projects: ['debatevidio'],
+            projects: ["debatevidio"]
           };
-        },
+        }
       })
     );
   }
@@ -135,9 +140,9 @@ if (deployTarget) {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.SourceMapDevToolPlugin({
       module: true,
-      columns: false,
+      columns: false
     }),
-    new AssetMapPlugin('asset_map.json', path.resolve()),
+    new AssetMapPlugin("asset_map.json", path.resolve())
   );
 }
 
