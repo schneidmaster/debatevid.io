@@ -1,3 +1,18 @@
+/* global SENTRY_DSN GITSHA */
+
+// Polyfills.
+import "@babel/polyfill";
+import "whatwg-fetch";
+import * as Sentry from "@sentry/browser";
+
+// Sentry.
+if (process.env.NODE_ENV === "production") {
+  Sentry.init({
+    dsn: SENTRY_DSN,
+    release: GITSHA
+  });
+}
+
 // Components.
 import ReactOnRails from "react-on-rails";
 import Leaderboard from "components/Leaderboard/Leaderboard";

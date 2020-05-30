@@ -1,4 +1,4 @@
-import ExtractTextPlugin from "extract-text-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 // PostCSS plugins.
 import nested from "postcss-nested";
@@ -23,25 +23,7 @@ const commonRules = [
     test: /\.js$/,
     exclude: /node_modules/,
     use: {
-      loader: "babel-loader",
-      options: {
-        presets: [["es2015", { modules: false }], "react"],
-        plugins: [
-          [
-            "transform-imports",
-            {
-              "react-bootstrap": {
-                transform: "react-bootstrap/es/${member}", // eslint-disable-line no-template-curly-in-string
-                preventFullImport: true
-              },
-              "redux-form": {
-                transform: "redux-form/es/immutable/${member}", // eslint-disable-line no-template-curly-in-string
-                preventFullImport: true
-              }
-            }
-          ]
-        ]
-      }
+      loader: "babel-loader"
     }
   }
 ];
@@ -49,26 +31,21 @@ const commonRules = [
 const prodRules = [
   {
     test: /\.css$/,
-    use: ExtractTextPlugin.extract({
-      fallback: "style-loader",
-      use: [
-        {
-          loader: "css-loader",
-          options: {
-            minimize: true
-          }
-        },
-        {
-          loader: "postcss-loader",
-          options: {
-            sourceMap: true,
-            plugins() {
-              return [nested, vars, precss, autoprefixer];
-            }
+    use: [
+      MiniCssExtractPlugin.loader,
+      {
+        loader: "css-loader"
+      },
+      {
+        loader: "postcss-loader",
+        options: {
+          sourceMap: true,
+          plugins() {
+            return [nested, vars, precss, autoprefixer];
           }
         }
-      ]
-    })
+      }
+    ]
   }
 ];
 
@@ -77,16 +54,10 @@ const devRules = [
     test: /\.css$/,
     use: [
       {
-        loader: "style-loader",
-        options: {
-          sourceMap: true
-        }
+        loader: "style-loader"
       },
       {
-        loader: "css-loader",
-        options: {
-          sourceMap: true
-        }
+        loader: "css-loader"
       },
       {
         loader: "postcss-loader",
