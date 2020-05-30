@@ -1,10 +1,10 @@
-import { Record } from 'immutable';
+import { Record } from "immutable";
 
 const defaultDebater = {
   id: null,
   schoolId: null,
   firstName: null,
-  lastName: null,
+  lastName: null
 };
 
 export default class Debater extends Record(defaultDebater) {

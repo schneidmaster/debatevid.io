@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Select, { Creatable } from 'react-select';
-import classnames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import Select, { Creatable } from "react-select";
+import classnames from "classnames";
 
 RFReactSelect.defaultProps = {
   multi: false,
-  className: '',
-  creatable: false,
+  className: "",
+  creatable: false
 };
 
 RFReactSelect.propTypes = {
@@ -15,24 +15,32 @@ RFReactSelect.propTypes = {
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
-      PropTypes.array,
+      PropTypes.array
     ]).isRequired,
     onBlur: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
-    onFocus: PropTypes.func.isRequired,
+    onFocus: PropTypes.func.isRequired
   }).isRequired,
   options: PropTypes.array.isRequired,
   multi: PropTypes.bool,
   className: PropTypes.string,
-  creatable: PropTypes.bool,
+  creatable: PropTypes.bool
 };
 
-export default function RFReactSelect({ input, options, multi, className, meta: { touched, error }, creatable, onNewOptionClick }) {
+export default function RFReactSelect({
+  input,
+  options,
+  multi,
+  className,
+  meta: { touched, error },
+  creatable,
+  onNewOptionClick
+}) {
   const { name, value, onBlur, onChange, onFocus } = input;
   const transformedValue = transformValue(value, options, multi, creatable);
 
   let Component;
-  if(creatable) {
+  if (creatable) {
     Component = Creatable;
   } else {
     Component = Select;
@@ -40,14 +48,13 @@ export default function RFReactSelect({ input, options, multi, className, meta: 
 
   return (
     <Component
-      valueKey='value'
+      valueKey="value"
       name={name}
       value={transformedValue}
       multi={multi}
       options={options}
-      onChange={multi
-        ? multiChangeHandler(onChange)
-        : singleChangeHandler(onChange)
+      onChange={
+        multi ? multiChangeHandler(onChange) : singleChangeHandler(onChange)
       }
       onBlur={() => onBlur(value)}
       onFocus={onFocus}
@@ -62,7 +69,7 @@ export default function RFReactSelect({ input, options, multi, className, meta: 
  */
 function singleChangeHandler(func) {
   return function handleSingleChange(value) {
-    func(value ? value.value : '');
+    func(value ? value.value : "");
   };
 }
 
@@ -83,23 +90,23 @@ function multiChangeHandler(func) {
  * wants the array of values in the form [{ value: "grape", label: "Grape" }]
  */
 function transformValue(value, options, multi, creatable) {
-  if (multi && typeof value === 'string') return [];
+  if (multi && typeof value === "string") return [];
   if (creatable && !multi && isNaN(value)) {
     return { label: value, value };
   }
 
   const filteredOptions = options.filter(option => {
-    return multi
-      ? value.indexOf(option.value) !== -1
-      : option.value === value;
+    return multi ? value.indexOf(option.value) !== -1 : option.value === value;
   });
 
-  if(creatable && multi) {
-    value.filter((idOrTitle) => isNaN(idOrTitle)).forEach((v) => {
-      if(!filteredOptions.find(({ value }) => v === value)) {
-        filteredOptions.push({ label: v, value: v });
-      }
-    });
+  if (creatable && multi) {
+    value
+      .filter(idOrTitle => isNaN(idOrTitle))
+      .forEach(v => {
+        if (!filteredOptions.find(({ value }) => v === value)) {
+          filteredOptions.push({ label: v, value: v });
+        }
+      });
   }
 
   return multi ? filteredOptions : filteredOptions[0];

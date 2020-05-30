@@ -1,8 +1,8 @@
-import { List, Record } from 'immutable';
-import yaml from 'components/helpers/parseYaml';
-import Team from './team';
-import Tournament from './tournament';
-import User from './user';
+import { List, Record } from "immutable";
+import yaml from "components/helpers/parseYaml";
+import Team from "./team";
+import Tournament from "./tournament";
+import User from "./user";
 
 const defaultVideo = {
   id: null,
@@ -24,7 +24,7 @@ const defaultVideo = {
   tags: List(),
   tagsVideos: null,
   views: 0,
-  user: new User(),
+  user: new User()
 };
 
 export default class Video extends Record(defaultVideo) {
@@ -33,10 +33,12 @@ export default class Video extends Record(defaultVideo) {
   }
 
   getThumbnail() {
-    if(this.provider === 0) {
-      return `https://img.youtube.com/vi/${yaml(this.key).shift()}/hqdefault.jpg`;
-    } else if(this.thumbnail) {
-      return this.thumbnail.replace('200x150', '600x450');
+    if (this.provider === 0) {
+      return `https://img.youtube.com/vi/${yaml(
+        this.key
+      ).shift()}/hqdefault.jpg`;
+    } else if (this.thumbnail) {
+      return this.thumbnail.replace("200x150", "600x450");
     }
   }
 
@@ -47,43 +49,50 @@ export default class Video extends Record(defaultVideo) {
     let src;
     let providerProps;
 
-    if(this.provider === 0) {
+    if (this.provider === 0) {
       src = `https://www.youtube.com/embed/${firstKey}?origin=https://debatevid.io`;
-      if(keyArray.length > 0) {
-        src = `${src}&playlist=${keyArray.join(',')}`;
+      if (keyArray.length > 0) {
+        src = `${src}&playlist=${keyArray.join(",")}`;
       }
       providerProps = {
-        type: 'text/html',
+        type: "text/html"
       };
-    } else if(this.provider === 1) {
+    } else if (this.provider === 1) {
       src = `https://player.vimeo.com/video/${firstKey}`;
       providerProps = {
         webkitallowfullscreen: true,
         mozallowfullscreen: true,
-        allowfullscreen: true,
+        allowfullscreen: true
       };
     }
 
-    return Object.assign({
-      id: 'vidframe',
-      frameBorder: 0,
-      src,
-    }, providerProps);
+    return Object.assign(
+      {
+        id: "vidframe",
+        frameBorder: 0,
+        src
+      },
+      providerProps
+    );
   }
 
   matchingTag(term) {
-    return this.tags.find((tag) => tag && tag.matches(term)) !== undefined;
+    return this.tags.find(tag => tag && tag.matches(term)) !== undefined;
   }
 
   matchingTagId(id) {
-    return this.tags.find((tag) => tag && tag.id === id) !== undefined;
+    return this.tags.find(tag => tag && tag.id === id) !== undefined;
   }
 
   matches(term) {
-    if(term === '') {
+    if (term === "") {
       return true;
     } else {
-      return this.getTitle().toLowerCase().includes(term.toLowerCase()) || this.matchingTag(term);
+      return (
+        this.getTitle()
+          .toLowerCase()
+          .includes(term.toLowerCase()) || this.matchingTag(term)
+      );
     }
   }
 }

@@ -1,10 +1,10 @@
-import { connect } from 'react-redux';
-import Search from './Search';
-import { setSearchTerm } from 'components/store/actions';
+import { connect } from "react-redux";
+import Search from "./Search";
+import { setSearchTerm } from "components/store/actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    searchTerm: state.getIn(['common', 'searchTerm']),
+    searchTerm: state.getIn(["common", "searchTerm"])
   };
 };
 
@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     setSearchTerm(value) {
       dispatch(setSearchTerm(value));
-    },
+    }
   };
 };
 

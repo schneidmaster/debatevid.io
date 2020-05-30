@@ -1,5 +1,1 @@
-export default [
-  'babel-polyfill',
-  'whatwg-fetch',
-  'javascripts/sentry',
-];
+export default ["babel-polyfill", "whatwg-fetch", "javascripts/sentry"];

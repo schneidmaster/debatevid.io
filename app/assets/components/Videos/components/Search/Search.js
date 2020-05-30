@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const Search = ({ searchTerm, setSearchTerm }) => {
   return (
-    <div className='search'>
+    <div className="search">
       <input
-        type='search'
-        placeholder='Search'
-        className='form-control'
+        type="search"
+        placeholder="Search"
+        className="form-control"
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={e => setSearchTerm(e.target.value)}
       />
     </div>
   );
@@ -17,7 +17,7 @@ const Search = ({ searchTerm, setSearchTerm }) => {
 
 Search.propTypes = {
   searchTerm: PropTypes.string.isRequired,
-  setSearchTerm: PropTypes.func.isRequired,
+  setSearchTerm: PropTypes.func.isRequired
 };
 
 export default Search;

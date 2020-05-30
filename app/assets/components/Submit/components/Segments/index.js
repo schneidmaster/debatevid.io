@@ -1,11 +1,15 @@
-import { connect } from 'react-redux';
-import Segments from './Segments';
-import { addFormSegment, deleteFormSegment, setSegmentInput } from 'components/store/actions';
+import { connect } from "react-redux";
+import Segments from "./Segments";
+import {
+  addFormSegment,
+  deleteFormSegment,
+  setSegmentInput
+} from "components/store/actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    segmentInput: state.getIn(['segments', 'segmentInput']),
-    segments: state.getIn(['segments', 'segments']),
+    segmentInput: state.getIn(["segments", "segmentInput"]),
+    segments: state.getIn(["segments", "segments"])
   };
 };
 
@@ -19,7 +23,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     deleteFormSegment(value) {
       dispatch(deleteFormSegment(value));
-    },
+    }
   };
 };
 
