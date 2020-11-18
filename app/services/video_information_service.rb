@@ -1,8 +1,8 @@
 class VideoInformationService
   class << self
     def link_info(link)
-      is_vimeo = link.include? 'vimeo'
-      is_youtube = link.include? 'youtube'
+      is_vimeo = link.include?('vimeo')
+      is_youtube = link.include?('youtube') || link.include?('youtu.be')
       return invalid_json unless is_vimeo || is_youtube
 
       if is_vimeo
@@ -27,26 +27,39 @@ class VideoInformationService
       }
     end
 
+    VALID_YOUTUBE_HOSTS = ['www.youtube.com', 'youtube.com', 'youtu.be'].freeze
+
     def youtube_link_info(link)
-      params = URI.parse(link).request_uri.split('?').last
-      params_array = CGI.parse(params)
-      id = params_array['v'].first
+      uri = URI.parse(link)
+      return invalid_json unless VALID_YOUTUBE_HOSTS.include?(uri.host)
+
+      id =
+        if uri.host == 'youtu.be'
+          link.split('/').last
+        else
+          params = URI.parse(link).request_uri.split('?').last
+          params_array = CGI.parse(params)
+          params_array['v'].first
+        end
 
       begin
-        raw_info = RestClient.get 'https://www.googleapis.com/youtube/v3/videos', params: { key: ENV['YOUTUBE_DEV_KEY'], part: 'snippet', id: id }
+        html = RestClient.get(link)
+        return invalid_json unless html.code == 200
+
+        title_node = html.body.match(/<title>(.*)<\/title>/)
+        title = title_node.to_s.gsub(/<(\/?)title>/, '').gsub(' - YouTube', '')
+
+        img_node = html.body.match(/<meta property="og:image" content="(.*)">/)
+        thumbnail = img_node.to_s.gsub('<meta property="og:image" content="', '').gsub('">', '')
       rescue
         return invalid_json
       end
 
-      raw_info = JSON.parse(raw_info)
-      item = raw_info['items'].first
-      return invalid_json unless item
-
       {
         provider: 'youtube',
         key: id,
-        title: item['snippet']['title'],
-        thumbnail: item['snippet']['thumbnails']['high']['url'],
+        title: title,
+        thumbnail: thumbnail,
       }
     end
 

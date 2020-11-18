@@ -11,12 +11,30 @@ describe VideoInformationService do
     end
 
     context 'youtube link' do
-      let(:link) { 'https://www.youtube.com?v=abc' }
+      let(:link) { 'https://www.youtube.com/watch?v=abc' }
 
       context 'link exists' do
         before do
-          stub_request(:get, 'https://www.googleapis.com/youtube/v3/videos?id=abc&key=youtube-dev&part=snippet')
-            .to_return(status: 200, body: { items: [{ snippet: { title: 'Abc vid', thumbnails: { high: { url: 'https://youtube.com/abc/thumb' } } } }] }.to_json)
+          stub_request(:get, 'https://www.youtube.com/watch?v=abc')
+            .to_return(status: 200, body: '<html><head><title>Abc vid</title><meta property="og:image" content="https://youtube.com/abc/thumb"></head></html>')
+        end
+
+        it 'returns link info' do
+          expect(link_info).to include_json(
+            provider: 'youtube',
+            key: 'abc',
+            title: 'Abc vid',
+            thumbnail: 'https://youtube.com/abc/thumb',
+          )
+        end
+      end
+
+      context 'shortlink exists' do
+        let(:link) { 'https://youtu.be/abc' }
+
+        before do
+          stub_request(:get, 'https://youtu.be/abc')
+            .to_return(status: 200, body: '<html><head><title>Abc vid</title><meta property="og:image" content="https://youtube.com/abc/thumb"></head></html>')
         end
 
         it 'returns link info' do
@@ -31,7 +49,7 @@ describe VideoInformationService do
 
       context 'link does not exist' do
         before do
-          stub_request(:get, 'https://www.googleapis.com/youtube/v3/videos?id=abc&key=youtube-dev&part=snippet')
+          stub_request(:get, 'https://www.youtube.com/watch?v=abc')
             .to_return(status: 404)
         end
 
