@@ -5,5 +5,6 @@ export default str => {
     .split("\n")
     .filter(e => e !== "")
     .map(e => e.substr(2))
-    .map(e => e.replace(/'/g, ""));
+    .map(e => e.replace(/'/g, ""))
+    .map(e => e.replace(/"/g, ""));
 };
