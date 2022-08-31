@@ -6,7 +6,7 @@ gem 'rails', '~> 5.2.5'
 gem 'webpack-rails'
 
 # Authentication.
-gem 'omniauth', '~> 1.6'
+gem 'omniauth', '~> 1.9'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'omniauth-twitter', '~> 1.4'
 gem 'omniauth-google-oauth2', '~> 0.5'
